@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'fees']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Transaction Details</ion-title></div>
+      <div class="btn-flex">
+        <div class="button-header example-ripple-container"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </div>
+        <div class="button-header example-ripple-container"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+          <i class="fa fa-download" aria-hidden="true"></i>
+        </div>
+      </div> 
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="img-content">
+      <ion-avatar class="ion-margin-start">
+        <img src="assets/images/Layer1.png" />
+      </ion-avatar>
+    </div>
+    <div class="ac-holder"><h2>Transaction Name</h2></div>
+    <div class="ac-amount"><h1>₹ 50000.00</h1></div>
+    <div class="ac-success"> 
+      <ion-chip>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>Completed</ion-label>
+      </ion-chip>
+      <div class="succ-datetime">
+        <div class="date">20.08.2021</div>
+        <div class="time">03:10 PM</div>
+      </div>
+    </div>
+    <div class="content-body">
+      <div class="bank-name">
+        <h1>Student Account Name</h1>
+        <p>0897xxxx2568</p>
+      </div>
+      <div class="trans-id">
+        <h3>transaction ID</h3>
+        <p>1234567890</p>
+      </div>
+      <div class="trans-to">
+        <h2>To: transaction Name</h2>
+        <p>8902xxxx4320</p>
+      </div>
+      <div class="trans-from">
+        <h2>Form: student Bank Name</h2>
+        <p>0897xxxx2568</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

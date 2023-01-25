@@ -1,0 +1,10 @@
+{
+  "name": "IMS-Project",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

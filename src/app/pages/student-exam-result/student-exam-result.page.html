@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'exam-list']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Result</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div> 
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
+  <div *ngIf="!load">
+    <div class="pt-15" *ngFor="let value of list" >
+      <div class="message-item">
+        <!-- <ion-item class="message-item-color" [ngClass]="{'bg-blue': value.type == 'general', 'bg-orange': value.type == 'attendance','bg-green': value.type == 'libary', 'seened': value.view == 'seen'}"> -->
+          <!-- <ion-item class="message-item-color" style="--background:red;"> -->
+          <ion-item class="message-item-color" [style.--background]="value.subject.background_color">
+            <!-- <ion-item class="message-item-color" style="background:red"> -->
+          <!-- <ion-avatar slot="start" class="message-avatar" *ngIf="value.type=='general' || value.type=='attendance' || value.type=='libary'">
+            <i class="fa fa-file-text" aria-hidden="true" *ngIf="value.type=='general'"></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" *ngIf="value.type=='attendance'"></i>
+            <i class="fa fa-leanpub" aria-hidden="true" *ngIf="value.type=='libary'"></i>
+          </ion-avatar> -->
+          <!-- <ion-avatar slot="start" class="message-avatar" *ngIf="value.type=='general' || value.type=='attendance' || value.type=='libary'">
+            <i class="fa fa-file-text" aria-hidden="true" *ngIf="value.type=='general'"></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" *ngIf="value.type=='attendance'"></i>
+            <i class="fa fa-leanpub" aria-hidden="true" *ngIf="value.type=='libary'"></i>
+          </ion-avatar> -->
+          <ion-avatar slot="start" class="message-avatar" [style.background]="value.subject.front_color" [innerHtml]="value.subject.icon">
+           
+          </ion-avatar>
+          <ion-label>
+            <div class="message-content">
+              <div class="d-flaex">
+                <div>
+                  <h3 [style.color]="value.subject.front_color">{{value.subject.subject_name}}</h3>
+                  <p class="min" [style.color]="value.subject.front_color">Min Marks: {{value.min_marks}}</p>
+                  <p class="max" [style.color]="value.subject.front_color">Max Marks: {{value.max_marks}}</p>
+                  <p class="scheme" *ngIf="value.obtain_marks!==''" [style.color]="value.subject.front_color">Mark System</p>
+                  <p class="scheme" *ngIf="value.obtain_marks===''" [style.color]="value.subject.front_color">Grading System</p>
+                </div>
+                <div class="time" *ngIf="value.obtain_marks!==''" ><h5 [style.color]="value.subject.front_color">{{value.obtain_marks}}</h5></div>
+                <div class="time" *ngIf="value.obtain_marks===''" ><h5 [style.color]="value.subject.front_color">{{value.grade.grade_name}}</h5></div>
+              </div>
+            </div>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+  <div class="save-btn" id="check"><ion-button class="btn-color" expand="block" type="submit" >Download Progress Card</ion-button></div>
+
+
+</ion-content>

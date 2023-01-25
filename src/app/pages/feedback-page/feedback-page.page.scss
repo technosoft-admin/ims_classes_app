@@ -1,0 +1,132 @@
+ion-header{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    .header-content{
+        display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            align-items: center;
+            div{
+                mat-icon{
+                    color: #000 !important;
+                }
+                ion-buttons{
+                    color: #000 !important;
+                }
+            }
+    }
+}
+.toolbar-background{
+    background: #fff;
+}
+ion-content{
+    --background:url(/assets/images/Layer0.png);
+    .feed-padding{
+        padding: 15px;
+        .feed-item{
+            padding: 5px;
+            background: white;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            .feed-content{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                // .serial{
+                //     font-size: 30px;
+                //     color: #EA0C27;
+                //     font-weight: 500;
+                // }
+                
+                .text-item{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: baseline;
+                    width: 100%;
+                    padding: 5px;
+                    .text-content{
+                        width: 100%;
+                        h1{
+                            margin: 0;
+                            font-size: 16px;
+                            font-weight: 500;
+                            line-height: 17px;
+                        }
+                        p{
+                            margin: 0;
+                            font-weight: 400;
+                            font-size: 13px;
+                            color: #93958e;
+                        }
+                        .feed-like{
+                            display: flex;
+                            width: 100%;
+                            justify-content: space-around;
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: #93958e;
+                            .like{
+                                display: flex;
+                                justify-content: center;
+                                align-items: end;
+                                a{
+                                    padding: 8px 3px 0 6px;
+                                    background: #D2FFCC;
+                                    border-radius: 50%;
+                                    color: #55BC4A;
+                                    mat-icon{
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+                            .dislike{
+                                display: flex;
+                                justify-content: center;
+                                align-items: end;
+                                a{
+                                    padding: 8px 3px 0 6px;
+                                    background: #FCE0E4;
+                                    border-radius: 50%;
+                                    color: #e6142c;
+                                    mat-icon{
+                                        font-size: 18px;
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                    .newfeedback{
+                        display: grid;
+                        align-items: center;
+                        .addnew{
+                            margin-bottom: 5px;
+                            text-decoration: none;
+                            padding: 0 6px;
+                            border: 1px solid #CD7FEA;
+                            border-radius: 12px;
+                            font-size: 11px;
+                            color: #CD7FEA;
+                            text-align: center;
+                        }
+                        
+                        .view{
+                            margin-bottom: 5px;
+                            text-decoration: none;
+                            padding: 0 6px;
+                            border: 1px solid #CD7FEA;
+                            border-radius: 12px;
+                            font-size: 11px;
+                            color: #CD7FEA;
+                            text-align: center;
+                        }
+                        
+                    }
+                }
+            }
+        } 
+    }
+}
+ion-toolbar{
+    --background: #fff !important;
+  }
+  

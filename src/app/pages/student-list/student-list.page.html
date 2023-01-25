@@ -1,0 +1,69 @@
+
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title>Student</ion-title>
+      </div>
+      <div>
+        <!-- <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search" ></ion-icon>
+          </ion-button>
+        </ion-buttons>  -->
+      </div>
+    </div>
+  </ion-toolbar>
+  <div class="p-15">
+    <div class="nav-item">
+      <div class="divA" (click)="onClick(0)" [ngClass]="{'active': tab===0}">
+        <span><i class="fa fa-leanpub" aria-hidden="true"></i></span>
+        <ion-label>&nbsp;All</ion-label>
+      </div>
+      <div *ngFor="let value of divisionlist; let index=index" class="divA" (click)="onClick(value?.id)"   [ngClass]="{'active': tab === value?.id}" >
+        <i class="fa fa-leanpub" aria-hidden="true"></i>
+        <ion-label>&nbsp;{{value?.classmodel?.class_name}} - {{value?.division_name}}</ion-label>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+
+  <section class="table">
+    <div class="search-tbl">
+      <ion-searchbar animated [ngModel]="model.search" [value]="model.search" (ngModelChange)="search($event)"></ion-searchbar>
+    </div>
+    <div class="table-content">
+      <!-- <div class="sellectall">{{getData}}Select All<mat-checkbox class="example-margin pl-10" [checked]="selectall" (change)="allComplete($event,0)"></mat-checkbox></div> -->
+      <div *ngFor="let value of list; let index=index">
+        <div class="message-item">
+          <div class="message-item-color" >
+            <div class="img-avt">
+              <ion-avatar slot="start" class="message-avatar" >
+                <img src="{{value?.photo_url==''?'assets/images/face_2.png':file_url+'/image/student/'+value?.photo_url}}" >
+              </ion-avatar>
+            </div>
+            <div class="message-section">
+              <div class="student-name">{{value?.id_card_no}}</div>
+              <div class="message-content">
+                <div>
+                  <h3>{{value?.full_name}}</h3>
+                </div>
+                <!-- <mat-checkbox class="example-margin" [checked]="value?.checked" (change)="allComplete($event,value?.id)"></mat-checkbox> -->
+
+              </div>
+              <div class="item-download">
+                <div class="message-text">{{value?.classmodel?.class_name}} - {{value?.division?.division_name}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <div class="save-btn" id="check"><ion-button class="btn-color" expand="block" (click)="onSubmit()" >Save</ion-button></div> -->
+</ion-content>

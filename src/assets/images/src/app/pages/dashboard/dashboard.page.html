@@ -1,0 +1,194 @@
+<ion-content>
+  <div class="bg-img-top">
+    <!-- ******* Profile Icon Start ******* -->
+    <ion-avatar>
+      <img src="/assets/images/Layer1.png">
+    </ion-avatar>
+    <!-- ******* Profile Icon End ******* -->
+    <!-- ******* Logo Start ******* -->
+    <div class="logo-header">
+      <ion-img src="assets/images/logo.png"></ion-img>
+    </div>
+    <!-- ******* Logo End ******* -->
+    <!-- ******* Menubar Start ******* -->
+    <div class="menu-bar">
+      <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </div>
+    <!-- ******* Menubar End ******* -->
+    <!-- ******* Heading Text Start ******* -->
+    <div class="text-content">
+      <h1>LALIT TUTORIALS</h1>
+      <span>An Institute For Excellence In Science</span>
+      <p>AKOLA</p>
+    </div>
+    <!-- ******* Heading Text End ******* -->
+    <!-- ******* Calender Start ******* -->
+    <div class="calendar">
+
+    </div>
+    <!-- ******* Calender End ******* -->
+  </div>
+  <!-- ******* Attendance & Libary Start ******* -->
+  <div class="card">
+    <ion-card>
+      <ion-item>
+        <ion-label class="atten" [routerLink]="['/', 'attendance']">Attendance</ion-label>
+        <ion-label class="arrow2" [routerLink]="['/', 'library-list']">Library</ion-label>
+      </ion-item>
+    
+      <ion-card-content> 
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" class="p-0">
+              <ion-row class="p-10">
+                <ion-col class="col-1 t-head"><div class="head-font-in">In</div></ion-col>
+                <ion-col class="t-head"><div class="head-font-out">Out</div></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="6" class="p-0">
+              <ion-row class="p-13">
+                <ion-col class="col-3 t-head"><div class="head-font-in">In</div></ion-col>
+                <ion-col class="t-head"><div class="head-font-out">Out</div></ion-col>  
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="p-0">
+              <ion-row class="p-10">
+                <ion-col class="col-1 left-icon p-0"><ion-label class="f-size">10:30am</ion-label></ion-col>
+                <ion-col class="p-0"><ion-label class="f-size">11:30am</ion-label></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col class="p-0">
+              <ion-row class="p-13">
+                <ion-col class="col-3 left-icon p-0"><ion-label class="f-size">12:00am</ion-label></ion-col>
+                <ion-col class="p-0"><ion-label class="f-size">01:30am</ion-label></ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="p-0">
+              <ion-row class="p-10">
+                <ion-col class="col-1 left-icon p-0"><ion-label class="f-size">12:00am</ion-label></ion-col>
+                <ion-col class="p-0"><ion-label class="f-size">01:30am</ion-label></ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col class="p-0">
+              <ion-row class="p-13">
+                <ion-col class="col-3 left-icon p-0"><ion-label class="f-size">02:00am</ion-label></ion-col>
+                <ion-col class="p-0"><ion-label class="f-size">04:30am</ion-label></ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!-- ******* Attendance & Libary End ******* -->
+  <!-- ******* Item Content Start ******* -->
+  <div class="board">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="item">
+            <ion-img class="attendance" src="assets/images/Attendance icon.png"></ion-img>
+            <p>Attendance</p>
+          </div>
+          
+        </ion-col>
+        <ion-col>
+          <div class="item">
+            <ion-img class="notification" src="assets/images/Forma1.png"></ion-img>
+            <p>Notification</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item">
+            <ion-img class="resulte" src="assets/images/Resulte icon copy.png"></ion-img>
+            <p>Results</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item">
+            <ion-img class="holiday" src="assets/images/holiday icon.png"></ion-img>
+            <p>Holiday</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item">
+            <ion-img class="homework" src="assets/images/home work.png"></ion-img>
+            <p>Home Work</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item">
+            <ion-img class="exam" src="assets/images/Exam paper.png"></ion-img>
+            <p>Exam</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item">
+            <ion-img class="syllabus" src="assets/images/syllabus icon.png"></ion-img>
+            <p>Syllabus</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item">
+            <ion-img class="leave" src="assets/images/Leave icon.png"></ion-img>
+            <p>Request</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item">
+            <ion-img class="announcment" src="assets/images/announcment.png"></ion-img>
+            <p>Announcement</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- ******* Item Content Start ******* -->
+  
+</ion-content>
+<!-- ******* Footer Tab Start ******* -->
+<ion-footer>
+  <ion-toolbar>
+    <div class="segment">
+      <ion-segment scrollable value="home">
+        <ion-segment-button value="home">
+          <ion-label>Dashboard</ion-label>
+          <ion-icon name="home"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="gallery">
+          <ion-label>Gallery</ion-label>
+          <ion-icon name="images"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="account">
+          <ion-label>Account</ion-label>
+          <ion-icon name="person"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+<!-- ******* Footer Tab End ******* -->

@@ -1,0 +1,265 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Fees Payment</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div> 
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
+  <div *ngIf="!load">
+    <div class="st-background">
+      <ion-slides pager="true" [options]="slideOpts" #ionicSlider (ionSlidesDidLoad)="slidesDidLoad(ionicSlider)">
+        <ion-slide class="card1">
+          <div class="slider-item">
+              <div class="module-header">
+                  <!-- <img src="{{file_url}}/uploads/{{item?.media_file}}"> -->
+                  <h2 class="c-name">NEET (Medical Entrance Test) 2021-23</h2>
+                  <p class="c-title">Registration Fees</p>
+                  <p class="amount">&#8377; 30000.00</p>
+              </div>
+              <div class="d-flex">
+                <div class="e-date">Due Date: 31 Dec.</div>
+                <div class="fees-btn" [routerLink]="['/', 'fees-payment']"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                  Pay
+                </div>
+              </div>
+          </div>
+        </ion-slide>
+        <ion-slide class="card2">
+          <div class="slider-item">
+              <div class="module-header">
+                  <!-- <img src="{{file_url}}/uploads/{{item?.media_file}}"> -->
+                  <h2 class="c-name">NEET (Medical Entrance Test) 2021-23</h2>
+                  <p class="c-title">Registration Fees</p>
+                  <p class="amount">&#8377; 30000.00</p>
+              </div>
+              <div class="d-flex">
+                <div class="e-date">Due Date: 31 Dec.</div>
+                <div class="fees-btn" [routerLink]="['/', 'fees-payment']"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                  Pay
+                </div>
+              </div>
+          </div>
+        </ion-slide>
+        <ion-slide class="card3">
+          <div class="slider-item">
+              <div class="module-header">
+                  <!-- <img src="{{file_url}}/uploads/{{item?.media_file}}"> -->
+                  <h2 class="c-name">NEET (Medical Entrance Test) 2021-23</h2>
+                  <p class="c-title">Tuition Fees</p>
+                  <p class="amount">&#8377; 25000.00</p>
+              </div>
+              <div class="d-flex">
+                <div class="e-date">Due Date: 31 Dec.</div>
+                <div class="fees-btn" [routerLink]="['/', 'fees-payment']"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                  Pay
+                </div>
+              </div>
+          </div>
+        </ion-slide>
+        <ion-slide class="card2">
+          <div class="slider-item">
+              <div class="module-header">
+                  <!-- <img src="{{file_url}}/uploads/{{item?.media_file}}"> -->
+                  <h2 class="c-name">NEET (Medical Entrance Test) 2021-23</h2>
+                  <p class="c-title">Registration Fees</p>
+                  <p class="amount">&#8377; 30000.00</p>
+              </div>
+              <div class="d-flex">
+                <div class="e-date">Due Date: 31 Dec.</div>
+                <div class="fees-btn" [routerLink]="['/', 'fees-payment']"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                  Pay
+                </div>
+              </div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+      <div class="t-header"><p>Transaction History</p></div>
+    </div>
+    <div class="p-15">
+      <div class="t-history">
+        <div class="p-b-1" [routerLink]="['/', 'transaction-details']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1" [routerLink]="['/', 'transaction-details']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1" [routerLink]="['/', 'transaction-details']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-b-1"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+          <div class="inner-content">
+            <div class="sub-part">
+              <h2>By Net Banking</h2>
+              <p class="tr-id">Id: 009988776655</p>
+              <div class="dt-flex">
+                <p class="date">20 Oct 21</p>
+                <p class="time">3.30 PM</p>
+              </div>
+            </div>
+            <div class="p-fees">
+              <p>&#8377; 25000.00</p>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</ion-content>

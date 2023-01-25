@@ -1,0 +1,207 @@
+ion-header{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    .header-content{
+        display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            align-items: center;
+            div{
+                mat-icon{
+                    color: #000 !important;
+                }
+                ion-buttons{
+                    color: #000 !important;
+                }
+            }
+    }
+}
+ion-content{
+    --background:url(/assets/images/Layer0.png);
+    .t-profile{
+        position: sticky;
+        top: 0;
+        background:url(/assets/images/Layer0.png);
+        z-index: 999;
+        .img-content{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            padding-bottom: 20px;
+            .img-font{
+                height: 100px;
+                width: 120px;
+                border-radius: 50%;
+                img{
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .text-header{
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            display: grid;
+            padding-bottom: 20px;
+            h1{
+                margin: 0;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            p{
+                margin: 0;
+                line-height: 12px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #170b85;
+                text-align: center;
+            }
+        }
+    }
+    .feed-padding{
+        padding: 15px;
+        
+        .review-type{
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            .cont{
+                padding: 10px 10px 10px 10px;
+                
+                p{
+                    font-size: 16px;
+                    margin: 0;
+                    color: #4f4f4f;
+                    font-weight: 500;
+                }
+                .stars{
+                    width: 100%;
+                    .check{
+                        font-size: 15px;
+                        color: #170b85;
+                        font-weight: 500;
+                        width: 100%;
+                        justify-content: right;
+                        display: flex;
+                    }
+                }
+            }
+        }
+        .short-type{
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            .question-content{
+                padding: 10px;
+                p{
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                    color: #4f4f4f;
+                    font-weight: 500;
+                }
+                .btn-arround{
+                    width: 50%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    mat-radio-button{
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #605858;
+                    }
+                }
+            }
+        }
+        .about{
+            margin-bottom: 10px;
+            ion-textarea{
+                background: white !important;
+                border-radius: 10px !important;
+                padding: 0 10px 0 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            }
+        }
+        .expectation{
+            margin-bottom: 10px;
+            ion-textarea{
+                background: white !important;
+                border-radius: 10px !important;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+                padding: 0 10px 0 10px;
+            }
+        }   
+        ion-button{
+            margin-top: 10px;
+            --background: #121665;
+            height: 44px;
+            text-transform: capitalize;
+        }
+    }
+}
+.rating { 
+    border: none;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    padding: 0;
+    flex-direction: row-reverse;
+  }
+.rating > input { display: none; } 
+.rating > label:before { 
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > label { 
+    color: #ddd; 
+    float: right; 
+    text-align: center;
+}
+ion-toolbar{
+    --background: #fff !important;
+  }
+  
+  /***** CSS Magic to Highlight Stars on Hover *****/
+  
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #55BC4A;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #55BC4A;  } 
+// .rating > input:not(:checked) ~ label.full1::before{
+//     color: #55BC4A;
+// }
+// .rating > input:not(:checked) ~ label.full2::before{
+//     color: #55BC4A;
+// }
+// .rating > input:not(:checked) ~ label.full3::before{
+//     color: #55BC4A;
+// }
+// .rating > input:not(:checked) ~ label.full4::before{
+//     color: #55BC4A;
+// }
+// .rating > input:checked ~ label.full1::after{
+//     color: #55BC4A;
+// }
+// .rating > input:checked ~ label.full2::after{
+//     color: #55BC4A;
+// }
+// .rating > input:checked ~ label.full3::after{
+//     color: #55BC4A;
+// }
+// .rating > input:checked ~ label.full4::after{
+//     color: #55BC4A;
+// }

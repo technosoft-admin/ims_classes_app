@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div class="z-index">
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'home-work']">keyboard_backspace</mat-icon>
+      </div>
+      <div class="title">
+        <ion-title>Home Work {{type}}</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <section class="select">
+    <form #addForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addForm)">
+      <div class="form-item">
+        <mat-form-field appearance="outline">  
+          <mat-label> Title </mat-label>  
+          <input matInput  [(ngModel)]="model.title" name="title" required>  
+        </mat-form-field> 
+      </div>
+      <div class="form-item ngsel">
+        <ng-select [items]="subject" bindLabel="subject_name" placeholder="Select item" name="subject_id" bindValue="id"
+          [(ngModel)]="model.subject_id" required>
+        </ng-select>
+        <label>Select Subject</label>
+      </div>
+      <div class="form-item ngsel">
+    
+        <mat-form-field appearance="outline">  
+          <mat-label> Submission Date </mat-label>  
+          <input matInput type="date" [(ngModel)]="model.submission_date" name="submission_date" required>  
+        </mat-form-field> 
+      
+      </div>
+   
+      <div class="form-item text-black">
+        <!-- <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label> Message </mat-label>  
+          <textarea matInput   [(ngModel)]="message" name="message" required></textarea>
+        </mat-form-field> -->
+        <angular-editor name="description" required [(ngModel)]="model.description" [config]="config"></angular-editor>
+      </div>
+      <div class="form-item">
+     
+        <div class="opn-camera">
+          <p class="title-head">Image Upload </p>
+          <p style="margin: 0; padding-right: 15px;"><mat-icon style="color: #8c7aef;" (click)="getCamera()">camera_alt</mat-icon></p>
+        </div>
+        <span class="p-15"><input (click)="optionsImage()" type="file" id="file" multiple name="imageField" [(ngModel)]="model.imageField" accept="image/png,image/jpeg"
+          (change)="onSelectFile($event)"></span><span *ngIf="length" class="image-length">{{length}}</span>
+      </div>
+      <div *ngIf="imagespreview.length || imagesedit.length">
+        <div class="height-fixed-video">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-xs="3" *ngFor="let imageUrl of imagesedit;let i = index"   >
+                <div class="mini-image">
+                  <ion-icon name="close-circle-outline" class="delete-btn"  (click)="removeImgAdd('image',imageUrl?.id,imageUrl.ima,i)"></ion-icon>
+                      <img src="{{file_url}}{{imageUrl.image_path}}" alt="">
+                </div>
+              </ion-col>
+        
+       
+              <ion-col size-xs="3" *ngFor="let imageUrl of imagespreview;let i = index" >
+                <div class="mini-image">
+                  <ion-icon name="close-circle-outline" class="delete-btn" (click)="removeImg(i,'image')"></ion-icon>
+                  <img [src]="imageUrl" alt="" >
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        
+      </div>
+      <div class="form-item">
+        <p class="title-head">Video Upload </p> 
+        <span class="p-15"><input type="file" id="file" multiple accept="video/*  "
+          (change)="onSelectFile($event)" ></span><span *ngIf="length" class="image-length">{{vlength}}</span>
+      </div>
+      <div class="height-fixed-video overflow-scroll" *ngIf="videopreview.length || videoedit.length">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-xs="6" *ngFor="let videoUrl of videoedit;let i = index">
+              <div class="mini-image">
+                <ion-icon name="close-circle-outline" class="delete-btn"  (click)="removeImgAdd('video',videoUrl?.id,videoUrl?.image_path,i)"></ion-icon>
+                <video src="{{file_url}}{{videoUrl.image_path}}"  controls ></video>
+              </div>
+            </ion-col>
+
+         
+            <ion-col size-xs="6" *ngFor="let videoUrl of videopreview;let i = index">
+              <div class="mini-image">
+                <ion-icon name="close-circle-outline" class="delete-btn"  (click)="removeImg(i,'video')"></ion-icon>
+                <video [src]="videoUrl"  controls ></video>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+      <!-- <div class="sehedule-latter">
+        <div><a href="">Schedule For Later</a></div>
+      </div> -->
+      <div class="save-btn">
+        <ion-button class="btn-color" [disabled]="!addForm.valid" type="submit" expand="block">Save</ion-button>
+      </div>
+    </form>
+  </section>
+</ion-content>

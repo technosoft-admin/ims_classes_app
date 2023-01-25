@@ -1,0 +1,152 @@
+<!-- <ion-header (appOutsideClick)="ClickedOut($event)"> -->
+  <ion-header >
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Academic Planner</ion-title></div>
+      <div class="menu-bar">
+        <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </ion-toolbar>
+  
+</ion-header>
+<ion-content>
+  <!-- <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div> -->
+  <div >
+    <div class="content1" *ngIf="eventDataShow">
+      <div class="content-box1">
+        <ion-grid>
+          <ion-row *ngFor="let event of eventData" class="bg-data-{{event?.type}}">
+            <ion-col size="3" class="m-0 p-0"><span class="text-data-{{event?.type}}" >{{event?.startDay}} - {{event?.endDay}}</span></ion-col>
+            <ion-col size="9" class="m-0 p-0"><span class="text-data-{{event?.type}}">{{event?.event_name}}</span></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <!------------------------------------ Model start -->
+    <div class="modal-view">
+      <div class="inline-calendar" >
+        <div class="closeModal" *ngIf="click_modal" (click)="clickedOut()"></div>
+        <div class="open-modal" *ngIf="click_modal">
+          <div class="modal-content">
+            <div class="modal-list">
+              <ion-row>
+                <ion-col><h3 class="date-color">{{dateShow}}</h3></ion-col>
+              </ion-row>
+              <ion-row class="bg-data-{{day?.type}}" *ngFor="let day of evenGetDay">
+                <ion-col size="12" class="m-0 p-0"><span class="text-data-{{day?.type}}">{{day?.event_name}}</span></ion-col>
+              </ion-row>
+              <!-- <ion-row class="bg-data-holiyday">
+                <ion-col size="12" class="m-0 p-0"><span class="text-data-holiyday">Result Of Helf Yearly Exam</span></ion-col>
+              </ion-row>
+              <ion-row class="bg-data-exam">
+                <ion-col size="12" class="m-0 p-0"><span class="text-data-exam">Result Of Helf Yearly Exam</span></ion-col>
+              </ion-row> -->
+            </div>
+          </div>
+        </div>
+         <!------------------------------------ Model End -->
+        <div mat-dialog-content>
+        </div>
+     
+        <!-- <button ion-button block></button>  -->
+        <ion-row>
+          <ion-col size="3" class="ion-text-center">
+            <ion-button fill="clear" (click)="back(viewTitle)">
+              <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="6" class="ion-text-center pad-start-end">
+            <h2 style="color:#000">{{viewTitle}}</h2>
+          </ion-col>
+          <ion-col size="3" class="ion-text-center">
+            <ion-button fill="clear" (click)="next(viewTitle)">
+              <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <calendar
+        [eventSource]="eventSource"
+        [calendarMode]="calendar.mode"
+        [currentDate]="calendar.currentDate"
+        (onTitleChanged)="onViewTitleChanged($event)"
+        [monthviewDisplayEventTemplate]="template"
+        [showEventDetail]="false"
+        
+        >
+      </calendar> 
+      <ng-template #template let-view="view" let-row="row" let-col="col">
+        <!-- <div [class.with-event-sunday]="view.dates[row*7+col].events.length" > -->
+          <div class="{{view.dates[row*7+col].events[0]?.class}}" >
+          <span (click)="eventShowDate(view.dates[row*7+col].label,view.dates[row*7+col].events[0]?.id)" *ngIf="view.dates[row*7+col].events[0]?.class=='with-event-sunday'">{{view.dates[row*7+col].label}}</span>
+          <span (click)="eventShowDate(view.dates[row*7+col].label,view.dates[row*7+col].events[0]?.id)" *ngIf="view.dates[row*7+col].events[0]?.class!='with-event-sunday'" style="color:#000">{{view.dates[row*7+col].label}}</span>
+          <div class="indicator-container" style="min-height: 16px;">
+            <div class="indicator-item" *ngFor="let bot of view.dates[row*7+col].events[0]?.color">
+              <div class="{{bot}}" ></div>
+            </div>
+            <!-- <div class="indicator-item">
+              <div class="event"></div>
+            </div>
+            <div class="indicator-item">
+              <div class="exam"></div>
+            </div>
+            <div class="indicator-item">
+              <div class="exam"></div>
+            </div> -->
+          </div>
+      
+        </div>
+      </ng-template>
+      </div>
+    </div>
+   
+
+ 
+  </div>
+</ion-content>
+<!-- ******* Footer Tab Start ******* -->
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="dashboard_btn" (click)="onClick(1)"   [ngClass]="{'active': tab==='dashboard_btn'}" [routerLink]="['/', 'dashboard']">
+        <div class="dashboard">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Dashboard</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="gallery_btn" (click)="onClick(2)"   [ngClass]="{'active': tab==='gallery_btn'}" [routerLink]="['/', 'gallery']">
+        <div class="gellary">
+          <ion-icon name="images"></ion-icon>
+          <ion-label>Gellary</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="account_btn" (click)="onClick(3)"   [ngClass]="{'active': tab==='account_btn'}">
+        <div class="account">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>Account</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+<!-- ******* Footer Tab End ******* -->

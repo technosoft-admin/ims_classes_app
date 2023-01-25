@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" (click)="gotoBackPage()">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title>Notification</ion-title>
+      </div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <!-- <ion-icon name="search"></ion-icon> -->
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="t-right ion-padding">{{notificationData?.date | date:'dd MMM yyy'}} &nbsp; {{notificationData?.time}}</p>
+  <ion-card>
+    <ion-card-content>
+      <h4>{{notificationData?.campaign_name}}</h4>
+     <div><pre>{{notificationData?.body_sms_text}}</pre></div> 
+    </ion-card-content>
+  </ion-card>
+</ion-content>

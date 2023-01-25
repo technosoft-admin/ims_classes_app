@@ -1,0 +1,191 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Feedbacks</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
+ <div class="feed-padding" *ngIf="!load">
+  <div class="feed-item">
+    <div class="feed-content">
+      <div class="feed-image">
+        <img src="assets/images/Layer1.png">
+      </div>
+      <div class="text-item">
+        <div class="text-content">
+          <div>
+            <h1>Teacher Name</h1>
+            <p>Subject Name</p>
+          </div>
+          <div class="feed-like">
+            <div class="like">
+              <a class="example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <mat-icon class="material-icons" >
+                  thumb_up
+                </mat-icon>
+              </a>
+              &nbsp;10
+            </div>
+            <div class="dislike">
+              <a class="example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <mat-icon class="material-icons">
+                  thumb_down
+                  </mat-icon>
+              </a>   
+              &nbsp;10
+            </div>
+            <div class="newfeedback">
+              <a class="addnew example-ripple-container" [routerLink]="['/', 'feedback-details']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">Add New</a>
+              <a class="view example-ripple-container" [routerLink]="['/', 'feedback-view']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">View</a>
+            </div>
+          </div>
+         
+        </div>
+        
+      </div>
+      
+    </div>
+   </div>
+   <div class="feed-item">
+    <div class="feed-content">
+      <div class="feed-image">
+        <img src="assets/images/Layer1.png">
+      </div>
+      <div class="text-item">
+        <div class="text-content">
+          <div>
+            <h1>Teacher Name</h1>
+            <p>Subject Name</p>
+          </div>
+          <div class="feed-like ">
+            <div class="like">
+              <a class="example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <mat-icon class="material-icons">
+                  thumb_up
+                </mat-icon>
+              </a>
+              &nbsp;10
+            </div>
+            <div class="dislike">
+              <a class="example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <mat-icon class="material-icons">
+                  thumb_down
+                  </mat-icon>
+              </a>   
+              &nbsp;10
+            </div>
+            <div class="newfeedback">
+              <a class="addnew example-ripple-container" [routerLink]="['/', 'feedback-details']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">Add New</a>
+              <a class="view example-ripple-container" [routerLink]="['/', 'feedback-view']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">View</a>
+            </div>
+          </div>
+         
+        </div>
+        
+      </div>
+      
+    </div>
+   </div>
+   <div class="feed-item">
+    <div class="feed-content">
+      <div class="feed-image">
+        <img src="assets/images/Layer1.png">
+      </div>
+      <div class="text-item">
+        <div class="text-content">
+          <div>
+            <h1>Teacher Name</h1>
+            <p>Subject Name</p>
+          </div>
+          <div class="feed-like">
+            <div class="like">
+              <a class="example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <mat-icon class="material-icons">
+                  thumb_up
+                </mat-icon>
+              </a>
+              &nbsp;10
+            </div>
+            <div class="dislike">
+              <a class="example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <mat-icon class="material-icons">
+                  thumb_down
+                  </mat-icon>
+              </a>   
+              &nbsp;10
+            </div>
+            <div class="newfeedback">
+              <a class="addnew example-ripple-container" [routerLink]="['/', 'feedback-details']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">Add New</a>
+              <a class="view example-ripple-container" [routerLink]="['/', 'feedback-view']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">View</a>
+            </div>
+          </div>
+         
+        </div>
+        
+      </div>
+      
+    </div>
+   </div>
+ </div>
+</ion-content>

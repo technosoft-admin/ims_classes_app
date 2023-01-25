@@ -1,0 +1,156 @@
+.header-content{
+    padding: 0 15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    div{
+        mat-icon{
+            color: #000 !important;
+        }
+    }
+    .btn-flex{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 60px;
+        .button-header{
+            padding: 4px;
+            border-radius: 50%;
+            i{
+                font-size: 20px;
+                color: #52524c;
+            }
+            i:hover{
+                color: #726c6c;
+            }
+        }
+    }   
+}
+ion-content{
+    --background: url(/assets/images/Layer0.png);
+    height: 100%;
+    width: 100%;
+    .ion-padding{
+        padding: 15px;
+        .img-content{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(10px);
+            .ion-margin-start{
+                margin-inline-start: 0 !important;
+            }
+        }
+        .ac-holder{
+            margin-top: 10px;
+            text-align: center;
+            h2{
+                margin: 0 0 5px 0;
+                font-size: 18px;
+                font-weight: 500;
+                color: #000 !important;
+            }
+        }
+        .ac-amount{
+            text-align: center;
+            h1{
+                margin: 0;
+                font-size: 30px;
+                font-weight: 500;
+            }
+        }
+        .ac-success{
+            text-align: center;
+            ion-chip{
+                --background: none !important;
+                ion-icon{
+                    color: #1AAE03 !important;
+                }
+                ion-label{
+                    font-weight: 500;
+                    color: #726c6c;
+                }
+            }
+            .succ-datetime{
+                display: flex;
+                justify-content: space-evenly;
+                .date{
+                    color: #726c6c;
+                    font-weight: 500;
+                }
+                .time{
+                    color: #726c6c;
+                    font-weight: 500;
+                }
+            }
+        }
+        .content-body{
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            .bank-name{
+                border-bottom: 1px solid;
+                padding-bottom: 10px;
+                h1{
+                    margin: 0;
+                    font-weight: 500;
+                    color: #1e1e92;
+                    font-size: 20px;
+                }
+                p{
+                    margin: 0;
+                    color: #726c6c;
+                    font-weight: 500;
+                }
+            }
+            .trans-id{
+                padding-top: 5px;
+                padding-bottom: 10px;
+                h3{
+                    margin: 0;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #000 !important;
+                }
+                p{
+                    margin: 0;
+                    font-weight: 300;
+                    color: #000 !important;
+                }
+            }
+            .trans-to{
+                padding-top: 5px;
+                padding-bottom: 10px;
+                h2{
+                    margin: 0;
+                    font-size: 18px;
+                    color: #000 !important;
+                }
+                p{
+                    margin: 0;
+                    font-weight: 300;
+                    color: #000 !important;
+                } 
+            }
+            .trans-from{
+                padding-top: 5px;
+                padding-bottom: 10px;
+                h2{
+                    margin: 0;
+                    font-size: 18px;
+                    color: #000 !important;
+                }
+                p{
+                    margin: 0;
+                    font-weight: 300;
+                    color: #000 !important;
+                } 
+            }
+        }
+    }
+}
+ion-toolbar{
+    --background: #fff !important;
+  }

@@ -1,0 +1,124 @@
+
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title>Exam Student</ion-title>
+      </div>
+      <div>
+        <!-- <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search" ></ion-icon>
+          </ion-button>
+        </ion-buttons>  -->
+      </div>
+    </div>
+  </ion-toolbar>
+  <div class="p-15">
+    <div class="nav-item">
+      <!-- <div class="divA" (click)="onClick(0)" [ngClass]="{'active': tab===0}">
+        <span><i class="fa fa-leanpub" aria-hidden="true"></i></span>
+        <ion-label>&nbsp;All</ion-label>
+      </div> -->
+      <div *ngFor="let value of divisionlist; let index=index" class="divA" [ngClass]="{'active':true}" >
+        <i class="fa fa-leanpub" aria-hidden="true"></i>
+        <ion-label>&nbsp;{{value?.classmodel?.class_name}} - {{value?.division_name}}</ion-label>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+
+  <section class="table">
+    <div class="search-tbl">
+      <ion-searchbar animated [ngModel]="model.search" [value]="model.search" (ngModelChange)="search($event)"></ion-searchbar>
+    </div>
+    <div class="table-content">
+      <!-- <div class="sellectall">{{getData}}Select All<mat-checkbox class="example-margin pl-10" [checked]="selectall" (change)="allComplete($event,0)"></mat-checkbox></div> -->
+      <div *ngFor="let value of list; let i = index;">
+        <div class="message-item">
+          <div class="message-item-color message-item-color2">
+            <ion-grid>
+              <ion-row class="align-center">
+                <ion-col size="6">
+                  <div class="mb-0 student-name">{{value?.full_name}}</div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="profile_image">
+                    <img src="https://imgs.search.brave.com/9nORb5nYU0fh3c4TlvYEP8T1arYiB8IqoHfK-KtHcrk/rs:fit:800:800:1/g:ce/aHR0cHM6Ly93b3dz/Y2llbmNlY2FtcC5v/cmcvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTgvMDcvZHVtbXkt/dXNlci1pbWctMS04/MDB4ODAwLnBuZw" alt="">
+                  </div>
+                </ion-col>
+                <ion-col size="4" style="text-align: right;">
+                  <div class="student-id">{{value?.id_card_no}}</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <div class="message-section">
+              <ion-grid class="p-0">
+                <ion-row >
+                  <ion-col size="4" *ngFor="let sub of getSubject; let j = index;">
+                    <label class="input-title">{{sub?.type}}</label>
+                    <ion-input class="form-control" type="text" min="{{sub?.min}}" max="{{sub?.max}}" *ngIf="sub?.marking_scheme=='Marks System'"  [(ngModel)]="value[sub.type]" id="{{sub?.type}}{{i+1}}{{j+1}}"  name="{{sub?.type}}{{i+1}}{{j+1}}" (change)="checkVal($event, sub?.max, sub?.min, value?.id_card_no,sub?.type)" ></ion-input>
+                   
+                    <ion-select interface="popover" [(ngModel)]="value[sub.type]" class="form-control" *ngIf="sub?.marking_scheme=='Grading System'" placeholder="Select fruit">
+                    <ion-select-option *ngFor="let grade of gradelist" value="{{grade?.id}}" >{{grade?.grade_name}}</ion-select-option>
+                    <ion-select-option  value="0" >AB</ion-select-option>
+                    </ion-select>
+                    
+                  </ion-col>  
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="save-btn" id="check"><ion-button class="btn-color" expand="block" (click)="onSubmit()" >Save</ion-button></div>
+</ion-content>
+
+<div class="modal-view">
+  <div class="inline-calendar" >
+    <div class="closeModal" *ngIf="click_modal" (click)="clickedOut()"></div>
+    <div class="open-modal" *ngIf="click_modal">
+      <div class="modal-content">
+        <div class="modal-list">
+          <div class="error-req">All Subject Is Required..!</div>
+          <!-- <div class="success-req">All Field Are requred..!</div> -->
+          <div class="modal-head">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="head-in">Name</div>
+                </ion-col>
+                <ion-col>
+                  <div class="head-out">Subject</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <div class="modal-body scroll">
+            <ion-grid>
+              <ion-row *ngFor="let subject of requiredData">
+                <ion-col><div class="start-time"><span>{{subject?.name}}</span></div></ion-col>
+                <ion-col><div class="end-time">{{subject?.subject}}</div></ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!-- <div class="d_flex border-color"> -->
+            <div class="d_flex border-color js-content-center">
+            <!-- <ion-button fill="clear">Save</ion-button> -->
+            <ion-button fill="clear" class="font-size" (click)="clickedOut()">Ok</ion-button>
+            <!-- <ion-button fill="clear">Cancel</ion-button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

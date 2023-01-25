@@ -1,0 +1,163 @@
+
+<ion-content>
+  <!-- image top section Start  -->
+  <div class="bg-img-top">
+    <!-- left arrow key start -->
+    <ion-row>
+        <mat-icon class="back-button" aria-hidden="false" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+    </ion-row>
+    <!-- left arrow key end -->
+    <!-- profile title strat -->
+    <ion-row>
+      <div class="profile-title">
+        <p>Profile</p>
+      </div>
+    </ion-row>
+    <div>
+      <div class="header">
+        <div class="avatar">
+          <div class="edit-icon">
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Example home icon">mode_edit_outline</mat-icon>
+          </div>
+          <div class="edit-img">
+            
+            <img src="{{file_url}}/image/{{user_type}}/{{profile_data?.photo_url==''?'usersitenouser.png':profile_data?.photo_url}}">
+            <!-- <img *ngif="profile_data.photo_url==''" src="{{file_url}}/image/student/no_user_image.png"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <!-- profile title stsrt -->
+  <!-- <div class="user-details text_color"> 
+    <h2>{{profile_data?.full_name}}</h2>
+      <p class="u-number text_color">{{profile_data?.id_card_no}}</p>
+  </div> -->
+  <div class="user-details"> 
+    <h2 >{{profile_data?.full_name}}</h2>
+      <p class="u-number">{{profile_data?.id_card_no}}</p>
+      <p class="u-class" *ngIf="user_type=='student'"><span class="text-gray">Class-</span>{{profile_data?.classmodel?.class_name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="text-gray">Division-</span> {{profile_data?.division?.division_name}}</p>
+      <!-- <p class="u-subject">B-Science</p> -->
+   </div>
+
+  <!-- profile title end -->
+  <div class="table-form">
+    <form>
+      <ion-grid>
+     
+        <ion-row class="t-center">
+          <ion-col size="4" class="text-gray">
+            Gender
+          </ion-col>
+          <ion-col size="8">
+            <mat-radio-group aria-label="Select an option">
+              <div class="btn-arround">
+                <div><mat-radio-button value="1" [checked]="profile_data?.gender=='Male'" [disabled]="true">Male</mat-radio-button></div>
+                <div><mat-radio-button value="2" [checked]="profile_data?.gender=='Female'" [disabled]="true">Female</mat-radio-button></div>
+              </div>
+            </mat-radio-group>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center">
+          <ion-col size="4">
+            <ion-label>Day</ion-label>
+            <ion-input  class="form-control ps-0 ion-text-center" readonly value="{{profile_data?.dob | date: 'dd'}}"></ion-input>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Month</ion-label>
+
+            <ion-input class="form-control ps-0 ion-text-center" readonly value="{{profile_data?.dob | date: 'MMMM'}}"></ion-input>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Year</ion-label>
+
+            <ion-input class="form-control ps-0 ion-text-center" readonly value="{{profile_data?.dob | date: 'YYYY'}}"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="d-grid">
+              <ion-label>Address</ion-label>
+              <textarea class="form-control textarea" rows="4" readonly>{{profile_data?.address}}</textarea>
+          </ion-col>
+        </ion-row> 
+        <ion-row class="t-center">
+          <ion-col size="12">
+            <ion-label>Landmark</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.landmark}}"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center">
+          <ion-col size="6">
+            <ion-label>State</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.state?.name}}"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>District</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.district?.district_name}}"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center">
+          <ion-col size="6">
+            <ion-label>Taluka</ion-label>
+            <ion-input class="form-control ps-0" readonly value=" {{profile_data?.taluka?.taluka_name}}"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>City </ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.city_id}}"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center">
+          <ion-col size="6">
+            <ion-label>Pincode</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.pincode}}"></ion-input>
+          </ion-col>
+        </ion-row>
+      
+        <ion-row>
+          <ion-col class="text_color">
+          <div>Contact Number</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center" *ngIf="user_type=='student'">
+          <ion-col size="6">
+            <ion-label>Father</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.father_mobile_number}}"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>Mother</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.mother_mobile_number}}"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center" *ngIf="user_type=='student'">
+          <ion-col size="6">
+            <ion-label>Student</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.student_mobile_number}}"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>Whatsapp</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.whatsapp_mobile_number}}"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row class="t-center" *ngIf="user_type=='teacher'">
+          <ion-col size="6">
+            <ion-label>Moblie No</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.mobile_no}}"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>Whatsapp</ion-label>
+            <ion-input class="form-control ps-0" readonly value="{{profile_data?.whatsapps_no}}"></ion-input>
+          </ion-col>
+        </ion-row>
+    
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" class="btn-color" [routerLink]="['/', 'dashboard']">Back</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+
+  <!-- image top section end -->
+</ion-content>

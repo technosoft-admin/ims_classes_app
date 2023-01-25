@@ -1,0 +1,181 @@
+ion-header{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    ion-toolbar{
+        .toolbar-background{
+            background: #fff;
+        }
+        --border-width: 0;
+        .header-content{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            align-items: center;
+            div{
+                color: #000;
+            }
+        }
+        
+    }
+}
+
+ion-content{
+    --background: url(/assets/images/Layer0.png);
+    height: 100%;
+    width: 100%;
+    .st-background{
+        padding: 15px 15px 0 15px;
+        background: url(/assets/images/Layer0.png);
+        position: sticky;
+        overflow: scroll;
+        top: 0px;
+        z-index: 999 !important;
+        ion-slides{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            border-radius: 10px;
+            ion-slide{
+                width: 100% !important;
+                height: 180px !important;
+                border-radius: 10px;
+                .slider-item{
+                    padding: 0 10px 10px;
+                    transform: translateY(-10px);
+                    .module-header{
+                        .c-name{
+                            margin: 0;
+                            color: #fff;
+                            font-size: 17px;
+                            font-weight: 500;
+                        }
+                        .c-title{
+                            margin: 0px 0 10px;
+                            color: #e1e1e1;
+                            font-weight: 500;
+                            font-size: 15px;
+                        }
+                        .amount{
+                            font-weight: 600;
+                            color: #fbfffb;
+                            font-size: 28px;
+                        }
+                    }
+                    .d-flex{
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 5px 0;
+                        .e-date{
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: #dedede;
+                        }
+                        .fees-btn{
+                            font-size: 11px;
+                            border-radius: 20px;
+                            font-weight: bold;
+                            padding: 0 14px;
+                            z-index: 999 !important;
+                            background: #fff;
+                            color: #EB2632;
+                            border: 1px solid #fff;
+                        }
+                        .fees-btn:hover{
+                            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+                            opacity: 0.89;   
+                        }
+                    }
+                }
+            }
+            .card1{
+                background: url(/assets/images/bg-color.png) no-repeat center/cover;
+                
+            }
+            .card2{
+                background: url(/assets/images/1.png) no-repeat center/cover;
+            }
+            .card3{
+                background: url(/assets/images/2.png) no-repeat center/cover;
+            }
+            
+        }
+        .t-header{
+            p{
+                margin: 0;
+                text-align: right;
+                padding: 5px;
+                margin-top: 20px;
+                font-size: 15px;
+                font-weight: 500;
+                color: #284ea4;
+            }
+        }
+    }
+    .p-15{ 
+        padding: 0 15px 15px 15px;
+        .t-history{
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            .p-b-1{
+                display: flex;
+                border-bottom: 1px solid #b7c0a1;
+                padding: 4px;
+            }
+            .p-b-1:last-child{
+                border-bottom: none;
+            }
+            .inner-content{
+                padding: 5px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                .sub-part{
+                    h2{
+                        margin: 0;
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #00008b;
+                    }
+                    .tr-id{
+                        margin: 0;
+                        font-size: 14px;
+                        color: #1AAE03;
+                    }
+                    .dt-flex{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .date{
+                            margin: 0;
+                            font-size: 12px;
+                            font-weight: 400;
+                            color: #f22020;
+                        }  
+                        .time{
+                            margin: 0;
+                            font-size: 12px;
+                            font-weight: 400;
+                            color: #0b0b7d;
+                        }                     
+
+                    } 
+                }
+                .p-fees{
+                    p{
+                        margin: 0;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #e6142c; 
+                    }
+                }
+            }
+        }
+        
+    }
+}
+ion-toolbar{
+    --background: #fff !important;
+  }

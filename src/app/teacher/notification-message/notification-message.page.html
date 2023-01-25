@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div class="z-index">
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          (click)="backspace()">keyboard_backspace</mat-icon>
+      </div>
+      <div class="title">
+        <ion-title>Message</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <section class="select">
+    <form #addForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addForm)">
+      <div class="form-item">
+        <mat-form-field appearance="outline">  
+          <mat-label> Campaign Name </mat-label>  
+          <input matInput  [(ngModel)]="model.campaign" name="campaign" required>  
+        </mat-form-field> 
+      </div>
+      <div class="form-item ngsel" *ngIf="this.storeData.type.sms==true">
+        <ng-select [items]="recipientList" bindLabel="name" [multiple]="true" placeholder="Select item" name="recipient" bindValue="name"
+          [(ngModel)]="recipient" required>
+        </ng-select>
+        <label>Select Recipient</label>
+      </div>
+      <div class="form-item ngsel">
+        <ng-select [items]="template" bindLabel="template_name" placeholder="Select item" name="template_id" bindValue="id"
+          [(ngModel)]="selectedCar"  (ngModelChange)="getTemplateById($event);">
+        </ng-select>
+        <label>Select template</label>
+      </div>
+      <div class="form-item">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label> Message </mat-label>  
+          <textarea matInput   [(ngModel)]="message" name="message" required></textarea>
+        </mat-form-field>
+      </div>
+      <div class="sehedule-latter">
+        <div><a href="">Schedule For Later</a></div>
+      </div>
+      <div class="save-btn">
+        <ion-button class="btn-color" [disabled]="!addForm.valid" type="submit" expand="block">Send</ion-button>
+      </div>
+    </form>
+  </section>
+</ion-content>

@@ -1,0 +1,151 @@
+<ion-header>
+  <ion-toolbar>
+    <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon">keyboard_backspace</mat-icon>
+    <ion-buttons slot="end" class="list-bar">
+      <ion-button>
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Gallery</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <h4 class="gallery-head">Home <span>&#10095;</span> Photo Gallery</h4>
+
+    <!-- *************** Image First Row Start ***************** -->
+
+    <div>
+      <div class="image-status">
+        <div class="image-status-date"><ion-label class="image-status-day">Thu</ion-label> 6 Feb 2020</div>
+        <div class="image-status-time">35 Mints</div>
+      </div> 
+      <div class="image-status">
+        <div><ion-label class="image-status-type">Sports Day</ion-label></div>
+        <div><ion-label class="image-status-img">18 images</ion-label></div>
+      </div> 
+      <div class="image-slider">
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <img src="assets/images/download.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download2.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download3.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download2.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download3.png">
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+
+    <!-- *************** Image First Row End ***************** -->
+    <!-- *************** Image Second Row Start ***************** -->
+
+    <div>
+      <div class="image-status">
+        <div class="image-status-date"><ion-label class="image-status-day">Wed</ion-label> 5 Feb 2020</div>
+        <div class="image-status-time">10:35 am</div>
+      </div> 
+      <div class="image-status">
+        <div><ion-label class="image-status-type">Saraswati Vandana Festival</ion-label></div>
+        <div><ion-label class="image-status-img">26 photos</ion-label></div>
+      </div> 
+      <div class="image-slider">
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <img src="assets/images/download.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download2.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download3.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download2.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download3.png">
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+
+    <!-- *************** Image Second Row End ***************** -->
+    <!-- *************** Image Third Row Start ***************** -->
+
+    <div>
+      <div class="image-status">
+        <div class="image-status-date"><ion-label class="image-status-day">Tus</ion-label> 26 Feb 2020</div>
+        <div class="image-status-time">04:00 pm</div>
+      </div> 
+      <div class="image-status">
+        <div><ion-label class="image-status-type">Republic Day Celebration</ion-label></div>
+        <div><ion-label class="image-status-img">18 photos</ion-label></div>
+      </div> 
+      <div class="image-slider">
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <img src="assets/images/download.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download2.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download3.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download2.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/download3.png">
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+    <!-- *************** Image Third Row End ***************** -->
+    
+</ion-content>
+
+<!-- ******* Footer Tab Start ******* -->
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="dashboard_btn" (click)="onClick(1)"   [ngClass]="{'active': tab==='dashboard_btn'}" [routerLink]="['/', 'dashboard']">
+        <div class="dashboard">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Dashboard</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="gallery_btn" (click)="onClick(2)"   [ngClass]="{'active': tab==='gallery_btn'}" >
+        <div class="gellary">
+          <ion-icon name="images"></ion-icon>
+          <ion-label>Gallery</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="account_btn" (click)="onClick(3)"   [ngClass]="{'active': tab==='account_btn'}" [routerLink]="['/', 'account']">
+        <div class="account">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>Account</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+<!-- ******* Footer Tab End ******* -->

@@ -1,0 +1,536 @@
+<ion-content>
+  <div class="bg-img-top padding-top-27">
+    <!-- ******* Profile Icon Start ******* -->
+    <div class="header-content">
+      <div>
+        <ion-avatar [routerLink]="['/', 'profile-edit']">
+          <img src="{{file_url}}/image/{{user_type}}/{{image_name==''?'usersitenouser.png':image_name}}">
+        </ion-avatar>
+      </div>
+      <!-- ******* Profile Icon End ******* -->
+       <!-- ******* Menubar Start ******* -->
+      <!-- <div class="menu-bar">
+        <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+       
+        
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span (click)="logout()">Logout </span>
+          </button>
+        </mat-menu>
+      </div> -->
+    </div>
+    <!-- ******* Menubar End ******* -->
+    
+    <!-- ******* Logo Start ******* -->
+    <div class="dashboard-logo-header">
+      <ion-img src="assets/images/logo.png"></ion-img>
+    </div>
+    <!-- ******* Logo End ******* -->
+   
+    
+    
+    <!-- ******* Heading Text Start ******* -->
+    <div class="text-content">
+      <h1>HEBRON MISSION SCHOOL</h1>
+      <!-- <span>An Institute For Excellence In Science</span> -->
+      <!-- <p>AKOLA</p> -->
+    </div>
+    <!-- ******* Heading Text End ******* -->
+    
+<!-- /////////////////////////// Start Teacher///////////////// -->
+    <div class="board" *ngIf="user_type=='teacher'">
+      <ion-grid>
+        <ion-row class="student-update teacher-bg">
+          <ion-col size="4">
+            <div class="item example-ripple-container mat-elevation-z4 " [routerLink]="['/', 'student-list','total']" 
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+              <div class="total">{{dashboard_data?.count}}</div>
+              <div><p>Total</p></div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'student-list','present']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+              <div class="present">{{dashboard_data?.present}}</div>
+              <div><p>Present</p></div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'student-list','late']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+            <div class="late-mark">{{dashboard_data?.late}}</div>
+              <div><p>Late Mark</p></div>
+            </div>
+          </ion-col>
+        
+          <ion-col size="4">
+            <div class="item example-ripple-container mat-elevation-z4"  [routerLink]="['/', 'student-list','manual']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+              <div class="manual">{{dashboard_data?.manual}}</div>
+              <div><p>Manual</p></div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'student-list','absent']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+              <div class="absent">{{dashboard_data?.absent}}</div>
+              <div><p>Absent</p></div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'student-list','birthday']"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+              <div class="absent">{{dashboard_data?.birthday}}</div>
+              <div><p>Birth Day</p></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <!-- /////////////////////////// End Teacher///////////////// -->
+    <!-- ******* Calender Start ******* -->
+    <div class="calendar" *ngIf="user_type=='student'">
+      <ion-calendar [(ngModel)]="dateRange"
+              [options]="optionsRange"
+              [type]="type"
+              [format]="'YYYY-MM-DD'" (change)="changeWeek($event)">
+      </ion-calendar>
+    </div>
+    <!-- ******* Calender End ******* -->
+    <!-- ******* Attendance & Libary Start ******* -->
+     <!-- <div class="card" *ngIf="user_type=='student'">
+      <div class="card-item">
+        <ion-card>
+          <ion-item>
+            <ion-label class="atten example-ripple-container" [routerLink]="['/', 'attendance-list']">Attendance</ion-label>
+            <ion-label class="arrow2 example-ripple-container" >Library</ion-label>
+          </ion-item>
+        
+          <ion-card-content> 
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" class="p-0">
+                  <ion-row class="p-10">
+                    <ion-col class="col-1 t-head"><div class="head-font-in">IN</div></ion-col>
+                    <ion-col class="t-head"><div class="head-font-out">OUT</div></ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="6" class="p-0">
+                  <ion-row class="p-13">
+                    <ion-col class="col-3 t-head"><div class="head-font-in">IN</div></ion-col>
+                    <ion-col class="t-head"><div class="head-font-out">OUT</div></ion-col>  
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="p-0">
+                  <ion-row class="p-10" *ngFor="let list of attendance_list">
+                    <ion-col class="col-1 left-icon p-0" ><ion-label class="f-size">{{list.in_time }}</ion-label></ion-col>
+                    <ion-col class="p-0"><ion-label class="f-size">{{list.out_time}}</ion-label></ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col class="p-0">
+                </ion-col>
+              </ion-row>
+          
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      
+    </div> -->
+
+    <!-- ******* Attendance & Libary End ******* -->
+
+    <!-- For Attendance Start -->
+
+     <div class="card" *ngIf="user_type=='student'">
+      <div class="card-item">
+        <ion-card>
+          <div class="ion-item">
+            <div>
+              <ion-label [routerLink]="['/', 'attendance-list']">Attendance</ion-label>
+            </div>
+            <div class="inout-content">
+              <div class="in-content"><span class="in-before">IN</span></div>
+              <div class="out-content"><span class="out-before">OUT</span></div>
+            </div>
+          </div>
+        
+          <ion-card-content> 
+            <ion-grid>
+              <ion-row>
+                <ion-col size="12" class="p-0">
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="p-0">
+                  <ion-row class="p-10" *ngFor="let list of attendance_list">
+                    <ion-col class="col-1 left-icon p-0" ><ion-label class="f-size">{{list.in_time}}</ion-label></ion-col>
+                    <ion-col class="p-0 ion-text-right"><ion-label class="f-size">{{list.out_time}}</ion-label></ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      
+    </div> 
+  </div>
+  
+  
+      <!-- For Attendance End -->
+  
+  <!-- ******* Item Content Start ******* -->
+  <div class="board">
+    <ion-grid *ngIf="user_type=='student'">
+      <ion-row >
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'attendance']"  -->
+          <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'attendance-list']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+            <div><ion-img class="attendance" src="assets/images/Attendance icon.png"></ion-img></div>
+            <div><p>Attendance</p></div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'fees']" -->
+          <div class="item example-ripple-container mat-elevation-z4" 
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <div><ion-img class="fees" src="assets/images/fees.png"></ion-img></div>
+            <div><p>Fees</p></div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'feedback-page']" -->
+          <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'student-leave-list']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <div><ion-img class="feedback" src="assets/images/leave_icon.png"></ion-img></div>
+            <div><p>Leave</p></div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'notification']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"  
+          [matRippleColor]="color"   >
+            <!-- <ion-img class="holiday" src="assets/images/holiday icon.png"></ion-img> -->
+            <div class="w-fit m-auto custon-badge" *ngIf="notification_count!=0"  matBadge="{{notification_count}}" matBadgePosition="after" matBadgeColor="accent"><ion-img class="notification" src="assets/images/Forma1.png"></ion-img></div>
+            <div class="w-fit m-auto custon-badge"*ngIf="notification_count==0"  matBadgePosition="after" matBadgeColor="accent"><ion-img class="notification" src="assets/images/Forma1.png"></ion-img></div>
+            <p class="right-no" >Notification</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'result-status']" -->
+          <div class="item example-ripple-container mat-elevation-z4" 
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="homework" src="assets/images/home work.png"></ion-img> -->
+            <div><ion-img class="resulte" src="assets/images/Resulte icon copy.png"></ion-img></div>
+            <p>Results</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'download']" -->
+          <div class="item example-ripple-container mat-elevation-z4" 
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <ion-img class="download" src="assets/images/download2222222222.png"></ion-img>
+            <p>Download</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4" 
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color"  [routerLink]="['/', 'home-work-list']">
+            <!-- <ion-img class="syllabus" src="assets/images/syllabus icon.png"></ion-img> -->
+            <ion-img class="homework" src="assets/images/home work.png"></ion-img>
+            <p>Home Work</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"  [routerLink]="['/', 'exam-list']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="leave" src="assets/images/Leave icon.png"></ion-img> -->
+            <ion-img class="exam" src="assets/images/Exam paper.png"></ion-img>
+            <p>Exam</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="announcment" src="assets/images/announcment.png"></ion-img> -->
+            <ion-img class="syllabus" src="assets/images/syllabus icon.png"></ion-img>
+            <p>Syllabus</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color" [routerLink]="['/', 'announcement']">
+            <!-- <ion-img class="syllabus" src="assets/images/syllabus icon.png"></ion-img> -->
+            <ion-img class="announcment" src="assets/images/announcment.png"></ion-img>
+            <p>Planner</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <ion-img class="libary" src="assets/images/open-book-removebg-preview.png"></ion-img>
+            <p>Library</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="announcment" src="assets/images/announcment.png"></ion-img> -->
+            <ion-img class="leave" src="assets/images/Leave icon.png"></ion-img>
+            <p>Request</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="user_type=='teacher'">
+      <ion-row>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"  [routerLink]="['/', 'student-list','total']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <div><ion-img class="fees" src="assets/images/fees.png"></ion-img></div>
+            <div><p>Student</p></div>
+          </div>
+        </ion-col>
+        <ion-col>
+          
+          <div class="item example-ripple-container mat-elevation-z4"  [routerLink]="['/', 'student-attendance']"
+            matRipple
+            [matRippleCentered]="centered"
+            [matRippleRadius]="radius"
+            [matRippleColor]="color">
+            <div><ion-img class="attendance" src="assets/images/Attendance icon.png"></ion-img></div>
+            <div><p>Attendance</p></div>
+          </div>
+        </ion-col>
+        <ion-col> 
+          <div class="item example-ripple-container mat-elevation-z4"  [routerLink]="['/', 'home-work']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <ion-img class="homework" src="assets/images/home work.png"></ion-img>
+            <p>Home Work</p>
+          </div>
+        </ion-col>
+     
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4" (click)="gotoNotifican()"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"  
+          [matRippleColor]="color"   >
+            <!-- <ion-img class="holiday" src="assets/images/holiday icon.png"></ion-img> -->
+            <div class="w-fit m-auto custon-badge" matBadgePosition="after" matBadgeColor="accent"><ion-img class="notification" src="assets/images/Forma1.png"></ion-img></div>
+            <p class="right-no" >Notification</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'result-status']" -->
+          <div class="item example-ripple-container mat-elevation-z4" 
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="homework" src="assets/images/home work.png"></ion-img> -->
+            <div><ion-img class="resulte" src="assets/images/Resulte icon copy.png"></ion-img></div>
+            <p>Time Table</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'download']" -->
+          <div class="item example-ripple-container mat-elevation-z4" 
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <ion-img class="download" src="assets/images/download2222222222.png"></ion-img>
+            <p>Leave</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+       
+        <ion-col>
+          <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'feedback-page']" -->
+          <div class="item example-ripple-container mat-elevation-z4"  
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <div><ion-img class="feedback" src="assets/images/feedback-removebg-preview (3).png"></ion-img></div>
+            <div><p>Gallery</p></div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'exam-list']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="leave" src="assets/images/Leave icon.png"></ion-img> -->
+            <ion-img class="exam" src="assets/images/Exam paper.png"></ion-img>
+            <p>Exam</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="announcment" src="assets/images/announcment.png"></ion-img> -->
+            <ion-img class="syllabus" src="assets/images/syllabus icon.png"></ion-img>
+            <p>Report</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="syllabus" src="assets/images/syllabus icon.png"></ion-img> -->
+            <ion-img class="announcment" src="assets/images/announcment.png"></ion-img>
+            <p>Announcement</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <ion-img class="libary" src="assets/images/open-book-removebg-preview.png"></ion-img>
+            <p>Library</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="item example-ripple-container mat-elevation-z4"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+            <!-- <ion-img class="announcment" src="assets/images/announcment.png"></ion-img> -->
+            <ion-img class="leave" src="assets/images/Leave icon.png"></ion-img>
+            <p>Request</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- ******* Item Content end ******* -->
+</ion-content>
+
+<!-- ******* Footer Tab Start ******* -->
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="dashboard_btn example-ripple-container mat-elevation-z4" (click)="onClick(1)"   [ngClass]="{'active': tab==='dashboard_btn'}" 
+      matRipple
+      [matRippleCentered]="centered"
+      [matRippleRadius]="radius"
+      [matRippleColor]="color">
+        <div class="dashboard">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Dashboard</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="gallery_btn example-ripple-container mat-elevation-z4" (click)="onClick(2)"   [ngClass]="{'active': tab==='gallery_btn'}"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+        <div class="gellary">
+          <ion-icon name="images"></ion-icon>
+          <ion-label>Gallery</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="account_btn example-ripple-container mat-elevation-z4" (click)="onClick(3)"   [ngClass]="{'active': tab==='account_btn'}"  [routerLink]="['/', 'account']"
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+        <div class="account">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>Account</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+<!-- ******* Footer Tab End ******* -->

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "IMS-Project",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

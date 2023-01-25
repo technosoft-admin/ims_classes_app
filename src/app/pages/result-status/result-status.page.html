@@ -1,0 +1,198 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Result Status</ion-title></div>
+      <div>
+        <div class="menu-bar">
+          <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>notifications_off</mat-icon>
+              <span>Disable alerts</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- ****** resualt status Start ****** -->
+  <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
+  <div class="result-content" *ngIf="!load">
+    <div class="result-content-bg">
+      <ion-row>
+        <div class="item-section">
+          <div class="item">
+            <h1>45</h1>
+            <p>50</p>
+          </div>
+          <div class="item">
+            <h1>45</h1>
+            <p>50</p>
+          </div>
+          <div class="item">
+            <h1>45</h1>
+            <p>50</p>
+          </div>
+          <div class="item">
+            <h1>45</h1>
+            <p>50</p>
+          </div>
+        </div>
+      </ion-row>
+      <div class="item-subject">
+        <div>MATHS <p>92%</p></div>
+        <div>PHYSICS <p>95%</p></div>
+        <div>CHEMISTRY <p>85%</p></div>
+        <div>MATHS <p>90%</p></div>
+      </div>
+      <div class="progress">
+          <div class="progress-bar">
+            <div class="progress-line"><ion-progress-bar value="0.9"></ion-progress-bar></div>
+          </div>
+      </div>
+    </div>
+    <div class="charts">
+      <div class="avarage-status-header">
+        <p class="f1">AVARAGE STATUS</p>
+        <p class="f2">Grphical statistic Of Test Results</p>
+      </div>
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [stroke]="chartOptions.stroke"
+          [tooltip]="chartOptions.tooltip"
+          [dataLabels]="chartOptions.dataLabels"
+        ></apx-chart>
+        <!-- <div class="test-footer">
+          <div>Test 1</div>
+          <div>Test 2</div>
+          <div>Test 3</div>
+          <div>Test 4</div>
+          <div>Test 5</div>
+          <div>Test 6</div>
+        </div> -->
+      </div>
+    </div>
+  
+  <!-- ****** resualt status end ****** -->
+    
+  
+
+  <!-- ***** resualt item start ***** -->
+    <div class="result-item">
+      <div>
+        <h2>25th</h2>
+        <p class="result-day">Mon</p>
+        <p class="result-month">March 2020</p>
+      </div>
+      <div class="t-center">
+        <h3>Subject</h3>
+        <p>Physics</p>
+      </div>
+      <div class="t-center">
+        <h3>Test</h3>
+        <p>Elasticity</p>
+      </div>
+      <div class="t-center">
+        <h3>Rank</h3>
+        <p>1</p>
+      </div>
+      <div class="t-center">
+        <h3>Marks</h3>
+        <p>160.00 / 180</p>
+      </div>
+    </div>
+    <div class="result-item">
+      <div>
+        <h2>26th</h2>
+        <p class="result-day">Wed</p>
+        <p class="result-month">March 2020</p>
+      </div>
+      <div class="t-center">
+        <h3>Subject</h3>
+        <p>Chemistry</p>
+      </div>
+      <div class="t-center">
+        <h3>Test</h3>
+        <p>Isolaton</p>
+      </div>
+      <div class="t-center">
+        <h3>Rank</h3>
+        <p>1</p>
+      </div>
+      <div class="t-center">
+        <h3>Marks</h3>
+        <p>170.00 / 180</p>
+      </div>
+    </div>
+    <div class="result-item">
+      <div>
+        <h2>28th</h2>
+        <p class="result-day">Fri</p>
+        <p class="result-month">March 2020</p>
+      </div>
+      <div class="t-center">
+        <h3>Subject</h3>
+        <p>Maths</p>
+      </div>
+      <div class="t-center">
+        <h3>Test</h3>
+        <p>Statitics</p>
+      </div>
+      <div class="t-center">
+        <h3>Rank</h3>
+        <p>1</p>
+      </div>
+      <div class="t-center">
+        <h3>Marks</h3>
+        <p>180.00 / 180</p>
+      </div>
+    </div>
+    <div class="result-item">
+      <div>
+        <h2>31th</h2>
+        <p class="result-day">Mon</p>
+        <p class="result-month">March 2020</p>
+      </div>
+      <div class="t-center">
+        <h3>Subject</h3>
+        <p>Biology</p>
+      </div>
+      <div class="t-center">
+        <h3>Test</h3>
+        <p>Anatomy</p>
+      </div>
+      <div class="t-center">
+        <h3>Rank</h3>
+        <p>1</p>
+      </div>
+      <div class="t-center">
+        <h3>Marks</h3>
+        <p>190.00 / 180</p>
+      </div>
+    </div>
+    <div class="d-button"><ion-button class="" expand="block">Download Progress Card</ion-button></div>
+  </div>
+  <!-- ***** resualt item end ***** -->
+
+  
+
+</ion-content>

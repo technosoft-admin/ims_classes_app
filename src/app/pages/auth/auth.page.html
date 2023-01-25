@@ -1,0 +1,12 @@
+<ion-content>
+  <div class="logo-header">
+    <ion-img src="assets/images/logo.png"></ion-img>
+  </div>
+  <div class="log-form">
+    <form #addForm="ngForm" (ngSubmit)="onSubmitForm(addForm)">
+      <ion-input class="form-control" placeholder="Enter Your ID Here" name="id_card_no" [(ngModel)]="model.id_card_no"
+        required></ion-input>
+      <ion-button type="submit">Login</ion-button>
+    </form>
+  </div>
+</ion-content>

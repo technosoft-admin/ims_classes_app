@@ -1,0 +1,70 @@
+
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'exam-list']">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title>Exam Subject</ion-title>
+      </div>
+      <div>
+    
+      </div>
+    </div>
+  </ion-toolbar>
+ 
+</ion-header>
+<ion-content>
+  <form #addForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addForm)">
+  <section class="select-tbl">
+    <div class="subject-header"><h2>Subject</h2></div>
+    <div class="select-tbl-bg">
+    
+      <mat-expansion-panel *ngFor="let sub of subjectlist; let i = index" [expanded]="sub.open">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="font-size-18 panel-title">
+              {{sub?.subject_name}}<sup>*</sup>
+              
+          </mat-panel-title>
+          <span [ngClass]="{'panel-active':sub.open == true}">
+            <ion-checkbox   color="primary" name="isDone{{i+1}}" [(ngModel)]="sub.isDone"  id="{{i+1}}" hideToggle="true" (click)="setStep(sub?.id)" slot="end"></ion-checkbox>
+          </span>
+        </mat-expansion-panel-header>
+        <div class="company-info-body" >
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <label class="input-title">Max Mark</label>
+                <ion-input class="form-control" type="number"  [(ngModel)]="sub.max" id="{{i+1}}" name="max{{i+1}}" ></ion-input>
+              </ion-col>
+              <ion-col size="6">
+                <label class="input-title">Min Mark</label>
+                <ion-input class="form-control" type="number"  [disabled]="!sub.max" [(ngModel)]="sub.min" id="{{i+1}}" name="min{{i+1}}"></ion-input>
+              </ion-col>
+            </ion-row>
+            <p [ngClass]="{'d-block':sub.max <= sub.min}"  class="d-none" style="color: red;">Min Mark Will Be Less Than Max Mark </p>
+            <ion-row>
+              <ion-col size="12">
+                <label class="input-title">Marking Scheme</label>
+                <ion-list class="form-control-option" >
+                  <ion-item  >
+                    <ion-select (ionChange)="setData($event)"  name="marking_scheme{{i+1}}" id="{{i+1}}" [(ngModel)]="sub.marking_scheme" placeholder="Select Marking Scheme">
+                      <ion-select-option value="Grading System">Grading System</ion-select-option>
+                      <ion-select-option value="Marks System">Marks System</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </mat-expansion-panel>
+     
+    </div>
+  </section>
+
+  <div class="save-btn" id="check"><ion-button class="btn-color" expand="block" [disabled]="!addForm.valid" type="submit" >Next</ion-button></div>
+  </form>
+</ion-content>

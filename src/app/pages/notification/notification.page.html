@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar class="custom">
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title *ngIf="searchopen=='0'">Notifications</ion-title>
+      <ion-searchbar  class="search" animated [ngModel]="model.range" (ngModelChange)="search($event)" *ngIf="searchopen=='1'"></ion-searchbar>
+
+      </div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button (click)="searchOpen()">
+            <ion-icon name="search" ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+  <ion-row class="nav-item">`
+    <div class="all" (click)="onClick('all','')" [ngClass]="{'active': tabname==='all'}">
+      <span [style.color]="tabname==='all'?color_set:''"><i class="fa fa-folder-open-o"aria-hidden="true" ></i></span>
+      <ion-label [style.color]="tabname==='all'?color_set:''">&nbsp;All</ion-label>
+    </div>
+    <div *ngFor="let data of categoryList;" class="{{data.name}}" (click)="onClick(data.id,data.background_color)"
+      [ngClass]="{'active': tabname===data.id}" >
+      <span [style.color]="tabname===data.id?color_set:''" [innerHtml]="data.icon"></span>
+      <ion-label [style.color]="tabname===data.id?color_set:''">&nbsp;{{data.name}}</ion-label>
+    </div>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <div class="loder">
+    <ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner>
+  </div>
+  <div *ngIf="!load">
+    <div class="pt-15" *ngFor="let value of list">
+      <div class="message-item">
+        <div class="box-seed-color" [style.background]="value?.notificationCat?.background_color" *ngIf="value.is_read != '1'">
+
+        </div>
+          <ion-item class="message-item-color"
+          [ngClass]="{'seened': value.is_read == '1'}"  (click)="gotoNextPage(value?.id)" >
+          
+          <ion-avatar slot="start" class="message-avatar"  [style.background]="value?.notificationCat?.background_color">
+            <span [innerHtml]="value?.notificationCat?.icon" class="subject-icon"></span>
+          </ion-avatar>
+          <ion-label>
+            <div class="message-content">
+              <div>
+                <h3>{{value?.campaign_name}}</h3>
+              </div>
+              <div class="time">
+                <!-- <h5><span>{{currentDate==value.date?value.time:value.date}}</span>&nbsp;&nbsp;&nbsp; {{value.time}}</h5> -->
+                <h5><span *ngIf="currentDate==value?.date; else elseblock">{{value?.time}}</span></h5>
+                  <ng-template #elseblock>{{value?.date | date:'dd MMM'}}</ng-template>
+              </div>
+            </div>
+            <p>{{value.body_sms_text}}</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)" >
+      <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+
+    </ion-infinite-scroll>
+
+    <!-- old page -->
+
+    <!-- <div class="pt-15" *ngFor="let value of list">
+      <div class="message-item">
+        <ion-item class="message-item-color" [routerLink]="['/notification-list']"
+          [ngClass]="{'bg-blue': value.type == 'general', 'bg-orange': value.type == 'attendance','bg-green': value.type == 'libary', 'seened': value.view == 'seen'}">
+          <ion-avatar slot="start" class="message-avatar"
+            *ngIf="value.type=='general' || value.type=='attendance' || value.type=='libary'">
+            <i class="fa fa-file-text" aria-hidden="true" *ngIf="value.type=='general'"></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" *ngIf="value.type=='attendance'"></i>
+            <i class="fa fa-leanpub" aria-hidden="true" *ngIf="value.type=='libary'"></i>
+          </ion-avatar>
+          <ion-label>
+            <div class="message-content">
+              <div>
+                <h3>{{value.title}}</h3>
+              </div>
+              <div class="time">
+                <h5><span>{{value.date}}</span>&nbsp;&nbsp;&nbsp; {{value.time}}</h5>
+              </div>
+            </div>
+            <p>{{value.subtitle}}</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div> -->
+    <!-- <div class="message-item">
+      <ion-item class="message-item-color2" [routerLink]="['/', 'notification-list']">
+        <ion-avatar slot="start" class="message-avatar2">
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <div class="message-content">
+            <div><h3>LI-DEV</h3></div>
+            <div class="time"><h5><span>Yestarday</span>&nbsp;&nbsp;&nbsp; 08:45 AM</h5></div>
+          </div>
+          <p>Listen, I've had a pretty messed up day...</p>
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="message-item">
+      <ion-item class="message-item-color3">
+        <ion-avatar slot="start" class="message-avatar3">
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <div class="message-content">
+            <div><h3>LI-DEV</h3></div>
+            <div class="time"><h5><span>Yestarday</span>&nbsp;&nbsp;&nbsp; 08:45 AM</h5></div>
+          </div>
+          <p>Listen, I've had a pretty messed up day...</p>
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="message-item">
+      <ion-item class="message-item-color1">
+        <ion-avatar slot="start" class="message-avatar1">
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <div class="message-content">
+            <div><h3>AT-SIBN</h3></div>
+            <div class="time"><h5><span>Today</span>&nbsp;&nbsp;&nbsp; 10:45 AM</h5></div>
+          </div>
+          <p>Listen, I've had a pretty messed up day...</p>
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="message-item">
+      <ion-item class="message-item-color2">
+        <ion-avatar slot="start" class="message-avatar2">
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <div class="message-content">
+            <div><h3>LI-DEV</h3></div>
+            <div class="time"><h5><span>Yestarday</span>&nbsp;&nbsp;&nbsp; 08:45 AM</h5></div>
+          </div>
+          <p>Listen, I've had a pretty messed up day...</p>
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="message-item">
+      <ion-item class="message-item-color3">
+        <ion-avatar slot="start" class="message-avatar3">
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <div class="message-content">
+            <div><h3>LI-DEV</h3></div>
+            <div class="time"><h5><span>Yestarday</span>&nbsp;&nbsp;&nbsp; 08:45 AM</h5></div>
+          </div>
+          <p>Listen, I've had a pretty messed up day...</p>
+        </ion-label>
+      </ion-item>
+    </div> -->
+  </div>
+</ion-content>

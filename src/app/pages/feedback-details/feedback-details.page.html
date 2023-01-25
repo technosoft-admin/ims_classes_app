@@ -1,0 +1,353 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'feedback-page']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>New Feedback</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="t-profile">
+    <div class="img-content">
+      <div class="img-font">
+        <img src="assets/images/Layer11.png">
+      </div>
+    </div>
+    <div class="text-header">
+      <h1>Teacher Name</h1>
+      <p>Subject</p>
+    </div>
+  </div>
+  <div class="feed-padding">
+    <div class="review-type">
+        <div class="cont">
+          <p id="qs1">i) How the Subject contents are covered by teacher?</p>
+          <div class="stars">
+            <div class="check">{{check}}</div>
+              <fieldset class="rating">
+                <input type="radio" id="1star10" name="1rating" value="10" (click)='onClick(10)' [checked]="rating === 10" /><label class = "full" for="1star10" title="Sucks big time - 1 star">10</label>
+                <input type="radio" id="1star9" name="1rating" value="9" (click)='onClick(9)' [checked]="rating === 9"/><label class = "full" for="1star9" title="Kinda bad - 2 stars">9</label>
+                <input type="radio" id="1star8" name="1rating" value="8" (click)='onClick(8)' [checked]="rating === 8" /><label class = "full" for="1star8" title="Meh - 3 stars">8</label>
+                <input type="radio" id="1star7" name="1rating" value="7"(click)='onClick(7)' [checked]="rating === 7"/><label class = "full" for="1star7" title="Pretty good - 4 stars">7</label>
+                <input type="radio" id="1star6" name="1rating" value="6" (click)='onClick(6)' [checked]="rating === 6" /><label class = "full" for="1star6" title="Awesome - 5 stars">6</label>
+                <input type="radio" id="1star5" name="1rating" value="5" (click)='onClick(5)' [checked]="rating === 5"/><label class = "full" for="1star5" title="Awesome - 6 stars">5</label>
+                <input type="radio" id="1star4" name="1rating" value="4" (click)='onClick(4)' [checked]="rating === 4"/><label class = "full4" for="1star4" title="Awesome - 7 stars">4</label>
+                <input type="radio" id="1star3" name="1rating" value="3" (click)='onClick(3)' [checked]="rating === 3"/><label class = "full3" for="1star3" title="Awesome - 8 stars">3</label>
+                <input type="radio" id="1star2" name="1rating" value="2" (click)='onClick(2)' [checked]="rating === 2"/><label class = "full2" for="1star2" title="Awesome - 9 stars">2</label>
+                <input type="radio" id="1star1" name="1rating" value="1" (click)='onClick(1)' [checked]="rating === 1" /><label class = "full1" for="1star1" title="Awesome - 10 stars">1</label>
+              </fieldset>
+          </div>
+        </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">ii) How clearly the concepts are taught by teacher?</p>
+        <div class="stars">
+          <div class="check">{{check2}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="2star10" name="2rating" value="10" (click)='onClick2(10)' [checked]="rating2 === 10" /><label class = "full" for="2star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="2star9" name="2rating" value="9" (click)='onClick2(9)' [checked]="rating2 === 9"/><label class = "full" for="2star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="2star8" name="2rating" value="8" (click)='onClick2(8)' [checked]="rating2 === 8" /><label class = "full" for="2star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="2star7" name="2rating" value="7"(click)='onClick2(7)' [checked]="rating2 === 7"/><label class = "full" for="2star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="2star6" name="2rating" value="6" (click)='onClick2(6)' [checked]="rating2 === 6" /><label class = "full" for="2star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="2star5" name="2rating" value="5" (click)='onClick2(5)' [checked]="rating2 === 5"/><label class = "full" for="2star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="2star4" name="2rating" value="4" (click)='onClick2(4)' [checked]="rating2 === 4"/><label class = "full4" for="2star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="2star3" name="2rating" value="3" (click)='onClick2(3)' [checked]="rating2 === 3"/><label class = "full3" for="2star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="2star2" name="2rating" value="2" (click)='onClick2(2)' [checked]="rating2 === 2"/><label class = "full2" for="2star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="2star1" name="2rating" value="1" (click)='onClick2(1)' [checked]="rating2 === 1" /><label class = "full1" for="2star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">iii) How would you rate the teaching for application of concepts for solving questions?</p>
+        <div class="stars">
+          <div class="check">{{check3}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="3star10" name="3rating" value="10" (click)='onClick3(10)' [checked]="rating3 === 10" /><label class = "full" for="3star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="3star9" name="3rating" value="9" (click)='onClick3(9)' [checked]="rating3 === 9"/><label class = "full" for="3star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="3star8" name="3rating" value="8" (click)='onClick3(8)' [checked]="rating3 === 8" /><label class = "full" for="3star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="3star7" name="3rating" value="7"(click)='onClick3(7)' [checked]="rating3 === 7"/><label class = "full" for="3star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="3star6" name="3rating" value="6" (click)='onClick3(6)' [checked]="rating3 === 6" /><label class = "full" for="3star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="3star5" name="3rating" value="5" (click)='onClick3(5)' [checked]="rating3 === 5"/><label class = "full" for="3star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="3star4" name="3rating" value="4" (click)='onClick3(4)' [checked]="rating3 === 4"/><label class = "full4" for="3star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="3star3" name="3rating" value="3" (click)='onClick3(3)' [checked]="rating3 === 3"/><label class = "full3" for="3star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="3star2" name="3rating" value="2" (click)='onClick3(2)' [checked]="rating3 === 2"/><label class = "full2" for="3star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="3star1" name="3rating" value="1" (click)='onClick3(1)' [checked]="rating3 === 1" /><label class = "full1" for="3star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">iv) How would you rate the teaching speed??</p>
+        <div class="stars">
+          <div class="check">{{check4}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="4star10" name="4rating" value="10" (click)='onClick4(10)' [checked]="rating4 === 10" /><label class = "full" for="4star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="4star9" name="4rating" value="9" (click)='onClick4(9)' [checked]="rating4 === 9"/><label class = "full" for="4star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="4star8" name="4rating" value="8" (click)='onClick4(8)' [checked]="rating4 === 8" /><label class = "full" for="4star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="4star7" name="4rating" value="7"(click)='onClick4(7)' [checked]="rating4 === 7"/><label class = "full" for="4star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="4star6" name="4rating" value="6" (click)='onClick4(6)' [checked]="rating4 === 6" /><label class = "full" for="4star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="4star5" name="4rating" value="5" (click)='onClick4(5)' [checked]="rating4 === 5"/><label class = "full" for="4star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="4star4" name="4rating" value="4" (click)='onClick4(4)' [checked]="rating4 === 4"/><label class = "full4" for="4star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="4star3" name="4rating" value="3" (click)='onClick4(3)' [checked]="rating4 === 3"/><label class = "full3" for="4star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="4star2" name="4rating" value="2" (click)='onClick4(2)' [checked]="rating4 === 2"/><label class = "full2" for="4star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="4star1" name="4rating" value="1" (click)='onClick4(1)' [checked]="rating4 === 1" /><label class = "full1" for="4star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">v) What do you expect about teaching speed from the teacher?</p>
+        <div class="stars">
+          <div class="check">{{check5}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="5star10" name="5rating" value="10" (click)='onClick5(10)' [checked]="rating5 === 10" /><label class = "full" for="5star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="5star9" name="5rating" value="9" (click)='onClick5(9)' [checked]="rating5 === 9"/><label class = "full" for="5star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="5star8" name="5rating" value="8" (click)='onClick5(8)' [checked]="rating5 === 8" /><label class = "full" for="5star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="5star7" name="5rating" value="7"(click)='onClick5(7)' [checked]="rating5 === 7"/><label class = "full" for="5star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="5star6" name="5rating" value="6" (click)='onClick5(6)' [checked]="rating5 === 6" /><label class = "full" for="5star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="5star5" name="5rating" value="5" (click)='onClick5(5)' [checked]="rating5 === 5"/><label class = "full" for="5star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="5star4" name="5rating" value="4" (click)='onClick5(4)' [checked]="rating5 === 4"/><label class = "full4" for="5star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="5star3" name="5rating" value="3" (click)='onClick5(3)' [checked]="rating5 === 3"/><label class = "full3" for="5star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="5star2" name="5rating" value="2" (click)='onClick5(2)' [checked]="rating5 === 2"/><label class = "full2" for="5star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="5star1" name="5rating" value="1" (click)='onClick5(1)' [checked]="rating5 === 1" /><label class = "full1" for="5star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">vi) How encouraging do you feel to ask your difficulties to the teacher?</p>
+        <div class="stars">
+          <div class="check">{{check6}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="6star10" name="6rating" value="10" (click)='onClick6(10)' [checked]="rating6 === 10" /><label class = "full" for="6star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="6star9" name="6rating" value="9" (click)='onClick6(9)' [checked]="rating6 === 9"/><label class = "full" for="6star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="6star8" name="6rating" value="8" (click)='onClick6(8)' [checked]="rating6 === 8" /><label class = "full" for="6star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="6star7" name="6rating" value="7"(click)='onClick6(7)' [checked]="rating6 === 7"/><label class = "full" for="6star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="6star6" name="6rating" value="6" (click)='onClick6(6)' [checked]="rating6 === 6" /><label class = "full" for="6star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="6star5" name="6rating" value="5" (click)='onClick6(5)' [checked]="rating6 === 5"/><label class = "full" for="6star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="6star4" name="6rating" value="4" (click)='onClick6(4)' [checked]="rating6 === 4"/><label class = "full4" for="6star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="6star3" name="6rating" value="3" (click)='onClick6(3)' [checked]="rating6 === 3"/><label class = "full3" for="6star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="6star2" name="6rating" value="2" (click)='onClick6(2)' [checked]="rating6 === 2"/><label class = "full2" for="6star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="6star1" name="6rating" value="1" (click)='onClick6(1)' [checked]="rating6 === 1" /><label class = "full1" for="6star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">vii) How would you rate the solutions provided to your doubts and difficulties?</p>
+        <div class="stars">
+          <div class="check">{{check7}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="7star10" name="7rating" value="10" (click)='onClick7(10)' [checked]="rating7 === 10" /><label class = "full" for="7star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="7star9" name="7rating" value="9" (click)='onClick7(9)' [checked]="rating7 === 9"/><label class = "full" for="7star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="7star8" name="7rating" value="8" (click)='onClick7(8)' [checked]="rating7 === 8" /><label class = "full" for="7star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="7star7" name="7rating" value="7"(click)='onClick7(7)' [checked]="rating7 === 7"/><label class = "full" for="7star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="7star6" name="7rating" value="6" (click)='onClick7(6)' [checked]="rating7 === 6" /><label class = "full" for="7star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="7star5" name="7rating" value="5" (click)='onClick7(5)' [checked]="rating7 === 5"/><label class = "full" for="7star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="7star4" name="7rating" value="4" (click)='onClick7(4)' [checked]="rating7 === 4"/><label class = "full4" for="7star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="7star3" name="7rating" value="3" (click)='onClick7(3)' [checked]="rating7 === 3"/><label class = "full3" for="7star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="7star2" name="7rating" value="2" (click)='onClick7(2)' [checked]="rating7 === 2"/><label class = "full2" for="7star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="7star1" name="7rating" value="1" (click)='onClick7(1)' [checked]="rating7 === 1" /><label class = "full1" for="7star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">viii) How would you rate quality of the questions asked in Test Papers?</p>
+        <div class="stars">
+          <div class="check">{{check8}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="8star10" name="8rating" value="10" (click)='onClick8(10)' [checked]="rating8 === 10" /><label class = "full" for="8star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="8star9" name="8rating" value="9" (click)='onClick8(9)' [checked]="rating8 === 9"/><label class = "full" for="8star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="8star8" name="8rating" value="8" (click)='onClick8(8)' [checked]="rating8 === 8" /><label class = "full" for="8star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="8star7" name="8rating" value="7"(click)='onClick8(7)' [checked]="rating8 === 7"/><label class = "full" for="8star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="8star6" name="8rating" value="6" (click)='onClick8(6)' [checked]="rating8 === 6" /><label class = "full" for="8star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="8star5" name="8rating" value="5" (click)='onClick8(5)' [checked]="rating8 === 5"/><label class = "full" for="8star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="8star4" name="8rating" value="4" (click)='onClick8(4)' [checked]="rating8 === 4"/><label class = "full4" for="8star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="8star3" name="8rating" value="3" (click)='onClick8(3)' [checked]="rating8 === 3"/><label class = "full3" for="8star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="8star2" name="8rating" value="2" (click)='onClick8(2)' [checked]="rating8 === 2"/><label class = "full2" for="8star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="8star1" name="8rating" value="1" (click)='onClick8(1)' [checked]="rating8 === 1" /><label class = "full1" for="8star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">ix) How would you rate the Test Question Paper Explanation?</p>
+        <div class="stars">
+          <div class="check">{{check9}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="9star10" name="9rating" value="10" (click)='onClick9(10)' [checked]="rating9 === 10" /><label class = "full" for="9star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="9star9" name="9rating" value="9" (click)='onClick9(9)' [checked]="rating9 === 9"/><label class = "full" for="9star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="9star8" name="9rating" value="8" (click)='onClick9(8)' [checked]="rating9 === 8" /><label class = "full" for="9star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="9star7" name="9rating" value="7"(click)='onClick9(7)' [checked]="rating9 === 7"/><label class = "full" for="9star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="9star6" name="9rating" value="6" (click)='onClick9(6)' [checked]="rating9 === 6" /><label class = "full" for="9star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="9star5" name="9rating" value="5" (click)='onClick9(5)' [checked]="rating9 === 5"/><label class = "full" for="9star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="9star4" name="9rating" value="4" (click)='onClick9(4)' [checked]="rating9 === 4"/><label class = "full4" for="9star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="9star3" name="9rating" value="3" (click)='onClick9(3)' [checked]="rating9 === 3"/><label class = "full3" for="9star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="9star2" name="9rating" value="2" (click)='onClick9(2)' [checked]="rating9 === 2"/><label class = "full2" for="9star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="9star1" name="9rating" value="1" (click)='onClick9(1)' [checked]="rating9 === 1" /><label class = "full1" for="9star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">x) How does the lecture duration match to your expectation?</p>
+        <div class="stars">
+          <div class="check">{{check10}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="10star10" name="10rating" value="10" (click)='onClick10(10)' [checked]="rating10 === 10" /><label class = "full" for="10star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="10star9" name="10rating" value="9" (click)='onClick10(9)' [checked]="rating10 === 9"/><label class = "full" for="10star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="10star8" name="10rating" value="8" (click)='onClick10(8)' [checked]="rating10 === 8" /><label class = "full" for="10star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="10star7" name="10rating" value="7"(click)='onClick10(7)' [checked]="rating10 === 7"/><label class = "full" for="10star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="10star6" name="10rating" value="6" (click)='onClick10(6)' [checked]="rating10 === 6" /><label class = "full" for="10star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="10star5" name="10rating" value="5" (click)='onClick10(5)' [checked]="rating10 === 5"/><label class = "full" for="10star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="10star4" name="10rating" value="4" (click)='onClick10(4)' [checked]="rating10 === 4"/><label class = "full4" for="10star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="10star3" name="10rating" value="3" (click)='onClick10(3)' [checked]="rating10 === 3"/><label class = "full3" for="10star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="10star2" name="10rating" value="2" (click)='onClick10(2)' [checked]="rating10 === 2"/><label class = "full2" for="10star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="10star1" name="10rating" value="1" (click)='onClick10(1)' [checked]="rating10 === 1" /><label class = "full1" for="10star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">xi) How would you rate the punctuality of the teacher?</p>
+        <div class="stars">
+          <div class="check">{{check11}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="11star10" name="11rating" value="10" (click)='onClick11(10)' [checked]="rating11 === 10" /><label class = "full" for="11star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="11star9" name="11rating" value="9" (click)='onClick11(9)' [checked]="rating11 === 9"/><label class = "full" for="11star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="11star8" name="11rating" value="8" (click)='onClick11(8)' [checked]="rating11 === 8" /><label class = "full" for="11star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="11star7" name="11rating" value="7"(click)='onClick11(7)' [checked]="rating11 === 7"/><label class = "full" for="11star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="11star6" name="11rating" value="6" (click)='onClick11(6)' [checked]="rating11 === 6" /><label class = "full" for="11star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="11star5" name="11rating" value="5" (click)='onClick11(5)' [checked]="rating11 === 5"/><label class = "full" for="11star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="11star4" name="11rating" value="4" (click)='onClick11(4)' [checked]="rating11 === 4"/><label class = "full4" for="11star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="11star3" name="11rating" value="3" (click)='onClick11(3)' [checked]="rating11 === 3"/><label class = "full3" for="11star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="11star2" name="11rating" value="2" (click)='onClick11(2)' [checked]="rating11 === 2"/><label class = "full2" for="11star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="11star1" name="11rating" value="1" (click)='onClick11(1)' [checked]="rating11 === 1" /><label class = "full1" for="11star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">xii) How would you rate the Notes provided to you?</p>
+        <div class="stars">
+          <div class="check">{{check12}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="12star10" name="12rating" value="10" (click)='onClick12(10)' [checked]="rating12 === 10" /><label class = "full" for="12star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="12star9" name="12rating" value="9" (click)='onClick12(9)' [checked]="rating12 === 9"/><label class = "full" for="12star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="12star8" name="12rating" value="8" (click)='onClick12(8)' [checked]="rating12 === 8" /><label class = "full" for="12star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="12star7" name="12rating" value="7"(click)='onClick12(7)' [checked]="rating12 === 7"/><label class = "full" for="12star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="12star6" name="12rating" value="6" (click)='onClick12(6)' [checked]="rating12 === 6" /><label class = "full" for="12star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="12star5" name="12rating" value="5" (click)='onClick12(5)' [checked]="rating12 === 5"/><label class = "full" for="12star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="12star4" name="12rating" value="4" (click)='onClick12(4)' [checked]="rating12 === 4"/><label class = "full4" for="12star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="12star3" name="12rating" value="3" (click)='onClick12(3)' [checked]="rating12 === 3"/><label class = "full3" for="12star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="12star2" name="12rating" value="2" (click)='onClick12(2)' [checked]="rating12 === 2"/><label class = "full2" for="12star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="12star1" name="12rating" value="1" (click)='onClick12(1)' [checked]="rating12 === 1" /><label class = "full1" for="12star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">xiii) How efficiently & interactively do the teacher engages all students in online class?</p>
+        <div class="stars">
+          <div class="check">{{check13}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="13star10" name="13rating" value="10" (click)='onClick13(10)' [checked]="rating13 === 10" /><label class = "full" for="13star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="13star9" name="13rating" value="9" (click)='onClick13(9)' [checked]="rating13 === 9"/><label class = "full" for="13star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="13star8" name="13rating" value="8" (click)='onClick13(8)' [checked]="rating13 === 8" /><label class = "full" for="13star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="13star7" name="13rating" value="7"(click)='onClick13(7)' [checked]="rating13 === 7"/><label class = "full" for="13star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="13star6" name="13rating" value="6" (click)='onClick13(6)' [checked]="rating13 === 6" /><label class = "full" for="13star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="13star5" name="13rating" value="5" (click)='onClick13(5)' [checked]="rating13 === 5"/><label class = "full" for="13star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="13star4" name="13rating" value="4" (click)='onClick13(4)' [checked]="rating13 === 4"/><label class = "full4" for="13star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="13star3" name="13rating" value="3" (click)='onClick13(3)' [checked]="rating13 === 3"/><label class = "full3" for="13star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="13star2" name="13rating" value="2" (click)='onClick13(2)' [checked]="rating13 === 2"/><label class = "full2" for="13star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="13star1" name="13rating" value="1" (click)='onClick13(1)' [checked]="rating13 === 1" /><label class = "full1" for="13star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">xiv) Do you think that your teacher works hard to improve your result?</p>
+        <div class="stars">
+          <div class="check">{{check14}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="14star10" name="14rating" value="10" (click)='onClick14(10)' [checked]="rating14 === 10" /><label class = "full" for="14star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="14star9" name="14rating" value="9" (click)='onClick14(9)' [checked]="rating14 === 9"/><label class = "full" for="14star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="14star8" name="14rating" value="8" (click)='onClick14(8)' [checked]="rating14 === 8" /><label class = "full" for="14star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="14star7" name="14rating" value="7"(click)='onClick14(7)' [checked]="rating14 === 7"/><label class = "full" for="14star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="14star6" name="14rating" value="6" (click)='onClick14(6)' [checked]="rating14 === 6" /><label class = "full" for="14star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="14star5" name="14rating" value="5" (click)='onClick14(5)' [checked]="rating14 === 5"/><label class = "full" for="14star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="14star4" name="14rating" value="4" (click)='onClick14(4)' [checked]="rating14 === 4"/><label class = "full4" for="14star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="14star3" name="14rating" value="3" (click)='onClick14(3)' [checked]="rating14 === 3"/><label class = "full3" for="14star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="14star2" name="14rating" value="2" (click)='onClick14(2)' [checked]="rating14 === 2"/><label class = "full2" for="14star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="14star1" name="14rating" value="1" (click)='onClick14(1)' [checked]="rating14 === 1" /><label class = "full1" for="14star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="review-type">
+      <div class="cont">
+        <p id="qs1">xv) How would you overall rate the teacher in all aspect?</p>
+        <div class="stars">
+          <div class="check">{{check15}}</div>
+            <fieldset class="rating">
+              <input type="radio" id="15star10" name="15rating" value="10" (click)='onClick15(10)' [checked]="rating15 === 10" /><label class = "full" for="15star10" title="Sucks big time - 1 star">10</label>
+              <input type="radio" id="15star9" name="15rating" value="9" (click)='onClick15(9)' [checked]="rating15 === 9"/><label class = "full" for="15star9" title="Kinda bad - 2 stars">9</label>
+              <input type="radio" id="15star8" name="15rating" value="8" (click)='onClick15(8)' [checked]="rating15 === 8" /><label class = "full" for="15star8" title="Meh - 3 stars">8</label>
+              <input type="radio" id="15star7" name="15rating" value="7"(click)='onClick15(7)' [checked]="rating15 === 7"/><label class = "full" for="15star7" title="Pretty good - 4 stars">7</label>
+              <input type="radio" id="15star6" name="15rating" value="6" (click)='onClick15(6)' [checked]="rating15 === 6" /><label class = "full" for="15star6" title="Awesome - 5 stars">6</label>
+              <input type="radio" id="15star5" name="15rating" value="5" (click)='onClick15(5)' [checked]="rating15 === 5"/><label class = "full" for="15star5" title="Awesome - 6 stars">5</label>
+              <input type="radio" id="15star4" name="15rating" value="4" (click)='onClick15(4)' [checked]="rating15 === 4"/><label class = "full4" for="15star4" title="Awesome - 7 stars">4</label>
+              <input type="radio" id="15star3" name="15rating" value="3" (click)='onClick15(3)' [checked]="rating15 === 3"/><label class = "full3" for="15star3" title="Awesome - 8 stars">3</label>
+              <input type="radio" id="15star2" name="15rating" value="2" (click)='onClick15(2)' [checked]="rating15 === 2"/><label class = "full2" for="15star2" title="Awesome - 9 stars">2</label>
+              <input type="radio" id="15star1" name="15rating" value="1" (click)='onClick15(1)' [checked]="rating15 === 1" /><label class = "full1" for="15star1" title="Awesome - 10 stars">1</label>
+            </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="short-type" *ngFor="let value of shortquestion">
+      <div class="question-content">
+        <p>{{value.squestion}}</p>
+        <mat-radio-group aria-label="Select an option">
+        <div class="btn-arround">
+          <div><mat-radio-button value="1">Yes</mat-radio-button></div>
+          <div><mat-radio-button value="2">No</mat-radio-button></div>
+        </div>
+      </mat-radio-group>
+      </div>
+    </div>
+    <div class="about">
+      <ion-textarea placeholder="Your Opinion About The Teacher..."></ion-textarea>
+    </div>
+    <div class="expectation">
+      <ion-textarea placeholder="Your Expectation From The Teacher..."></ion-textarea>
+    </div>
+    <div>
+      <ion-button expand="block" [routerLink]="['/', 'feedback-view']">Send Feedback</ion-button>
+    </div>
+  </div>
+</ion-content>

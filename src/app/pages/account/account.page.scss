@@ -1,0 +1,246 @@
+ion-header {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    .arrow-back {
+        position: absolute;
+        left: 4%;
+        z-index: 999;
+    }
+
+    .list-bar {
+        position: absolute;
+        left: 86%;
+        z-index: 999;
+    }
+
+    ion-title {
+        text-align: center;
+    }
+
+    .menu-bar {
+        position: absolute;
+        width: 100%;
+        text-align: right;
+        top: 10%;
+        color: #4d4848;
+        z-index: 99999;
+
+        mat-icon {
+            font-size: 30px;
+        }
+
+        .menu-button {
+            width: 50px;
+        }
+    }
+}
+
+ion-content {
+    --background: #fff;
+
+    .gallery-head {
+        text-align: center;
+        padding: 15px 0 15px;
+        color: #7d7979;
+        font-weight: 500;
+        margin: 0;
+
+        span {
+            font-size: 10px;
+            padding: 0 5px;
+            font-weight: bold;
+        }
+    }
+
+    .image-status {
+        padding: 0 15px;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+
+        .image-status-date {
+            color: #1e23c2;
+            font-weight: 500;
+
+            .image-status-day {
+                color: #EB2038;
+                font-weight: 500;
+            }
+
+        }
+
+        .image-status-time {
+            color: #1e23c2;
+            font-weight: 500;
+        }
+
+        .image-status-type {
+            color: #888C8E;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .image-status-img {
+            color: #888C8E;
+            font-size: 13px;
+            font-weight: 400;
+        }
+    }
+
+    .image-slider {
+        padding: 0px 0 20px 0;
+
+        ion-slide {
+            img {
+                border-radius: 10px;
+                height: 75px;
+                width: 100px;
+                object-fit: cover;
+            }
+        }
+    }
+
+}
+
+ion-footer {
+    ion-grid {
+        padding: 0;
+
+        .dashboard_btn {
+            background-color: #272B81;
+
+            .dashboard {
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 5px;
+
+                ion-icon {
+                    width: 100%;
+                    font-size: 20px;
+                    // color: #ea2020;
+                    color: #B4B6D3;
+                }
+
+                ion-label {
+                    font-weight: 400;
+                    // color: #fff;
+                    color: #DBDCE9;
+                }
+            }
+        }
+
+        .gallery_btn {
+            background-color: #272B81;
+
+            .gellary {
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 5px;
+
+                ion-icon {
+                    width: 100%;
+                    font-size: 20px;
+                    color: #B4B6D3;
+                }
+
+                ion-label {
+                    font-weight: 400;
+                    color: #DBDCE9;
+                }
+            }
+        }
+
+        .account_btn {
+            background-color: #272B81;
+
+            .account {
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 5px;
+
+                ion-icon {
+                    width: 100%;
+                    font-size: 20px;
+                    color: #B4B6D3;
+                }
+
+                ion-label {
+                    font-weight: 400;
+                    color: #DBDCE9;
+                }
+            }
+        }
+
+        .active {
+            background-color: #121665;
+
+            .dashboard {
+                ion-icon {
+                    color: #E21119;
+                }
+
+                ion-label {
+                    color: #fff;
+                }
+            }
+        }
+
+        .active {
+            background-color: #121665;
+
+            .gellary {
+                ion-icon {
+                    color: #E21119;
+                }
+
+                ion-label {
+                    color: #fff;
+                }
+            }
+        }
+
+        .active {
+            background-color: #121665;
+
+            .account {
+                ion-icon {
+                    color: #E21119;
+                }
+
+                ion-label {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+ion-toolbar {
+    --background: #fff !important;
+
+    mat-icon {
+        color: #000 !important;
+    }
+
+    ion-buttons {
+        color: #000 !important;
+    }
+}
+
+.logout {
+    position: fixed;
+    width: 100%;
+    display: block;
+    bottom: 57px;
+
+    ion-button {
+        --background: #e50c0c;
+        height: 50px;
+    }
+}

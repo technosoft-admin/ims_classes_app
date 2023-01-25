@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div class="z-index">
+        <mat-icon aria-hidden="false" [routerLink]="['/', 'student-leave-list']"  class="arrow-back" aria-label="Example home icon" >keyboard_backspace</mat-icon>
+      </div>
+      <div class="title">
+        <ion-title>Leave {{type}}</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <section class="select">
+    <form #addForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addForm)">
+      <div class="form-item ngsel">
+    
+        <mat-form-field appearance="outline">  
+          <mat-label>Subject</mat-label>  
+          <input matInput type="text" [(ngModel)]="model.subject_name" name="subject_name" required>  
+        </mat-form-field> 
+      
+      </div>
+      <div class="form-item ngsel">
+        <mat-form-field appearance="outline">  
+          <mat-label> From Date </mat-label>  
+          <input matInput  type="date" [(ngModel)]="model.from_date" name="from_date" required>  
+        </mat-form-field> 
+      </div>
+      <div class="form-item ngsel">
+    
+        <mat-form-field appearance="outline">  
+          <mat-label> To Date </mat-label>  
+          <input matInput type="date" [(ngModel)]="model.to_date" name="to_date" required>  
+        </mat-form-field> 
+      
+      </div>
+     
+      <div class="form-item">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label> Reason </mat-label>  
+          <textarea matInput   [(ngModel)]="model.reason" name="reason" required></textarea>
+        </mat-form-field>
+        <!-- <angular-editor name="description" [(ngModel)]="model.description" [config]="config"></angular-editor> -->
+      </div>
+      
+      <!-- <div class="sehedule-latter">
+        <div><a href="">Schedule For Later</a></div>
+      </div> -->
+      <div class="save-btn">
+        <ion-button class="btn-color" [disabled]="!addForm.valid" type="submit" expand="block">Send</ion-button>
+      </div>
+    </form>
+  </section>
+</ion-content>

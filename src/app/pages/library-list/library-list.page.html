@@ -1,0 +1,315 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'library']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Library</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>    
+  <ion-row>
+    <div class="calendar-content">
+        <p>January 2021</p>
+    </div>
+    <div class="calendar-icon">
+      <ion-icon name="calendar" class="icon" [routerLink]="['/', 'library']"></ion-icon>
+    </div>
+  </ion-row>
+  <div class="library-list">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="date-col">
+          <div>
+            <h2>04</h2>
+            <p>Tue</p>
+            <p>Jan</p>
+            <p>2020</p>
+          </div>
+        </ion-col>
+        <ion-col size="10">
+          <div class="menu-list">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-chip color="success" class="in">
+                    <ion-label>In</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-chip color="danger" class="out">
+                    <ion-label>Out</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6" [routerLink]="['/', 'library-notification']">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6" [routerLink]="['/', 'library-notification']">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6" [routerLink]="['/', 'library-notification']">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="library-list">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="date-col">
+          <div>
+            <h2>03</h2>
+            <p>Tue</p>
+            <p>Jan</p>
+            <p>2020</p>
+          </div>
+        </ion-col>
+        <ion-col size="10">
+          <div class="menu-list">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-chip color="success" class="in">
+                    <ion-label>In</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-chip color="danger" class="out">
+                    <ion-label>Out</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="library-list">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="date-col">
+          <div>
+            <h2>02</h2>
+            <p>Tue</p>
+            <p>Jan</p>
+            <p>2020</p>
+          </div>
+        </ion-col>
+        <ion-col size="10">
+          <div class="menu-list">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-chip color="success" class="in">
+                    <ion-label>In</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-chip color="danger" class="out">
+                    <ion-label>Out</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="library-list">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="date-col">
+          <div>
+            <h2>01</h2>
+            <p>Tue</p>
+            <p>Jan</p>
+            <p>2020</p>
+          </div>
+        </ion-col>
+        <ion-col size="10">
+          <div class="menu-list">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-chip color="success" class="in">
+                    <ion-label>In</ion-label>
+                  </ion-chip>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-chip color="danger" class="out">
+                    <ion-label>Out</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row class="mt-10 t-center">
+                <ion-col size="4" class="first-col">
+                  <ion-label>Mor 10:00 AM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="seconde-col">
+                  <ion-label>Noon 04:00 PM</ion-label>
+                </ion-col>
+                <ion-col size="4" class="mt-6">
+                  <ion-chip class="total-cal">
+                    <ion-label>04:00 Hr</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  
+</ion-content>
+

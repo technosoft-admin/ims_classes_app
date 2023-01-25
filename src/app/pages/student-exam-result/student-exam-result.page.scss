@@ -1,0 +1,297 @@
+ion-header{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    ion-toolbar{
+        --border-width: 0;
+        .header-content{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            align-items: center;
+        }
+        
+    }
+    .nav-item{
+        padding: 15px 0;
+        justify-content: space-around;
+        .active{
+            ion-label{
+                font-size: 14px;
+                color: #ff3030 !important;
+                font-weight: 500;
+            }
+            i{
+                font-size: 15px;
+                display: inline-block;
+                color: #ff3030 !important;
+            }
+        }
+        .all{
+            i{
+                font-size: 15px;
+                display: inline-block;
+                color: #ABABAB;
+            }
+            ion-label{
+                font-size: 14px;
+                color: #ABABAB;
+            }
+        }
+        .general{
+            i{
+                font-size: 15px;
+                display: inline-block;
+                color: #ABABAB;
+            }
+            ion-label{
+                font-size: 14px;
+                color: #ABABAB;
+            }
+        }
+        .attendance{
+            i{
+                font-size: 15px;
+                display: inline-block;
+                color: #ABABAB;
+            }
+            ion-label{
+                font-size: 14px;
+                color: #ABABAB;
+            }
+        }
+        .libary{
+            i{
+                font-size: 15px;
+                display: inline-block;
+                color: #ABABAB;
+            }
+            ion-label{
+                font-size: 14px;
+                color: #ABABAB;
+            }
+        }
+    }
+}
+ion-content{
+    --background: url(/assets/images/Layer0.png);
+    height: 100%;
+    width: 100%;
+    .pt-15{
+        padding-top: 15px;
+        .message-item{
+            padding: 0 15px 15px 15px;
+            .message-item-color{
+                border-radius: 20px;
+                --inner-border-width: 0;
+                box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+                .message-avatar{
+                    color: #fff;
+                    position: relative;
+                    i{
+                        position: absolute;
+                        width: 100%;
+                        font-size: 17px;
+                        text-align: center;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+               
+    
+                ion-label{
+                    margin: 3px 0px 5px;
+                    p{
+                        margin: 0;
+                        font-size: 11px;
+                        font-weight: 500;
+                    }
+                    .message-content{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        h3{
+                            margin: 0;
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
+                    }
+                    
+                }
+            }
+            .bg-blue{
+                --background: #9bcbf5;
+            }
+            .message-item-color{
+                .message-avatar{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                ion-label{
+                    p{
+                        color: #063863;
+                    }
+                    .message-content{
+                        .d-flaex{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            h3{
+                                color: #063863;
+                            }
+                            .min{
+                                color: #063863;
+                            }
+                            .max{
+                                color: #063863;
+                            }
+                            .scheme{
+                                color: #063863;
+                            }
+                            .time{
+                                h5{
+                                    color:#063863;
+                                    font-size: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+            }
+            .bg-orange{
+                --background: #eeb479ce;
+            }
+            .message-item-color.bg-orange{
+                .message-avatar{
+                    background:  #f2810d;
+                }
+                ion-label{
+                    p{
+                        color: #c2540b;
+                    }
+                    .message-content{
+                        .d-flaex{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            h3{
+                                color: #c2540b;
+                            }
+                            .min{
+                                color: #c2540b;
+                            }
+                            .max{
+                                color: #c2540b;
+                            }
+                            .scheme{
+                                color: #c2540b;
+                            }
+                            .time{
+                                h5{
+                                    color:#c2540b;
+                                    font-size: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+            }
+            .bg-green{
+                --background: #a3f79d;
+            }
+            .message-item-color.bg-green{
+                .message-avatar{
+                    background:  #25a61d;
+                }
+                ion-label{
+                    p{
+                        color: #196413;
+                    }
+                    .message-content{
+                        .d-flaex{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            h3{
+                                color: #196413;
+                            }
+                            .min{
+                                color: #196413;
+                            }
+                            .max{
+                                color: #196413;
+                            }
+                            .scheme{
+                                color: #196413;
+                            }
+                            .time{
+                                h5{
+                                    color:#196413;
+                                    font-size: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+            }
+            
+            .seened{
+                --background: #d7d0d0cf;
+            }
+            .message-item-color.seened{
+                .message-avatar{
+                    background: #B4B1B1 !important;
+                }
+                ion-label{
+                    p{
+                        color: #504d50;
+                    }
+                    .message-content{
+                        .d-flaex{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            h3{
+                                color: #504d50;
+                            }
+                            .min{
+                                color: #504d50;
+                            }
+                            .max{
+                                color: #504d50;
+                            }
+                            .scheme{
+                                color: #504d50;
+                            }
+                            .time{
+                                h5{
+                                    color:#504d50;
+                                    font-size: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .save-btn{
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        padding: 15px;
+        background: #efeded;
+        ion-button{
+            height: 50px;
+            font-size: 18px;
+        }
+    } 
+}
+  

@@ -1,0 +1,71 @@
+
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title>Exam List</ion-title>
+      </div>
+      <div>
+        <!-- <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search" ></ion-icon>
+          </ion-button>
+        </ion-buttons>  -->
+      </div>
+    </div>
+  </ion-toolbar>
+  <div class="p-15" *ngIf="user_type=='teacher'">
+    <div class="nav-item">
+ 
+      <!-- <div *ngFor="let value of divisionlist; let index=index"   class="divA alltime-green" (click)="onClick(value?.classmodel?.id,value?.id)"   [ngClass]="{'active': tab === value?.classmodel?.id}" > -->
+        <div *ngFor="let value of divisionlist; let index=index"   class="divA" (click)="onClick(value?.classmodel?.id,value?.id)"   [ngClass]="{'active': tab === value?.classmodel?.id}" >
+        <i class="fa fa-leanpub" aria-hidden="true"></i>
+        <ion-label>&nbsp;{{value?.classmodel?.class_name}} - {{value?.division_name}}</ion-label>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content *ngIf="user_type=='teacher'">
+  <section class="table" *ngFor="let exam of listData" >
+    <div class="table-content" (click)=" onSubmit(exam?.id)">
+        <div class="exam-item">
+          <!-- <div class="exam-item-color active-item-bgcolor" > -->
+            <div class="exam-item-color {{exam?.complete}}" >
+            <div class="exam-content-up">
+              <div class="exame-name">{{exam?.exam_name}}</div>
+              <div class="form-date">{{exam?.start_date}}</div>
+            </div>
+            <div class="exam-content-down">
+              <div class="exame-pattern">{{exam?.exampattern?.pattern_name}}</div>
+              <div class="to-date">{{exam?.end_date}}</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+</ion-content>
+<ion-content *ngIf="user_type=='student'">
+
+  <section class="table" *ngFor="let exam of listData" >
+    <div class="table-content" (click)=" onSubmit(exam?.id)">
+        <div class="exam-item">
+          <!-- <div class="exam-item-color active-item-bgcolor" > -->
+            <div class="exam-item-color " >
+            <div class="exam-content-up">
+              <div class="exame-name">{{exam?.exam_name}}</div>
+              <div class="form-date">{{exam?.start_date}}</div>
+            </div>
+            <div class="exam-content-down">
+              <div class="exame-pattern">{{exam?.exampattern?.pattern_name}}</div>
+              <div class="to-date">{{exam?.end_date}}</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  
+</ion-content>

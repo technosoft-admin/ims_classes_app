@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div class="z-index">
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'home-work']">keyboard_backspace</mat-icon>
+      </div>
+      <div class="title">
+        <ion-title> Result Preparation</ion-title>
+      </div>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <section class="select">
+    <form #addForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addForm)">
+
+      <div class="form-item ngsel">
+        <ng-select [items]="exam" bindLabel="exam_name" placeholder="Select item" name="exam_id" bindValue="id" (change)="onClass(model.exam_id)"
+          [(ngModel)]="model.exam_id" required>
+        </ng-select>
+        <label>Select Exam</label>
+      </div>
+
+      <div class="form-item ngsel change">
+        <ng-select
+         [items]="classData"
+          bindLabel="classmodel.class_name" 
+          [multiple]="true"
+           placeholder="Select item" 
+           name="class_id" 
+           bindValue="classmodel.id"
+          [(ngModel)]="model.class_id"
+           required (change)="onDivision(model.class_id)">
+        </ng-select>
+        <label>Select Class</label>
+      </div>
+
+      <div class="form-item ngsel change">
+        <ng-select 
+        [items]="division"  
+        [multiple]="true" 
+        bindLabel="division_name"  
+        placeholder="Select item" 
+        name="division_id" 
+        bindValue="id"
+        groupBy="selectedAllGroup"
+        [selectableGroup]="true"
+        [(ngModel)]="model.division_id" required>
+        </ng-select>
+        <label>Select Division</label>
+      </div>
+
+
+      <div class="form-item">
+        <mat-label> Subject </mat-label>  
+        <span><mat-checkbox class="example-margin mat-text" name="subject_class"  [checked]="subject_class" >Classwish</mat-checkbox></span>
+      </div>
+      <div class="form-item">
+        <mat-label> Over All </mat-label>  
+
+        <span><mat-checkbox class="example-margin mat-text" [checked]="sms" (change)="onChecked($event,'SMS')">Classwish</mat-checkbox></span>
+        <span><mat-checkbox class="example-margin mat-text" [checked]="app" (change)="onChecked($event,'APP')">Division Wish</mat-checkbox></span>
+      </div>
+      
+      <!-- <div class="sehedule-latter">
+        <div><a href="">Schedule For Later</a></div>
+      </div> -->
+      <div class="save-btn">
+        <ion-button class="btn-color" [disabled]="!addForm.valid" type="submit" expand="block">Save</ion-button>
+      </div>
+    </form>
+  </section>
+</ion-content>

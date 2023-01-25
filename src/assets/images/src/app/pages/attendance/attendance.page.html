@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+    <ion-buttons slot="end" class="list-bar" [routerLink]="['/', 'attendance-list']">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Attendance</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content1">
+    <div class="content-box1">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" class="divide">
+            <p>15 Days Of 31</p>
+            <ion-label>Average Days</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <p>51.52%</p>
+            <ion-label>Average Attendance</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-label>Jan,2020</ion-label>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="content2">
+    <div class="content-box2">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" class="divide">
+            <p>15 Days Of 31</p>
+            <ion-label>Average Days</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <p>51.52%</p>
+            <ion-label>Average Attendance</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-label>Total</ion-label>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="">
+    <!-- <ion-calendar [(ngModel)]="date"
+      (onChange)="onChange($event)"
+      [type]="type"
+      [format]="'YYYY-MM-DD'">
+    </ion-calendar> -->
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
+    </mat-card>
+    <button ion-button block></button>
+  </div>
+  <div class="attendance-list">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="list-1">
+          <ion-label>Today</ion-label>
+        </ion-col>
+        <ion-col class="list-2">
+          <ion-label>Present</ion-label>
+        </ion-col>
+        <ion-col class="list-3">
+          <ion-label>Absent</ion-label>
+        </ion-col>
+        <ion-col class="list-4">
+          <ion-label>Manual</ion-label>
+        </ion-col>
+        <ion-col class="list-5">
+          <ion-label>Leave</ion-label>
+        </ion-col>
+        <ion-col class="list-6">
+          <ion-label>Holiday</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<!-- ******* Footer Tab Start ******* -->
+<ion-footer>
+  <ion-toolbar>
+    <div class="segment">
+      <ion-segment scrollable value="home">
+        <ion-segment-button value="home">
+          <ion-label>Dashboard</ion-label>
+          <ion-icon name="home"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="gallery">
+          <ion-label>Gallery</ion-label>
+          <ion-icon name="images"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="account">
+          <ion-label>Account</ion-label>
+          <ion-icon name="person"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,19 @@
+<ion-content>
+  <p class="text">OTP Verification</p>
+  <div class="reset-logo">
+    <ion-img src="assets/images/massage.png"></ion-img>
+  </div>
+  <p class="text-new">Enter Your 6 Digit OTP</p>
+  <div class="timer"><p>0{{minitLeft}}:{{secondLeft}}</p></div> 
+    <div class="reset-form">
+      <form #addForm="ngForm" (ngSubmit)="onSubmitForm(addForm)">
+        <!-- Auth page to otp counter -->
+        <ion-input *ngIf="parms_action_name == 'auth'" class="form-control" placeholder="Enter Your OTP Here" name="otp" [(ngModel)]="model.otp" required (keyup)="otpCount($event)"></ion-input>
+        
+        <!-- Forgot-Password page to otp counter -->
+        <ion-input *ngIf="parms_action_name == 'forgot-password'" class="form-control" placeholder="Enter Your OTP Here" name="otp" [(ngModel)]="model.otp" required (keyup)="otpCount($event)"></ion-input>
+      </form>
+      <p class="r-password"><a (click)="resendOTP()" *ngIf="minitLeft == 0 && secondLeft == 0">Resend OTP</a></p>
+      <p class="r-password">Your OTP has been sent on your registred Mobile Number {{firstnumber}}*****{{lastnumber}} It is valid for 5 minutes</p>
+    </div>
+</ion-content>

@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'fees']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Fees Payment</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div> 
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-15">
+    <div class="select-header"><h1>Select Payment Gateway</h1></div>
+    <div class="mt-10 pay-get">
+      <!-- <div class="pay_col1" (click)="onClick(1)"   [ngClass]="{'active': tab==='pay_col1'}">
+        <div class="pay-content">
+          <div class="pay_con1" >
+            <div class="img-avt">
+              <img src="assets/images/sbi-logo.png">
+            </div>
+            <div>
+              <ion-label>SBI</ion-label>
+            </div>
+          </div>
+        </div>
+      </div>
+     <div class="pay_col2"  (click)="onClick(2)"   [ngClass]="{'active': tab==='pay_col2'}">
+        <div class="pay-content">
+          <div class="pay_con2">
+            <div class="img-avt">
+              <img src="assets/images/PikPng.com_bank-png_718369.png">
+            </div>
+            <ion-label>ICICI</ion-label>
+          </div>
+        </div>
+      </div>
+       <div class="pay_col3" (click)="onClick(3)"   [ngClass]="{'active': tab==='pay_col3'}">
+        <div class="pay-content">
+          <div class="pay_con3" >
+            <div class="img-avt">
+              <img src="assets/images/unnamed-removebg-preview.png">
+            </div>
+            <ion-label>BOI</ion-label>
+          </div>
+        </div>
+      </div>
+      <div class="pay_col4" (click)="onClick(4)"   [ngClass]="{'active': tab==='pay_col4'}">
+        <div class="pay-content">
+          <div class="pay_con4" >
+            <div class="img-avt">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsFTVJkSvsQHcmLyw7u3VOvDsrY9Gynop8m4wwi8KJUemSe4P4qGy_5NM3URqf69XQbAQ&usqp=CAU">
+            </div>
+            <ion-label>PNB</ion-label>
+          </div>
+        </div>
+      </div> -->
+          <div class="select-pay example-ripple-container"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+            <label id="sbi">
+              <div class="logo">
+                <img src="assets/images/sbi-logo.png">
+              </div>
+              SBI
+              <input type="radio" id="sbi" name="check" value="sbi">
+              <span></span>
+            </label>
+          </div>
+          <div class="select-pay example-ripple-container"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+            <label id="boi">
+              <div class="logo">
+                <img src="assets/images/unnamed-removebg-preview.png">
+              </div>
+              BOI
+              <input type="radio" id="boi" name="check" value="boi">
+              <span class="boi"></span>
+            </label>
+          </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="next-btn">
+    <ion-button expand="block">next</ion-button>
+  </div>
+</ion-footer>

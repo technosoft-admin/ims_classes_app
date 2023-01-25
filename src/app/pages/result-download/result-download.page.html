@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div><ion-title>Downloads</ion-title></div>
+      <div>
+        <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div> 
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
+  <div *ngIf="!load">
+    <div *ngFor="let value of list; let index=index" >
+      <div class="message-item" >
+        <!-- <div class="time"><h5><span>15-05-2021</span>&nbsp;&nbsp;&nbsp; 10:45 AM</h5></div> -->
+        <div class="message-item-color" [ngClass]="{'bg-green': value.type === 'pdf', 'bg-blue-cola': value.type === 'excel', 'bg-alorange': value.type === 'word', 'bg-purple-vanity': value.type === 'img'}">
+          <div class="img-avt">
+            <ion-avatar slot="start" class="message-avatar" >
+              <i class="fa fa-file-pdf-o" aria-hidden="true" *ngIf="value.type=='pdf'"></i>
+            </ion-avatar>
+          </div>
+          <div class="message-section">
+            <div class="tch-name">{{value.tecname}}</div>
+            <div class="message-content">
+              <div>
+                <h3>{{value?.chapter}}</h3>
+              </div>
+              <div class="download-icon example-ripple-container"
+                matRipple
+                [matRippleCentered]="centered"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="item-download">
+              <div class="message-text">{{value.subtitle}}</div>
+              <div class="text-work">Result</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="message-item">
+        <div class="time"><h5><span>12-05-2021</span>&nbsp;&nbsp;&nbsp; 10:45 AM</h5></div>
+        <div class="message-item-color ">
+          <div class="img-avt">
+            <ion-avatar slot="start" class="message-avatar ">
+              <i class="fa fa-file-word-o" aria-hidden="true"></i>
+            </ion-avatar>
+          </div>
+          <div class="message-section">
+            <div class="tch-name">{{word[index].tecname}}</div>
+            <div class="message-content">
+              <div>
+                <h3>{{word[index].chapter}}</h3>
+              </div>
+              <div  class="download-icon example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="item-download">
+              <div class="message-text">{{word[index].subtitle}}</div>
+              <div class="text-work">Assignment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="message-item">
+        <div class="time"><h5><span>13-05-2021</span>&nbsp;&nbsp;&nbsp; 10:45 AM</h5></div>
+        <div class="message-item-color ">
+          <div class="img-avt">
+            <ion-avatar slot="start" class="message-avatar ">
+              <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            </ion-avatar>
+          </div> 
+          <div class="message-section">
+            <div class="tch-name">{{excel[index].tecname}}</div>
+            <div class="message-content">
+              <div>
+                <h3>{{excel[index].chapter}}</h3>
+              </div>
+              <div  class="download-icon example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="item-download">
+              <div class="message-text">{{excel[index].subtitle}}</div>
+              <div class="text-work">Homework</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="message-item">
+        <div class="time"><h5><span>24-05-2021</span>&nbsp;&nbsp;&nbsp; 10:45 AM</h5></div>
+        <div class="message-item-color bg-purple-vanity">
+          <div class="img-avt">
+            <ion-avatar slot="start" class="message-avatar ">
+              <i class="fa fa-file-image-o" aria-hidden="true"></i>
+            </ion-avatar>
+          </div>
+          <div class="message-section">
+            <div class="tch-name">{{image[index].tecname}}</div>
+            <div class="message-content">
+              <div>
+                <h3>{{image[index].chapter}}</h3>
+              </div>
+              <div  class="download-icon example-ripple-container"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleRadius]="radius"
+              [matRippleColor]="color">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="item-download">
+              <div class="message-text">{{image[index].subtitle}}</div>
+              <div class="text-work">Assignment</div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  
+</ion-content>

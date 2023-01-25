@@ -1,0 +1,51 @@
+ion-content{
+    --background: #F4F4F6;
+    .con-text{
+        width: 100%;
+        text-align: center;
+        margin-top: 25%;
+        font-size: 23px;
+        color: #636369;
+    }
+    .done-logo{
+        text-align: -webkit-center;
+        top: 25%;
+        left: 0%;
+        position: absolute;
+        
+        ion-img{
+            width: 60%;
+            padding-bottom: 60px;
+        } 
+        // h1{
+        //     margin-top: -60px;
+        //     font-weight: 500;
+        // }
+    }
+    .back-login{
+        margin-top: -60px;
+        padding: 10px 15px 10px 15px;
+        // background: #0d0d58;
+        // background: linear-gradient(#ce4041, #1a2ad6);
+        background-image: linear-gradient(to left top, #1e1b9e, #8c0091, #ca0072, #f0004a, #ff0e14);
+        color: #fff;
+        border-radius: 10px;
+        outline: none;
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (orientation: landscape) {
+    ion-content{
+        .con-text{
+            margin-top: 5%;
+        }  
+        .done-logo{
+            ion-img{
+                width: 25%;
+                padding-bottom: 40px;
+            }
+        } 
+    }
+}

@@ -1,0 +1,78 @@
+
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <div>
+        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+      </div>
+      <div>
+        <ion-title>Leave List</ion-title>
+      </div>
+      <div>
+        <!-- <ion-buttons slot="end" class="list-bar">
+          <ion-button>
+            <ion-icon name="search" ></ion-icon>
+          </ion-button>
+        </ion-buttons>  -->
+      </div>
+    </div>
+  </ion-toolbar>
+  <!-- <div class="p-15">
+    <div class="nav-item">
+      <div class="divA" (click)="onClick(0)" [ngClass]="{'active': tab===0}">
+        <span><i class="fa fa-leanpub" aria-hidden="true"></i></span>
+        <ion-label>&nbsp;Not Publish</ion-label>
+      </div>
+      <div class="divA" (click)="onClick(1)"   [ngClass]="{'active': tab === 1}" >
+        <i class="fa fa-leanpub" aria-hidden="true"></i>
+        <ion-label>&nbsp;Publish</ion-label>
+      </div>
+    </div>
+  </div> -->
+</ion-header>
+<ion-content>
+
+  <section class="table">
+    <div class="search-tbl">
+      <ion-searchbar animated [ngModel]="range" (ngModelChange)="search($event)"></ion-searchbar>
+    </div>
+    <div class="table-content">
+      <!-- <div class="sellectall">{{getData}}Select All<mat-checkbox class="example-margin pl-10" [checked]="selectall" (change)="allComplete($event,0)"></mat-checkbox></div> -->
+      <div *ngFor="let value of list; let index=index">
+        <div class="message-item">
+          <div class="message-item-color">
+            <div class="message-section">
+              <div class="student-subject"><span class="desc">&nbsp;{{value?.subject_name}}</span></div>
+              <div class="ali-center">
+                <div class="message-content">
+                  <div>
+                    <div class="student-name"><span>{{value?.from_date}}</span> - <span>{{value?.to_date}}</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="edit_section">
+                <div class="edit-btn"><ion-button size="small" (click)="onEdit(value?.id)" *ngIf="value.approval_decision==null || value.approval_decision==''">Edit</ion-button></div>
+                <div class="apr_rej_message">
+                  <ion-chip color="success" *ngIf="value.approval_decision=='1'">
+                    <ion-label>Approved</ion-label>
+                  </ion-chip>
+                  <ion-chip color="danger" *ngIf="value.approval_decision=='0'">
+                    <ion-label>Rejected</ion-label>
+                  </ion-chip>
+                  <ion-chip color="warning" *ngIf="value.approval_decision=='' || value.approval_decision==null">
+                    <ion-label>Pending</ion-label>
+                  </ion-chip>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</ion-content>
+<ion-footer>
+  <div class="save-btn" id="check"><ion-button class="btn-color" expand="block" (click)="onSubmit()" >Add</ion-button></div>
+</ion-footer>
