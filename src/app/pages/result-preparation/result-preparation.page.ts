@@ -43,6 +43,8 @@ export class ResultPreparationPage implements OnInit {
   videoedit: any=[];
   classData: any;
   division: any;
+  sms:true;
+  app:true;
   constructor(
     private http: HttpClient, 
     private router: Router, 

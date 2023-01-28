@@ -16,7 +16,8 @@ import { CommonUtils } from './services/common-utils/common-utils';
 import { environment } from '../environments/environment';
 import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { take } from 'rxjs/operators';
-
+import {  FileTransfer,  FileTransferObject  } from '@ionic-native/file-transfer/ngx';  
+import {  File  } from '@ionic-native/file/ngx';  
 /* tslint:disable */
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ import { take } from 'rxjs/operators';
 export class AppComponent implements OnInit {
 
   @ViewChildren(IonRouterOutlet) routerOutlets;
-
+  private fileTransfer: FileTransferObject;  
   main_url = environment.apiUrl;
   file_url = environment.fileUrl;
 
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
   private userInfoSubscribe: Subscription;
   private groupMenuDataSubscribe: Subscription;
   private versionSubscribe:Subscription;
+  private AppConfigSubscribe:Subscription;
   menuPages = [];
   menuPagesList;
   menuPages2 = [];
@@ -63,11 +65,12 @@ export class AppComponent implements OnInit {
     private commonUtils: CommonUtils,
     private alertController: AlertController,
     private storage: Storage,
-    private firebaseX: FirebaseX // common functionlity come here
+    private firebaseX: FirebaseX,
+    private transfer: FileTransfer, private file: File // common functionlity come here
     // @Inject(DOCUMENT) private _document: HTMLDocument //use for fabicon
   ) {
-
-
+console.log("<-------------------------------------------->")
+    this.download("sample.pdf","https://www.clickdimensions.com/links/TestPDFfile.pdf"); 
     // this.onSiteInformation();
     this.initializeApp();
 
@@ -99,13 +102,34 @@ export class AppComponent implements OnInit {
 
 
   }
+
+
+  public download(fileName, filePath) {  
+    console.log("enter download-------------------------------->",this.file + fileName)
+    //here encoding path as encodeURI() format.  
+    let url = encodeURI(filePath);  
+    //here initializing object.  
+    this.fileTransfer = this.transfer.create();  
+    // here iam mentioned this line this.file.externalRootDirectory is a native pre-defined file path storage. You can change a file path whatever pre-defined method.  
+    this.fileTransfer.download(url, this.file.dataDirectory + fileName, true).then((entry) => {  
+        //here logging our success downloaded file path in mobile.  
+        console.log('download completed: ' + entry.toURL());  
+    }, (error) => {  
+        //here logging our error its easier to find out what type of error occured.  
+        console.log('download failed: ' + error);  
+    });  
+}
+
+
+
   ionViewWillEnter() 
   {
     this.versionChek();
-  
+  this.appConfig();
   }
   ngOnInit(): void {
     this.versionChek();
+    this.appConfig();
 
     this.firebaseX.getToken()
       .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
@@ -147,6 +171,29 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+
+
+  appConfig()
+  {
+    this.AppConfigSubscribe = this.http.get('app_config').subscribe(
+      (response: any) => {
+        let color_data=response.return_data.color;
+        console.log("color-------->",color_data)
+        document.documentElement.style.setProperty('--dynamic-primary-front-color', color_data.pri_front_color);
+        document.documentElement.style.setProperty('--dynamic-primary-background-color', color_data.pri_background_color);
+        document.documentElement.style.setProperty('--dynamic-second-front-color', color_data.sec_front_color);
+        document.documentElement.style.setProperty('--dynamic-second-background-color', color_data.sec_background_color);
+        document.documentElement.style.setProperty('--dynamic-default-dark-text-color', color_data.default_dark_text_color);
+        document.documentElement.style.setProperty('--dynamic-light-dark-text-color', color_data.default_light_text_color);
+        document.documentElement.style.setProperty('--dynamic-app-background-color', color_data.app_background_color);
+      },
+      errRes => {
+
+      }
+    );
+  }
+  
   // Backbutton call
   backButtonEvent() {
     this.platform.backButton.subscribe(() => {
@@ -467,6 +514,9 @@ export class AppComponent implements OnInit {
   ngOnDestory() {
     if (this.versionSubscribe !== undefined) {
       this.versionSubscribe.unsubscribe();
+    }
+      if (this.AppConfigSubscribe !== undefined) {
+      this.AppConfigSubscribe.unsubscribe();
     }
 
   }

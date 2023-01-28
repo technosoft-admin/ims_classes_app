@@ -50,7 +50,8 @@
                 <label class="input-title">Marking Scheme</label>
                 <ion-list class="form-control-option" >
                   <ion-item  >
-                    <ion-select (ionChange)="setData($event)"  name="marking_scheme{{i+1}}" id="{{i+1}}" [(ngModel)]="sub.marking_scheme" placeholder="Select Marking Scheme">
+                    <!-- <ion-select (ionChange)="setData($event)"  name="marking_scheme{{i+1}}" id="{{i+1}}" [(ngModel)]="sub.marking_scheme" placeholder="Select Marking Scheme"> -->
+                      <ion-select  name="marking_scheme{{i+1}}" id="{{i+1}}" [(ngModel)]="sub.marking_scheme" >
                       <ion-select-option value="Grading System">Grading System</ion-select-option>
                       <ion-select-option value="Marks System">Marks System</ion-select-option>
                     </ion-select>

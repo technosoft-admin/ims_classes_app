@@ -29,14 +29,14 @@ const routes: Routes = [
     path: 'password/:id',
     loadChildren: () => import('./pages/password/password.module').then( m => m.PasswordPageModule)
   },
-  {
-    path: 'resend-otp',
-    loadChildren: () => import('./pages/resend-otp/resend-otp.module').then( m => m.ResendOtpPageModule)
-  },
-  {
-    path: 'otp-verification',
-    loadChildren: () => import('./pages/otp-verification/otp-verification.module').then( m => m.OtpVerificationPageModule)
-  },
+  // {
+  //   path: 'resend-otp',
+  //   loadChildren: () => import('./pages/resend-otp/resend-otp.module').then( m => m.ResendOtpPageModule)
+  // },
+  // {
+  //   path: 'otp-verification',
+  //   loadChildren: () => import('./pages/otp-verification/otp-verification.module').then( m => m.OtpVerificationPageModule)
+  // },
   {
     path: 'otp-counter/:action/:id',
     loadChildren: () => import('./pages/otp-counter/otp-counter.module').then( m => m.OtpCounterPageModule)

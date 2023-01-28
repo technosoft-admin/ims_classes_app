@@ -19,6 +19,9 @@ import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
+import {  FileTransfer,  FileTransferObject  } from '@ionic-native/file-transfer/ngx';  
+import {  File  } from '@ionic-native/file/ngx';  
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -33,6 +36,7 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
     NgHttpLoaderModule.forRoot(),
     SharedModule,
     ReactiveFormsModule,
+    
   ],
   // providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },{
   //   provide: HTTP_INTERCEPTORS,
@@ -40,6 +44,9 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
   //   multi: true
   // },],
   providers: [
+    FileTransfer,  
+    FileTransferObject,  
+    File, 
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
@@ -51,7 +58,8 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
     StatusBar,
     SplashScreen,
     FirebaseX,
-    Camera
+    Camera,
+    
 
   ],
   bootstrap: [AppComponent],
