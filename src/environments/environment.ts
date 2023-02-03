@@ -6,17 +6,17 @@ export const environment = {
   production: false,
   apiMaster:'1',
   apiKey:'qwertyuiop',
-  apiUrl:'http://localhost:4000/api',
+  // apiUrl:'https://9b05-2401-4900-1c00-5066-2134-708-f266-7fb0.in.ngrok.io/api',
 
-  fileUrl:'http://localhost:4000/',
+  // fileUrl:'https://9b05-2401-4900-1c00-5066-2134-708-f266-7fb0.in.ngrok.io/',
   //  apiUrl:'http://192.168.1.4:4000/api',
   // fileUrl:'http://192.168.1.4:4000/'
   // apiUrl:'https://ltims.edu-ims.com/api',
   // fileUrl:'https://ltims.edu-ims.com/'
   // apiUrl:'https://hebronims.edu-ims.com/api',
   // fileUrl:'https://hebronims.edu-ims.com/'
-  // apiUrl: 'https://bc03-2401-4900-1c01-f98-1dad-ebf8-8d7c-e83a.in.ngrok.io/api',
-  // fileUrl: 'https://bc03-2401-4900-1c01-f98-1dad-ebf8-8d7c-e83a.in.ngrok.io'
+  apiUrl: 'https://ltims.edu-ims.com/api',
+  fileUrl: 'https://ltims.edu-ims.com/'
 };
 
 /*

@@ -16,8 +16,9 @@ import { CommonUtils } from './services/common-utils/common-utils';
 import { environment } from '../environments/environment';
 import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { take } from 'rxjs/operators';
-import {  FileTransfer,  FileTransferObject  } from '@ionic-native/file-transfer/ngx';  
-import {  File  } from '@ionic-native/file/ngx';  
+import { File } from '@ionic-native/file/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { timer } from 'rxjs';
 /* tslint:disable */
 @Component({
   selector: 'app-root',
@@ -26,10 +27,11 @@ import {  File  } from '@ionic-native/file/ngx';
 export class AppComponent implements OnInit {
 
   @ViewChildren(IonRouterOutlet) routerOutlets;
-  private fileTransfer: FileTransferObject;  
   main_url = environment.apiUrl;
   file_url = environment.fileUrl;
 
+  //
+  showSplash=false
   // variable define
   url_name;
   url_path_name;
@@ -38,8 +40,8 @@ export class AppComponent implements OnInit {
   userInfodDataLoading;
   private userInfoSubscribe: Subscription;
   private groupMenuDataSubscribe: Subscription;
-  private versionSubscribe:Subscription;
-  private AppConfigSubscribe:Subscription;
+  private versionSubscribe: Subscription;
+  private AppConfigSubscribe: Subscription;
   menuPages = [];
   menuPagesList;
   menuPages2 = [];
@@ -48,6 +50,7 @@ export class AppComponent implements OnInit {
   parentSelectedIndex;
   childSelectedIndex;
   siteInfo: any;
+  hourglass:boolean = true
   isActive: boolean = false;
   siteInfoLoading;
   checkAuthentication;
@@ -66,15 +69,20 @@ export class AppComponent implements OnInit {
     private alertController: AlertController,
     private storage: Storage,
     private firebaseX: FirebaseX,
-    private transfer: FileTransfer, private file: File // common functionlity come here
+    private nativeStorage: NativeStorage,
+    private file: File// common functionlity come here
     // @Inject(DOCUMENT) private _document: HTMLDocument //use for fabicon
   ) {
-console.log("<-------------------------------------------->")
-    this.download("sample.pdf","https://www.clickdimensions.com/links/TestPDFfile.pdf"); 
+    console.log("<-------------------------------------------->")
     // this.onSiteInformation();
-    this.initializeApp();
+    this.hourglass = true
+    setTimeout(() => {
+      this.appConfigCall();
+    },1000);
 
     this.backButtonEvent();
+   
+    // this.appConfigCall();
 
 
     /* this.commonUtils.menuDataobservable.subscribe(menuData =>{
@@ -104,32 +112,24 @@ console.log("<-------------------------------------------->")
   }
 
 
-  public download(fileName, filePath) {  
-    console.log("enter download-------------------------------->",this.file + fileName)
-    //here encoding path as encodeURI() format.  
-    let url = encodeURI(filePath);  
-    //here initializing object.  
-    this.fileTransfer = this.transfer.create();  
-    // here iam mentioned this line this.file.externalRootDirectory is a native pre-defined file path storage. You can change a file path whatever pre-defined method.  
-    this.fileTransfer.download(url, this.file.dataDirectory + fileName, true).then((entry) => {  
-        //here logging our success downloaded file path in mobile.  
-        console.log('download completed: ' + entry.toURL());  
-    }, (error) => {  
-        //here logging our error its easier to find out what type of error occured.  
-        console.log('download failed: ' + error);  
-    });  
-}
 
 
 
-  ionViewWillEnter() 
-  {
+
+  ionViewWillEnter() {
+
+    
     this.versionChek();
-  this.appConfig();
   }
   ngOnInit(): void {
+
+
     this.versionChek();
-    this.appConfig();
+  
+    // let data=localStorage.getItem('image')
+
+    // console.log("store Data----->", data)
+
 
     this.firebaseX.getToken()
       .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
@@ -154,46 +154,93 @@ console.log("<-------------------------------------------->")
 
   }
 
-  versionChek()
-  {
-    
+  versionChek() {
+
     this.versionSubscribe = this.http.get('version').subscribe(
       (res: any) => {
         if (res.return_status === 1) {
           // alert(res.return_date)
-          console.log('id',res.return_date)
-            if(res.return_data.version!=='0.0.1' )
-            {
-    this.versionAlertConfirm(res.return_data);
+          console.log('id', res.return_date)
+          if (res.return_data.version !== '0.0.1') {
+            this.versionAlertConfirm(res.return_data);
 
-            }
+          }
         }
       }
     );
   }
 
+  setImageColor(response) {
+    let color_data = response.color;
+    let image_data = response.image;
+    console.log(response)
+    document.documentElement.style.setProperty('--dynamic-app-image-background', 'url(' + image_data?.background_img + ')');
+    document.documentElement.style.setProperty('--dynamic-app-image-logo', 'url(' + image_data?.app_logo_img + ')');
+    document.documentElement.style.setProperty('--dynamic-app-image-otp', 'url(' + image_data?.otp_img + ')');
+    document.documentElement.style.setProperty('--dynamic-app-image-reset-password', 'url(' + image_data?.reset_password_image + ')');
+    document.documentElement.style.setProperty('--dynamic-app-image-forget-password', 'url(' + image_data?.forget_password_image + ')');
+    document.documentElement.style.setProperty('--dynamic-app-image-splash', 'url(' + image_data?.splash_img + ')');
+    document.documentElement.style.setProperty('--dynamic-app-image-success', 'url(' + image_data?.success_image + ')');
+    
+    document.documentElement.style.setProperty('--dynamic-primary-front-color', color_data?.pri_front_color);
+    document.documentElement.style.setProperty('--dynamic-primary-background-color', color_data?.pri_background_color);
+    document.documentElement.style.setProperty('--dynamic-second-front-color', color_data?.sec_front_color);
+    document.documentElement.style.setProperty('--dynamic-second-background-color', color_data?.sec_background_color);
+    document.documentElement.style.setProperty('--dynamic-default-dark-text-color', color_data?.default_dark_text_color);
+    document.documentElement.style.setProperty('--dynamic-light-dark-text-color', color_data?.default_light_text_color);
+    document.documentElement.style.setProperty('--dynamic-app-background-color', color_data?.app_background_color);
+
+    ////////////////////Image//////////
+    this.hourglass= false
+    this.showSplash=true;
+    
+    this.initializeApp();
 
 
-  appConfig()
-  {
+
+  }
+
+  appConfigCall() {
+    // this.nativeStorage.ready().then(() => {?
+    // this.nativeStorage.getItem('image').then(
+    //   data => console.log("appConfigCall----------------->",data),
+    //   error => this.appConfig(),
+    // );
+    // let StoredData= this.nativeStorage.getItem('image')
+    // if(this.nativeStorage.getItem('image'))
+    // {
+
+    // }
+    console.log('nativeStorage->>>',this.nativeStorage.getItem('image'))
+    this.nativeStorage.getItem('image').then(
+      data =>this.setImageColor(JSON.parse(data)),
+      error => this.appConfig(),
+    );
+  // }
+  }
+
+
+  appConfig() {
+    console.log("getiiing data................")
     this.AppConfigSubscribe = this.http.get('app_config').subscribe(
-      (response: any) => {
-        let color_data=response.return_data.color;
-        console.log("color-------->",color_data)
-        document.documentElement.style.setProperty('--dynamic-primary-front-color', color_data.pri_front_color);
-        document.documentElement.style.setProperty('--dynamic-primary-background-color', color_data.pri_background_color);
-        document.documentElement.style.setProperty('--dynamic-second-front-color', color_data.sec_front_color);
-        document.documentElement.style.setProperty('--dynamic-second-background-color', color_data.sec_background_color);
-        document.documentElement.style.setProperty('--dynamic-default-dark-text-color', color_data.default_dark_text_color);
-        document.documentElement.style.setProperty('--dynamic-light-dark-text-color', color_data.default_light_text_color);
-        document.documentElement.style.setProperty('--dynamic-app-background-color', color_data.app_background_color);
+      async (response: any) => {
+        let array = []
+        console.log("print Data..................",response.return_data.image)
+        this.nativeStorage.setItem('image', JSON.stringify(response.return_data)).then(
+          () => console.log('Stored item!'),
+          error => console.error('Error storing item.............', error)
+        );
+        this.setImageColor(response.return_data)
+        this.hourglass=false;
+        // this.appConfigCall();
+
       },
       errRes => {
 
       }
     );
   }
-  
+
   // Backbutton call
   backButtonEvent() {
     this.platform.backButton.subscribe(() => {
@@ -209,6 +256,7 @@ console.log("<-------------------------------------------->")
       });
     });
   }
+
   // alert call
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -233,19 +281,19 @@ console.log("<-------------------------------------------->")
   async versionAlertConfirm(data) {
     const alert = await this.alertController.create({
       header: 'Update Available',
-      message: 'A new version of '+data.name+' is available. Please update to version '+data.version+' now.',
+      message: 'A new version of ' + data.name + ' is available. Please update to version ' + data.version + ' now.',
       cssClass: 'custom-alert',
       backdropDismiss: false,
       buttons: [
-      {
-        text: 'Update',
-        handler: () => {
-          navigator['app'].exitApp();  
-        window.open(data.url);   
-        // window.open("https://play.google.com/store/apps/details?id=your-app-package-name&hl=en","_system");
-           }
-      }
-    ]
+        {
+          text: 'Update',
+          handler: () => {
+            navigator['app'].exitApp();
+            window.open(data.url);
+            // window.open("https://play.google.com/store/apps/details?id=your-app-package-name&hl=en","_system");
+          }
+        }
+      ]
     });
 
     await alert.present();
@@ -264,29 +312,30 @@ console.log("<-------------------------------------------->")
         this.statusBar.backgroundColorByHexString('#33000000');
       }
       this.splashScreen.hide();
+      timer(4000).subscribe(()=>this.showSplash=false)
       this.loginCheck();
     });
   }
 
   // Login check start
-  loginCheck(){
+  loginCheck() {
     this.authService.autoLogin().pipe(
       take(1)
     ).subscribe(resData => {
       console.log('resData +++++++++++++++++++++++++++++++=&&&&&& (autoLogin)>', resData);
-      if(resData){
+      if (resData) {
         this.checkAuthentication = true;
-        
+
         this.userInfoData();
         // console.log('User have Login');
-      }else{
+      } else {
         this.checkAuthentication = false;
         // console.log('user have NOT Login');
       }
     });
   }
 
-  
+
   //------------------- menu item show start------------------------
 
 
@@ -321,10 +370,10 @@ console.log("<-------------------------------------------->")
           //       /*  this.siteInfo = response.return_data.siteinfo;
           //        this.commonUtils.setSiteInfo(response.return_data.siteinfo);
           //        console.log('this.siteInfo >>', this.siteInfo);
- 
+
           //        // pageTitle
           //        this._document.getElementById('pageTitle').innerHTML = this.siteInfo.name;
- 
+
           //        // fabicon set
           //        this._document.getElementById('appFavicon').setAttribute('href', this.file_url+'/'+this.siteInfo.favicon); */
           //       // ================= site information dynamic end ===========
@@ -515,156 +564,9 @@ console.log("<-------------------------------------------->")
     if (this.versionSubscribe !== undefined) {
       this.versionSubscribe.unsubscribe();
     }
-      if (this.AppConfigSubscribe !== undefined) {
+    if (this.AppConfigSubscribe !== undefined) {
       this.AppConfigSubscribe.unsubscribe();
     }
 
   }
-
-
-  // group login menu data end
-
-  /* list = [
-      {
-        title: 'Dashboard',
-        url: '/menu/main',
-        icon: 'speedometer'
-      },
-      {
-        title: 'Transaction Management',
-        url: '',
-        icon: 'card',
-        isOpen: false,
-        pages: [
-          {
-            title: 'Add New',
-            url: '/add-transaction/add/id',
-            icon: 'add'
-          },
-          {
-            title: 'Transaction',
-            url: '/transaction-list',
-            icon: 'list-box'
-          },
-          {
-            title: 'Interest Incurred',
-            url: '/interest-incurred',
-            icon: 'list-box'
-          },
-          {
-            title: 'Recieved Payment',
-            url: '/recived-payment',
-            icon: 'cash'
-          },
-          {
-            title: 'Rejected Payment',
-            url: '/reject-payment',
-            icon: 'hand'
-          },
-          {
-            title: 'Expiring Transaction',
-            url: '/expiring-transaction',
-            icon: 'lock'
-          },
-        ]
-      },
-      {
-        title: 'Brokerage Management',
-        url: '/menu/main',
-        icon: 'eye-off',
-        isOpen: false,
-        pages: [
-          {
-            title: 'Brokerage',
-            url: '/brokerage-list',
-            icon: 'list'
-          },
-          {
-            title: 'Brokerage Recieved',
-            url: '/menu/flutter',
-            icon: 'clipboard'
-          },
-          {
-            title: 'Rejected Payment',
-            url: '/menu/flutter',
-            icon: 'hand'
-          },
-        ]
-      },
-      {
-        title: 'Report Management',
-        url: '/menu/main',
-        icon: 'today',
-        pages: [
-          {
-            title: 'Report',
-            url: '/menu/ionic',
-            icon: 'list-box'
-          }
-        ]
-      },
-      {
-        title: 'Contact Manager',
-        url: '/menu/main',
-        icon: 'eye-off',
-        isOpen: false,
-        pages: [
-          {
-            title: 'Group',
-            url: '/menu/ionic',
-            icon: 'people'
-          },
-          {
-            title: 'Lender/Borrower',
-            url: '/menu/flutter',
-            icon: 'business'
-          }
-        ]
-      },
-      {
-        title: 'Master Types',
-        url: '/menu/main',
-        icon: 'medical',
-        isOpen: false,
-        pages: [
-          {
-            title: 'Manage Role',
-            url: '/menu/ionic',
-            icon: 'people'
-          },
-          {
-            title: 'Employee',
-            url: '/menu/flutter',
-            icon: 'list'
-          },
-          {
-            title: 'Fiscal Year',
-            url: '/menu/flutter',
-            icon: 'calendar'
-          },
-          {
-            title: 'Account',
-            url: '/menu/flutter',
-            icon: 'folder'
-          },
-          {
-            title: 'Phone Type',
-            url: '/menu/flutter',
-            icon: 'call'
-          },
-          {
-            title: 'Email Type',
-            url: '/menu/flutter',
-            icon: 'mail'
-          },
-          {
-            title: 'Address Type',
-            url: '/menu/flutter',
-            icon: 'paper-plane'
-          }
-        ]
-      }
-  ]; */
-  // ------------------- menu item show end------------------------
-
 }

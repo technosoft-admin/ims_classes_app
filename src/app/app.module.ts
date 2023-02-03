@@ -19,8 +19,8 @@ import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
-import {  FileTransfer,  FileTransferObject  } from '@ionic-native/file-transfer/ngx';  
-import {  File  } from '@ionic-native/file/ngx';  
+import { File } from '@ionic-native/file/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,9 +44,7 @@ import {  File  } from '@ionic-native/file/ngx';
   //   multi: true
   // },],
   providers: [
-    FileTransfer,  
-    FileTransferObject,  
-    File, 
+
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
@@ -55,11 +53,13 @@ import {  File  } from '@ionic-native/file/ngx';
       multi: true
     },
     SmsRetriever,
-    StatusBar,
+    StatusBar,  
+    NativeStorage,
     SplashScreen,
     FirebaseX,
     Camera,
-    
+    File,
+  
 
   ],
   bootstrap: [AppComponent],
