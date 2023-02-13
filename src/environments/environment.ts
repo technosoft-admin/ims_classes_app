@@ -11,12 +11,12 @@ export const environment = {
   // fileUrl:'https://9b05-2401-4900-1c00-5066-2134-708-f266-7fb0.in.ngrok.io/',
   //  apiUrl:'http://192.168.1.4:4000/api',
   // fileUrl:'http://192.168.1.4:4000/'
-  // apiUrl:'https://ltims.edu-ims.com/api',
-  // fileUrl:'https://ltims.edu-ims.com/'
+  apiUrl:'https://ltims.edu-ims.com/api',
+  fileUrl:'https://ltims.edu-ims.com/'
   // apiUrl:'https://hebronims.edu-ims.com/api',
   // fileUrl:'https://hebronims.edu-ims.com/'
-  apiUrl: 'https://ltims.edu-ims.com/api',
-  fileUrl: 'https://ltims.edu-ims.com/'
+  // apiUrl: 'http://localhost:4000/api',
+  // fileUrl: 'http://localhost:4000/'
 };
 
 /*

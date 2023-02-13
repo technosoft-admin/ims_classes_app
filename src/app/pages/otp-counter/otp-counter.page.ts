@@ -54,10 +54,10 @@ var s = "Hello, your work pin number is 931234. Again, the number is 931234."
     this.parms_action_name = this.activatedRoute.snapshot.paramMap.get('action');
     let nextpage = this.parms_action_name == 'auth' ? '/create-password/' : '/reset-password/'
     this.type='FORGET-OTP';
-  if(nextpage==='/create-password/')
-  {
-    this.type='OTP';
-  }
+    if(nextpage==='/create-password/')
+    {
+      this.type='OTP';
+    }
     this.id_card_no = this.activatedRoute.snapshot.paramMap.get('id');
     console.log('parms_action_name', this.id_card_no);
    this.retriveSMS();

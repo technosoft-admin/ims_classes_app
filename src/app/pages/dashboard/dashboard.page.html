@@ -35,9 +35,9 @@
     
     <!-- ******* Heading Text Start ******* -->
     <div class="text-content">
-      <h1>HEBRON MISSION SCHOOL</h1>
-      <!-- <span>An Institute For Excellence In Science</span> -->
-      <!-- <p>AKOLA</p> -->
+      <h1>LALIT TUTORIALS</h1>
+      <span>An Institute For Excellence In Science</span>
+      <p>AKOLA</p>
     </div>
     <!-- ******* Heading Text End ******* -->
     
@@ -120,58 +120,60 @@
     </div>
     <!-- ******* Calender End ******* -->
     <!-- ******* Attendance & Libary Start ******* -->
-     <!-- <div class="card" *ngIf="user_type=='student'">
-      <div class="card-item">
-        <ion-card>
-          <ion-item>
-            <ion-label class="atten example-ripple-container" [routerLink]="['/', 'attendance-list']">Attendance</ion-label>
-            <ion-label class="arrow2 example-ripple-container" >Library</ion-label>
-          </ion-item>
-        
-          <ion-card-content> 
-            <ion-grid>
-              <ion-row>
-                <ion-col size="6" class="p-0">
-                  <ion-row class="p-10">
-                    <ion-col class="col-1 t-head"><div class="head-font-in">IN</div></ion-col>
-                    <ion-col class="t-head"><div class="head-font-out">OUT</div></ion-col>
+      <!-- <div class="card" *ngIf="user_type=='student' && app_type=='class'"> -->
+        <div class="card">
+          <div class="card-item">
+            <ion-card>
+              <ion-item>
+                <ion-label class="atten example-ripple-container" [routerLink]="['/', 'attendance-list','attendance']">Attendance</ion-label>
+                <ion-label class="arrow2 example-ripple-container" [routerLink]="['/', 'attendance-list','library']">Library</ion-label>
+              </ion-item>
+    
+              <ion-card-content> 
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="6" class="p-0">
+                       <ion-row size="12" class="pr-10">
+                        <ion-col class="col-1 t-head ion-text-left text-left"><div class="head-font-in">IN</div></ion-col>
+                        <ion-col class="t-head ion-text-left text-left"><div class="head-font-out">OUT</div></ion-col>
+                      </ion-row>
+                      <ion-row class="pl-15" *ngFor="let list of attendance_list">
+                        <ion-col class="col-1 left-icon p-0"><ion-label class="f-size"> {{list.in_time}}</ion-label></ion-col>
+                        <ion-col class="p-0"><ion-label class="f-size"> {{list.out_time}}</ion-label></ion-col>
+                      </ion-row>
+                    </ion-col>
+                     <ion-col size="6" class="p-0">
+                      <ion-row class="p-13 ion-text-right">
+                        <ion-col class="col-3 t-head text-right"><div class="head-font-in">IN</div></ion-col>
+                        <ion-col class="pr-25 t-head text-right"><div class="head-font-out">OUT</div></ion-col>  
+                      </ion-row>
+                      <ion-row class="ion-text-right pr-7" *ngFor="let list of libinoutlist">
+                        <ion-col class="col-3 left-icon p-0"><ion-label class="f-size"> {{list.in_time}}</ion-label></ion-col>
+                        <ion-col class="p-0"><ion-label class="f-size"> {{list.out_time}}</ion-label></ion-col>
+                      </ion-row>
+                 
+                    </ion-col>
                   </ion-row>
-                </ion-col>
-                <ion-col size="6" class="p-0">
-                  <ion-row class="p-13">
-                    <ion-col class="col-3 t-head"><div class="head-font-in">IN</div></ion-col>
-                    <ion-col class="t-head"><div class="head-font-out">OUT</div></ion-col>  
-                  </ion-row>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col class="p-0">
-                  <ion-row class="p-10" *ngFor="let list of attendance_list">
-                    <ion-col class="col-1 left-icon p-0" ><ion-label class="f-size">{{list.in_time }}</ion-label></ion-col>
-                    <ion-col class="p-0"><ion-label class="f-size">{{list.out_time}}</ion-label></ion-col>
-                  </ion-row>
-                </ion-col>
-                <ion-col class="p-0">
-                </ion-col>
-              </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </div>
           
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-      </div>
-      
-    </div> -->
+        </div>
+
+        
 
     <!-- ******* Attendance & Libary End ******* -->
 
     <!-- For Attendance Start -->
 
-     <div class="card" *ngIf="user_type=='student'">
+     <div class="card" *ngIf="user_type=='student' && app_type=='school'" >
+      <!-- <div class="card" *ngIf="user_type=='student' " > -->
       <div class="card-item">
         <ion-card>
           <div class="ion-item">
             <div>
-              <ion-label [routerLink]="['/', 'attendance-list']">Attendance</ion-label>
+              <ion-label [routerLink]="['/', 'attendance-list','attendance']">Attendance</ion-label>
             </div>
             <div class="inout-content">
               <div class="in-content"><span class="in-before">IN</span></div>
@@ -211,7 +213,7 @@
       <ion-row >
         <ion-col>
           <!-- <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'attendance']"  -->
-          <div class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'attendance-list']"
+          <div  class="item example-ripple-container mat-elevation-z4" [routerLink]="['/', 'attendance-list','attendance']"
             matRipple
             [matRippleCentered]="centered"
             [matRippleRadius]="radius"

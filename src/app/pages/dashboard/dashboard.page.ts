@@ -50,6 +50,8 @@ export class DashboardPage implements OnInit {
   attendance_listing_view_url: string;
   user_type: any;
   dashboard_data:any
+  app_type: any;
+  libinoutlist: any;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -59,6 +61,7 @@ export class DashboardPage implements OnInit {
 
   private dashboardDataSubscribe: Subscription;
   private dashboardAttendanceSubscribe: Subscription;
+  private libraryinoutSubscribe: Subscription;
 
   ionViewWillEnter() {
     this.tab = 'dashboard_btn';
@@ -66,12 +69,18 @@ export class DashboardPage implements OnInit {
     console.log('user', get_global_params);
     // let date=new Date()
     this.user_type=get_global_params.user.user_type;
+    this.app_type=get_global_params.user.type;
     var date = new DatePipe('en-US').transform(new Date().toISOString(), 'YYYY-MM-dd');
 
     this.getprofile(date);
+    this.getLibraryINOUT(date)
   }
+  
+
+  
   changeWeek(event) {
     let date =  event.format('YYYY-MM-DD');
+    this.getLibraryINOUT(date)
     this.attendance_listing_view_url='attendance?date='+date+'&page=2'
     this.dashboardAttendanceSubscribe = this.http.get(this.attendance_listing_view_url,).subscribe(
       (res: any) => {
@@ -85,7 +94,22 @@ export class DashboardPage implements OnInit {
       }
     );
   }
+ getLibraryINOUT(date)
+ {
+  this.libraryinoutSubscribe = this.http.get('/library/get?date='+date).subscribe(
+    (res: any) => {
+      console.log('tetsnbbbsh...',res)
+      if(res.return_status==1)
+      {
+        this.libinoutlist=res.return_data.row
+      }
+    },
 
+    errRes => {
+      console.log('DASHBOARD CHART COLOR => ', errRes);
+    }
+  );
+ }
   ngOnInit() {
     let get_global_params = this.authService.getTokenSessionMaster();
     console.log('dashboard', get_global_params);
@@ -93,6 +117,7 @@ export class DashboardPage implements OnInit {
     var date = new DatePipe('en-US').transform(new Date().toISOString(), 'YYYY-MM-dd');
 
     this.getprofile(date);
+    this.getLibraryINOUT(date)
   }
 
   onClick(check) {

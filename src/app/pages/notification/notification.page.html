@@ -1,28 +1,81 @@
 <ion-header>
-  <ion-toolbar class="custom">
-    <div class="header-content">
+  <!-- <ion-toolbar class="custom"> -->
+    <ion-toolbar >
+    <div class="search-backdrop" *ngIf="showSearch && !_value"  (click)="showSearch = false;"></div>
+
+    <div class="header-content" >
       <div>
-        <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
-          [routerLink]="['/', 'dashboard']">keyboard_backspace</mat-icon>
+        <!-- <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">arrow_back</mat-icon> -->
+          <mat-icon aria-hidden="false" class="arrow-back" matRipple  aria-label="Example home icon"
+          [routerLink]="['/', 'dashboard']">arrow_back</mat-icon>
       </div>
       <div>
         <ion-title *ngIf="searchopen=='0'">Notifications</ion-title>
-      <ion-searchbar  class="search" animated [ngModel]="model.range" (ngModelChange)="search($event)" *ngIf="searchopen=='1'"></ion-searchbar>
+        
+        
+      <!-- <ion-searchbar  class="search" animated [ngModel]="model.range" (ngModelChange)="search($event)" *ngIf="searchopen=='1'"></ion-searchbar> -->
 
       </div>
-      <div>
+      <mat-icon (click)="showSearch = !showSearch">search</mat-icon>
+
+      <div class="search-box" [ngClass]="{'show' : showSearch}">
+        <input 
+          class="search__input"
+          #myInput
+          placeholder="search..."
+          type="text"
+          matInput
+          [(ngModel)]="_value"
+        />
+      </div>
+      <!-- <div [@searchExpand]="expanded" fxFlex class="search__container ion-position-relative">
+        <input
+          (blur)="onBlur()"
+          [@inputExpand]="expanded"
+          class="search__input"
+          #myInput
+          placeholder="search..."
+          type="text"
+          matInput
+          [(ngModel)]="_value"
+        />
+        <button
+          *ngIf="expanded"
+          [@clearExpand]="{
+            value: _value.length > 0 && expanded,
+            params: { finalOpacity: _value.length > 0 ? 1 : 0 }
+          }"
+          mat-icon-button
+          (click)="close()"
+        >
+          <mat-icon (click)="close(); myInput.focus()">close</mat-icon>
+        </button>
+        <button
+          disableRipple="true"
+          mat-icon-button
+          (click)="onSearchClicked(); myInput.focus()"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div> -->
+      <!-- <div>
         <ion-buttons slot="end" class="list-bar">
           <ion-button (click)="searchOpen()">
             <ion-icon name="search" ></ion-icon>
           </ion-button>
         </ion-buttons>
-      </div>
+      </div> -->
+
     </div>
   </ion-toolbar>
-  <ion-row class="nav-item">`
+
+  <ion-row class="nav-item">
+    <div class="search-backdrop" *ngIf="showSearch && !_value" (click)="showSearch = false;"></div>
+
     <div class="all" (click)="onClick('all','')" [ngClass]="{'active': tabname==='all'}">
       <span [style.color]="tabname==='all'?color_set:''"><i class="fa fa-folder-open-o"aria-hidden="true" ></i></span>
-      <ion-label [style.color]="tabname==='all'?color_set:''">&nbsp;All</ion-label>
+      <ion-label [style.color]="tabname==='all'?color_set:''">&nbsp;All1</ion-label>
     </div>
     <div *ngFor="let data of categoryList;" class="{{data.name}}" (click)="onClick(data.id,data.background_color)"
       [ngClass]="{'active': tabname===data.id}" >
@@ -167,5 +220,7 @@
         </ion-label>
       </ion-item>
     </div> -->
+    <div class="search-backdrop" *ngIf="showSearch && !_value"  (click)="showSearch = false;"></div>
+
   </div>
 </ion-content>

@@ -29,43 +29,37 @@
 :root{
 
     /// test
-    --dynamic-primary-front-color: #000;
-    --dynamic-primary-background-color: #000;
-    --dynamic-second-front-color: #000;
-    --dynamic-second-background-color: #000;
-    --dynamic-default-dark-text-color:#000;
-    --dynamic-light-dark-text-color:#000;
-    --dynamic-app-background-color:#000;
+    // --dynamic-primary-front-color: #000;
+    // --dynamic-primary-background-color: #000;
+    // --dynamic-second-front-color: #000;
+    // --dynamic-second-background-color: #000;
+    // --dynamic-default-dark-text-color:#000;
+    // --dynamic-light-dark-text-color:#000;
+    // --dynamic-app-background-color:#000;
 
-    --dynamic-app-image-background:url(/assets/images/logo.png);
-    --dynamic-app-image-logo:url(assets/images/logo.png);
-    --dynamic-app-image-otp:url(assets/images/logo.png);
-    --dynamic-app-image-reset-password:url(assets/images/logo.png);
-    --dynamic-app-image-forget-password:url(assets/images/logo.png);
-    --dynamic-app-image-success:url(assets/images/logo.png);
-    --dynamic-app-image-splash:url(assets/images/logo.png);
-    // completed
-    // --dynamic-primary-front-color: #EB2632;
-    // --dynamic-primary-background-color: white;
-    // --dynamic-second-front-color: #fff;
-    // --dynamic-second-background-color: rgb(12, 5, 71);
-    // --dynamic-default-dark-text-color:#F4F4F6;
-    // --dynamic-light-dark-text-color:#77777e;
-    // --dynamic-app-background-color:#F4F4F6;
-
-    // --dynamic-app-image-background:url(/assets/images/bg-color.png);
+    // --dynamic-app-image-background:url(/assets/images/logo.png);
     // --dynamic-app-image-logo:url(assets/images/logo.png);
-    // --dynamic-app-image-otp:url(assets/images/massage.png);
-    // --dynamic-app-image-forget-password:url(assets/images/face.png);
-    // --dynamic-app-image-reset-password:url(assets/images/face_2.png);
-    // --dynamic-app-image-success:url(assets/images/like.png);
-    // --dynamic-app-image-splash:url(assets/images/like.png);
-    
+    // --dynamic-app-image-otp:url(assets/images/logo.png);
+    // --dynamic-app-image-reset-password:url(assets/images/logo.png);
+    // --dynamic-app-image-forget-password:url(assets/images/logo.png);
+    // --dynamic-app-image-success:url(assets/images/logo.png);
+    // --dynamic-app-image-splash:url(assets/images/logo.png);
+    // completed
+    --dynamic-primary-front-color: #EB2632;
+    --dynamic-primary-background-color: white;
+    --dynamic-second-front-color: #fff;
+    --dynamic-second-background-color: rgb(12, 5, 71);
+    --dynamic-default-dark-text-color:#F4F4F6;
+    --dynamic-light-dark-text-color:#77777e;
+    --dynamic-app-background-color:#F4F4F6;
 
-    
-
-
-    
+    --dynamic-app-image-background:url(/assets/images/bg-color.png);
+    --dynamic-app-image-logo:url(assets/images/logo.png);
+    --dynamic-app-image-otp:url(assets/images/massage.png);
+    --dynamic-app-image-forget-password:url(assets/images/face.png);
+    --dynamic-app-image-reset-password:url(assets/images/face_2.png);
+    --dynamic-app-image-success:url(assets/images/like.png);
+    --dynamic-app-image-splash:url(assets/images/bg-color.png);    
  }
 
 
@@ -120,8 +114,18 @@ ion-title {
 }
 
 
-
-
+.ion-position-relative{
+    position: relative !important;
+}
+.pr-7{
+    padding-right: 7px !important;
+}
+.pr-10{
+    padding-right: 10px;
+}
+.pl-15{
+    padding-left: 15px;
+}
 .d-none
 {
     display: none !important;
@@ -718,8 +722,9 @@ ion-header.md {
     //     height: 66px !important;
     // }
     ion-toolbar:first-child {
-        --padding-top: 24px !important;
-        height: 75px !important;
+        --padding-top: 44px !important;
+        height: 84px !important;
+        // height: 200px !important;
     }
 }
 
@@ -1566,7 +1571,7 @@ ion-content.dashboard{
             display: flex;
             align-items: center;
             ion-img{
-                width: 40%;
+                width: 30%;
                 margin-top: -67px;
             }
         }
@@ -1610,9 +1615,10 @@ ion-content.dashboard{
                             font-size: 12px;
                             height: 100%;
                             display: flex;
-                            justify-content: center;
+                            justify-content: left;
                             align-items: center;
                             color: #000 !important;
+                            margin-left: 43px;
                         }
                         // .atten:hover{
                         //     box-shadow: rgb(17 17 26 / 39%) 0px 4px 16px, rgb(17 17 26 / 37%) 0px 8px 24px, rgb(17 17 17 / 47%) 52px 16px 82px;
@@ -1624,30 +1630,32 @@ ion-content.dashboard{
                             position: absolute;
                             left: 49%;
                         }
-                        // .atten::before{
-                        //     content: "➔";
-                        //     color: #be1316;
-                        //     font-size: 13px;
-                        //     position: absolute;
-                        //     left: 38%;
-                        // }
+                        .atten::before{
+                            content: "\279E";
+                            color: #be1316;
+                            font-size: 18px;
+                            position: absolute;
+                            right: 10px;
+                        }
                         .arrow2{
                             font-size: 12px;
                             height: 100%;
                             display: flex;
                             align-items: center;
-                            justify-content: center;
+                            justify-content: right;
                             color: #000 !important;
+                            margin-right: 43px;
                         }
                         // .arrow2:hover{
                         //     box-shadow: rgb(17 17 26 / 39%) 0px 4px 16px, rgb(17 17 26 / 37%) 0px 8px 24px, rgb(17 17 17 / 47%) 52px 16px 82px;
                         // }
                         .arrow2::after{
-                            content: "➔";
+                            content: "\279E";
                             color: #be1316;
-                            font-size: 13px;
+                            font-size: 18px;
                             position: absolute;
-                            left: 84%;
+                            left: 10px;
+                            transform: rotate(180deg);
                         }
                     }
                     ion-card-content{
@@ -1683,14 +1691,19 @@ ion-content.dashboard{
                                         padding-top: 0px;
                                         font-size: 12px;
                                     }
+                                    
+                                }
+                                .text-left{
+                                    padding-left: 25px;
                                     .head-font-in::after{
                                         content: " ";
                                         position: absolute;
                                         width: 12px;
                                         height: 1px;
                                         background: #1e1e92;
-                                        top: 71%;
-                                        left: 7%;
+                                        top: 75%;
+                                        left: 25px;
+                                        // transform: translateX(-50%);
                                     }
                                     .head-font-out::after{
                                         content: " ";
@@ -1698,16 +1711,45 @@ ion-content.dashboard{
                                         width: 21px;
                                         height: 1px;
                                         background: #1e1e92;
-                                        top: 71%;
-                                        left: 8%;
+                                        top: 75%;
+                                        left: 25px;
                                     }
                                 }
                                 
-                                .left-icon::before{
-                                    content: "\276F";
+                                .text-right{
+                                    padding-right: 25px;
+                                    .head-font-in::after{
+                                        content: " ";
+                                        position: absolute;
+                                        width: 12px;
+                                        height: 1px;
+                                        background: #1e1e92;
+                                        top: 75%;
+                                        right: 25px;
+                                        // transform: translateX(-50%);
+                                    }
+                                    .head-font-out::after{
+                                        content: " ";
+                                        position: absolute;
+                                        width: 21px;
+                                        height: 1px;
+                                        background: #1e1e92;
+                                        top: 75%;
+                                        right: 25px;
+                                    }
+                                }
+                                .col-1.left-icon::before{
+                                    content: "❯";
                                     position: absolute;
-                                    left: -3%;
-                                    font-size: 9px;
+                                    left: -9px;
+                                    font-size: 10px;
+                                    top: 20%;
+                                }
+                                .col-3.left-icon::before{
+                                    content: "❯";
+                                    position: absolute;
+                                    right: 50px;
+                                    font-size: 10px;
                                     top: 20%;
                                 }
                                 .f-size{

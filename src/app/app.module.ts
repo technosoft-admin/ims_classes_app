@@ -20,7 +20,6 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -54,7 +53,6 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     },
     SmsRetriever,
     StatusBar,  
-    NativeStorage,
     SplashScreen,
     FirebaseX,
     Camera,
