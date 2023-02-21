@@ -2075,8 +2075,12 @@ ion-content.attendance{
             border-radius: 10px;    
             // box-shadow: rgb(0 0 0 / 25%) 0px 0px 64px, rgb(0 0 0 / 22%) 0px 6px 10px;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-            padding-bottom: 12px;
+            // padding-bottom: 12px;
             .divide
+            {
+                padding-bottom: 0;
+            }
+            .divide2
             {
                 padding-bottom: 0;
             }
@@ -2092,7 +2096,8 @@ ion-content.attendance{
             p{
                 text-align: center;
                 color: #fff;
-                font-size: 18px;
+                font-size: 22px;
+                margin: 8px 0 6px;
             }
             ion-label{
                 width: 100%;
@@ -2105,7 +2110,7 @@ ion-content.attendance{
                 // padding: 26px 5px 2px 5px;
                 padding: 10px;
                 ion-row{
-                    padding-bottom:9px ;
+                    // padding-bottom:9px ;
                 }
                 ion-lable{
                     width: 100%;
@@ -2133,10 +2138,14 @@ ion-content.attendance{
         // {
         //     padding-bottom: 0;
         // }
-        // .divide
-        // {
-        //     padding-bottom: 0;
-        // }
+        .divide2
+        {
+            padding-bottom: 0;
+        }
+        .divide
+        {
+            padding-bottom: 0;
+        }
         .divide::before{
             content: " ";
             position: absolute;
@@ -2149,7 +2158,8 @@ ion-content.attendance{
         p{
             text-align: center;
             color: #fff;
-            font-size: 18px;
+            font-size: 22px;
+            margin: 8px 0 6px;
             // margin-bottom: 0;
             // line-height: 9px;
         }
@@ -2165,7 +2175,7 @@ ion-content.attendance{
             // padding: 26px 5px 2px 5px;
             padding: 10px;
             ion-row{
-                padding-bottom: 9px;
+                // padding-bottom: 9px;
             }
             ion-lable{
                 width: 100%;
