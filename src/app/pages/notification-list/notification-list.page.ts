@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonUtils } from 'src/app/services/common-utils/common-utils';
-
+import { Location } from "@angular/common";
 @Component({
   selector: 'app-notification-list',
   templateUrl: './notification-list.page.html',
@@ -18,7 +18,7 @@ export class NotificationListPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private commonUtils: CommonUtils,
-    private http: HttpClient) { }
+    private http: HttpClient,private location: Location) { }
 
   ngOnInit() {
     this.notifiId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -42,8 +42,8 @@ export class NotificationListPage implements OnInit {
       }
     );
   }
-  gotoBackPage() {
-    this.router.navigateByUrl('/notification')
+  myBackButton(){
+    this.location.back();
   }
   ngOnDestory() {
     if (this.formSubmitSubscribe !== undefined) {

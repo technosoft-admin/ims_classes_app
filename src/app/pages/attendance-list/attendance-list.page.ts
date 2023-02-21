@@ -26,7 +26,7 @@ export class AttendanceListPage implements OnInit {
   moment: any = moment;
   page: string;
 
-  constructor(private http: HttpClient, private router: Router,private location: Location,private activatedRoute: ActivatedRoute,) { }
+  constructor(private http: HttpClient, private router: Router, private location: Location, private activatedRoute: ActivatedRoute,) { }
   private attendanceListSubscribe: Subscription;
   private libraryListSubscribe: Subscription;
   private attendanceDateSubscribe: Subscription;
@@ -34,41 +34,66 @@ export class AttendanceListPage implements OnInit {
 
   ngOnInit(): void {
     this.type = this.activatedRoute.snapshot.paramMap.get('type');
-    console.log("this.type.............",this.type)
-    if(this.type==='library')
-    {
-      this.page='Library'
+    console.log("this.type.............", this.type)
+    if (this.type === 'library') {
+      this.page = 'Library'
     }
-    else
-    {
-      this.page='Attendance'
+    else {
+      this.page = 'Attendance'
     }
     this.onLoad();
-    this.atcount=1;
+    this.atcount = 1;
   }
+  getTimeOfDay(time: string): string {
+    let [hour, minute] = time.split(":").map((str) => parseInt(str));
+    let period = time.slice(-2).toLowerCase();
+    // console.log('time=',time,'period=',period,'period=',hour)
+    if (hour === 12 && period === "am") {
+      hour -= 12;
+    } else if (hour < 12 && period === "pm") {
+      hour += 12;
+    }
+
+    if (hour >= 5 && hour < 12) {
+      return "MOR";
+    } else if (hour >= 12 && hour < 17) {
+      return "NOON";
+    } else if (hour >= 17 && hour < 21) {
+      return "EVE";
+    } else {
+      return "NGT";
+    }
+  }
+
   onClickDate(v) {
     //console.log(v, this.model.calDat);
 
   }
-  myBackButton(){
+  myBackButton() {
     this.location.back();
   }
   onLoad() {
     this.data = new DatePipe('en-US').transform(new Date().toISOString(), 'MMMM YYYY')
     this.pageCount = 2;
     this.dataLentch = 1;
-    if(this.type==='library')
-    {
+    if (this.type === 'library') {
       this.getLibraryINOUT(10)
       this.getLibraryDate(10)
     }
-    else
-    {
+    else {
       this.getAttendance(10)
       this.getAttendanceDate(10);
     }
   }
   ionViewWillEnter() {
+    this.type = this.activatedRoute.snapshot.paramMap.get('type');
+    console.log("this.type.............", this.type)
+    if (this.type === 'library') {
+      this.page = 'Library'
+    }
+    else {
+      this.page = 'Attendance'
+    }
     this.onLoad();
     this.atcount=1;
 
@@ -95,18 +120,34 @@ export class AttendanceListPage implements OnInit {
     // let date =  event.format('YYYY-MM-DD');
     console.log(page);
 
-    this.attendance_listing_view_url = 'attendance?page=' + page +`&date=`
+    this.attendance_listing_view_url = 'attendance?page=' + page + `&date=`
     this.attendanceListSubscribe = this.http.get(this.attendance_listing_view_url,).subscribe(
       (res: any) => {
         if (res.return_status === 1) {
           this.attendance_list = res.return_data.attendance.rows
-          console.log(res.return_data.count, this.dataLentch,this.atcount);
+          // console.log(res.return_data.count, this.dataLentch,this.atcount);
+          this.attendance_list.forEach(element => {
+            // console.log(element.in_time,element.out_time)
+            let in_time = moment(element.in_time, 'hh:mm A');
+            let out_time = moment(element.out_time, 'hh:mm A');
+            element.in_day = this.getTimeOfDay(moment(element.in_time, 'hh:mm A').format('hh:mm A').toString());
+            if (element.out_time == "") {
+              element.hour = ""
+              element.out_day = ""
+            }
+            else {
+              element.hour=moment.utc(moment.duration({hours: moment.duration(out_time.diff(moment(in_time, "HH:MM"))).hours(), minutes: moment.duration(out_time.diff(moment(in_time, 'HH:MM'))).minutes()}).asMilliseconds()).format("HH:mm")+' Hr';
+              element.out_day = this.getTimeOfDay(moment(element.out_time, 'hh:mm A').format('hh:mm A'));
+            element.out_time=moment(element.out_time, 'hh:mm A').format("hh:mm");
 
+            }
+            element.in_time=moment(element.in_time, 'hh:mm A').format("hh:mm");
+          });
           // if (res.return_data.attendance.count === this.dataLentch) {
-            if (res.return_data.count === this.dataLentch) {
-            
+          if (res.return_data.count === this.dataLentch) {
+
             this.dataLentch = 0;
-            
+
           }
           else {
             this.dataLentch = res.return_data.attendance.count;
@@ -124,34 +165,37 @@ export class AttendanceListPage implements OnInit {
     // let date =  event.format('YYYY-MM-DD');
     console.log(page);
 
-    let lib_url = '/library/get?page=' + page +`&date=`
+    let lib_url = '/library/get?page=' + page + `&date=`
     this.libraryListSubscribe = this.http.get(lib_url).subscribe(
       (res: any) => {
         if (res.return_status === 1) {
-          
+
           this.attendance_list = res.return_data.rows
           this.attendance_list.forEach(element => {
-            
-            let in_time = moment(element.in_time, 'hh:mm A')  ;
+
+            let in_time = moment(element.in_time, 'hh:mm A');
             let out_time = moment(element.out_time, 'hh:mm A');
-            if(element.out_time=="")
-            {
-              element.hour=""
+
+            if (element.out_time == "") {
+              element.hour = ""
             }
-            else
-            {
-              element.hour = moment.duration(out_time.diff(moment(in_time, "HH:MM"))).hours() + ':' + moment.duration(out_time.diff(moment(in_time, 'HH:MM'))).minutes() + ' Hr'
+            else {
+              element.hour=moment.utc(moment.duration({hours: moment.duration(out_time.diff(moment(in_time, "HH:MM"))).hours(), minutes: moment.duration(out_time.diff(moment(in_time, 'HH:MM'))).minutes()}).asMilliseconds()).format("HH:mm")+' Hr';
+
+              element.out_day = this.getTimeOfDay(moment(element.in_time, 'hh:mm A').format('hh:mm A').toString());
+              element.out_time=moment(element.out_time, 'hh:mm A').format("hh:mm");
+
             }
-            // element.in_time=in_time;
-            // // element.out_time=out_time;
+            element.in_day = this.getTimeOfDay(moment(element.in_time, 'hh:mm A').format('hh:mm A').toString());
+            element.in_time=moment(element.in_time, 'hh:mm A').format("hh:mm");
+
           });
-          console.log( this.attendance_list, this.dataLentch,this.atcount);
 
           // if (res.return_data.attendance.count === this.dataLentch) {
-            if (res.return_data.count === this.dataLentch) {
-            
+          if (res.return_data.count === this.dataLentch) {
+
             this.dataLentch = 0;
-            
+
           }
           else {
             this.dataLentch = res.return_data.count;
@@ -167,7 +211,7 @@ export class AttendanceListPage implements OnInit {
 
   getLibraryDate(page) {
     let libdata = '/library/date?page=' + page
-    this.attendanceDateSubscribe = this.http.get(libdata  ).subscribe(
+    this.attendanceDateSubscribe = this.http.get(libdata).subscribe(
       (res: any) => {
 
         this.dateList = res.return_data.date;
@@ -188,13 +232,11 @@ export class AttendanceListPage implements OnInit {
     console.log('call start', this.dataLentch);
     // this.getAttendanceDate(this.pageCount * 10)
     // this.getAttendance(this.pageCount * 10)
-    if(this.type==='library')
-    {
+    if (this.type === 'library') {
       this.getLibraryINOUT(this.pageCount * 10)
       this.getLibraryDate(this.pageCount * 10)
     }
-    else
-    {
+    else {
       this.getAttendance(this.pageCount * 10)
       this.getAttendanceDate(this.pageCount * 10);
     }
@@ -214,7 +256,7 @@ export class AttendanceListPage implements OnInit {
   }
   notificatonId(id) {
     //console.log('shbhdbs');
-    this.notificaton_id_url = 'getAttendanceid/' + id
+    this.notificaton_id_url = 'getAttendanceid/' + this.type + "/" + id
     this.notificationSubscribe = this.http.get(this.notificaton_id_url).subscribe(
       (res: any) => {
         if (res.return_status == 1) {

@@ -1,14 +1,14 @@
 <ion-header>
   <!-- <ion-toolbar class="custom"> -->
     <ion-toolbar >
-    <div class="search-backdrop" *ngIf="showSearch && !_value"  (click)="showSearch = false;"></div>
+    <div class="search-backdrop" *ngIf="showSearch"  (click)="closeSearch()"></div>
 
-    <div class="header-content" >
+    <div class="header-content" [ngClass]="{'search-border':showSearch}">
       <div>
         <!-- <mat-icon aria-hidden="false" class="arrow-back" aria-label="Example home icon"
           [routerLink]="['/', 'dashboard']">arrow_back</mat-icon> -->
           <mat-icon aria-hidden="false" class="arrow-back" matRipple  aria-label="Example home icon"
-          [routerLink]="['/', 'dashboard']">arrow_back</mat-icon>
+         (click)="myBackButton()">arrow_back</mat-icon>
       </div>
       <div>
         <ion-title *ngIf="searchopen=='0'">Notifications</ion-title>
@@ -17,9 +17,9 @@
       <!-- <ion-searchbar  class="search" animated [ngModel]="model.range" (ngModelChange)="search($event)" *ngIf="searchopen=='1'"></ion-searchbar> -->
 
       </div>
-      <mat-icon (click)="showSearch = !showSearch">search</mat-icon>
+      <mat-icon  (click)="openSearch()" class="search-icon" [ngClass]="{'opcity-0': showSearch || _value}">search</mat-icon>
 
-      <div class="search-box" [ngClass]="{'show' : showSearch}">
+      <div class="search-box" [ngClass]="{'show' : showSearch || _value}">
         <input 
           class="search__input"
           #myInput
@@ -27,7 +27,9 @@
           type="text"
           matInput
           [(ngModel)]="_value"
+          (input)="search(_value)"
         />
+        <mat-icon class="search_close_btn" *ngIf="_value" (click)="clearSearchDate()">close</mat-icon>
       </div>
       <!-- <div [@searchExpand]="expanded" fxFlex class="search__container ion-position-relative">
         <input
@@ -71,11 +73,9 @@
   </ion-toolbar>
 
   <ion-row class="nav-item">
-    <div class="search-backdrop" *ngIf="showSearch && !_value" (click)="showSearch = false;"></div>
-
     <div class="all" (click)="onClick('all','')" [ngClass]="{'active': tabname==='all'}">
       <span [style.color]="tabname==='all'?color_set:''"><i class="fa fa-folder-open-o"aria-hidden="true" ></i></span>
-      <ion-label [style.color]="tabname==='all'?color_set:''">&nbsp;All1</ion-label>
+      <ion-label [style.color]="tabname==='all'?color_set:''">&nbsp;All</ion-label>
     </div>
     <div *ngFor="let data of categoryList;" class="{{data.name}}" (click)="onClick(data.id,data.background_color)"
       [ngClass]="{'active': tabname===data.id}" >
@@ -84,7 +84,9 @@
     </div>
   </ion-row>
 </ion-header>
-<ion-content>
+<ion-content  [scrollEvents]="true"  
+(ionScrollStart)="ScrollStart()" (mousedown)="ScrollStart()" 
+>
   <div class="loder">
     <ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner>
   </div>
@@ -220,7 +222,5 @@
         </ion-label>
       </ion-item>
     </div> -->
-    <div class="search-backdrop" *ngIf="showSearch && !_value"  (click)="showSearch = false;"></div>
-
   </div>
 </ion-content>

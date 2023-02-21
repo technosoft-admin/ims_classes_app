@@ -1,15 +1,17 @@
-<ion-header>
-  <!-- <ion-header (appOutsideClick)="ClickedOut($event)"> -->
+<ion-header class="attendance">
+  <!-- <ion-header (appOutsideClick)="ClickedOut($event)" (click)="myBackButton()"> -->
   <ion-toolbar>
     <div class="header-content">
       <div>
-        <mat-icon aria-hidden="false" matRipple  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'dashboard']">arrow_back</mat-icon>
+        <mat-icon aria-hidden="false" matRipple matRippleRadius="50" class="arrow-back" aria-label="Example home icon" (click)="myBackButton()">arrow_back</mat-icon>
+
+        <!-- <mat-icon aria-hidden="false" matRipple  class="arrow-back" aria-label="Example home icon" >arrow_back</mat-icon> -->
       </div>
-      <div><ion-title>Attendance</ion-title></div>
+      <div><ion-title>{{page}}</ion-title></div>
       <div class="menu-bar">
-        <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <!-- <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
-        </button>
+        </button> -->
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>dialpad</mat-icon>
@@ -29,121 +31,145 @@
   </ion-toolbar>
   
 </ion-header>
-<ion-content>
-  <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
-  <div *ngIf="!load">
-    <div class="content1" >
-      <div class="content-box1">
-        <ion-grid>
-          <ion-row>
-            <ion-col size="6" class="divide">
-              <p> Days Of </p>
-              <ion-label>Average Days</ion-label>
-            </ion-col>
-            <ion-col size="6">
-              <p></p>
-              <!-- <p>51.52%</p> -->
-              <ion-label>Average Attendance</ion-label>
-            </ion-col>
-          </ion-row>
-          <ion-label>{{dashboard_date}}</ion-label>
-        </ion-grid>
+<ion-content class="attendance">
+  <div class="relative h-100">
+    <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div>
+    <div *ngIf="!load">
+      <div class="content1" >
+        <div class="content-box1">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" class="divide">
+                <!-- <p>{{persentCountPL+persentCountP}} Days Of {{dayCount}}</p> -->
+                <p>{{showMonth}}</p>
+                <!-- <ion-label>Month Present Days</ion-label> -->
+                <ion-label>{{showMonthText}}</ion-label>
+              </ion-col>
+              <ion-col size="6">
+                <p>{{monthAttendance}}</p>
+                <ion-label>{{showMonthAttendanceText}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-label>{{dashboard_date}}</ion-label>
+          </ion-grid>
+        </div>
       </div>
-    </div>
-    <div class="content2">
-      <div class="content-box2">
-        <ion-grid>
-          <ion-row>
-            <ion-col size="6" class="divide">
-              <p> Days Of  </p>
-              <ion-label>Average Days</ion-label>
-            </ion-col>
-            <ion-col size="6">
-              <p></p>
-              <!-- <p>51.52%</p> -->
-              <ion-label>Average Attendance</ion-label>
-            </ion-col>
-          </ion-row>
-          <ion-label>Total</ion-label>
-        </ion-grid>
+      <div class="content2">
+        <div class="content-box2">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" class="divide">
+                <!-- <p>{{totalDay}} Days Of {{totalDays }}</p> -->
+                <p>{{totalAttendance}}</p>
+                <ion-label>{{totalAverageText}}</ion-label>
+              </ion-col>
+              <ion-col size="6">
+                <p>{{totalAttendanceAverage}}</p>
+                <ion-label>{{totalAverageAttendanceText}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-label>Total</ion-label>
+          </ion-grid>
+        </div>
       </div>
-    </div>
-    
-    <div class="modal-view">
-      <div class="inline-calendar" >
-        <div class="closeModal" *ngIf="click_modal" (click)="clickedOut()"></div>
-        <div class="open-modal" *ngIf="click_modal">
-          <div class="modal-content">
-            <div class="modal-list">
-              <div class="modal-head">
-                <ion-grid>
-                  <ion-row>
-                    <ion-col>
-                      <div class="head-in">IN</div>
-                    </ion-col>
-                    <ion-col>
-                      <div class="head-out">OUT</div>
-                    </ion-col>
-                    <ion-col>
-                      <div><span>Date</span> {{date}}</div>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
+      
+      <div class="modal-view cs" [ngClass]="{'libary-margin': type=='library' }">
+        <!-- <div class="modal-view cs" > -->
+        <div class="inline-calendar" >
+          <div class="closeModal" *ngIf="click_modal" (click)="clickedOut()"></div>
+          <div class="open-modal" *ngIf="click_modal">
+            <div class="modal-content">
+              <div class="modal-list">
+                <div class="modal-head">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <div class="head-in">IN</div>
+                      </ion-col>
+                      <ion-col>
+                        <div class="head-out">OUT</div>
+                      </ion-col>
+                      <ion-col>
+                        <div><span>Date</span> {{date}}</div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+                <div class="modal-body" *ngFor="let listtime of in_out_time">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col><div class="start-time" *ngIf="listtime.in_time!=''">{{listtime.in_day}} {{listtime.in_time}}</div></ion-col>
+                      <ion-col><div class="end-time" *ngIf="listtime.out_time!=''">{{listtime.out_day}} {{listtime.out_time}}</div></ion-col>
+                      <ion-col class="total" >
+                        <div class="total-time"  *ngIf="listtime.hour!=''" (click)="notificatonId(listtime.id)">{{listtime.hour}}</div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+               
               </div>
-              <div class="modal-body" *ngFor="let listtime of in_out_time">
-                <ion-grid>
-                  <ion-row>
-                    <ion-col><div class="start-time" *ngIf="listtime.in_time!=''">Mor {{listtime.in_time}}</div></ion-col>
-                    <ion-col><div class="end-time" *ngIf="listtime.out_time!=''">Noon {{listtime.out_time}}</div></ion-col>
-                    <ion-col class="total" >
-                      <div class="total-time"  *ngIf="listtime.hour!=''" (click)="notificatonId(listtime.id)">{{listtime.hour}}</div>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </div>
-             
             </div>
           </div>
+       <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="caload"></ion-spinner></div>
+      
+          <mat-card class="demo-inline-calendar-card" *ngIf="!caload">
+            <!-- <ion-icon name="calendar" class="icon" (click)="myBackButton()"></ion-icon> -->
+            <mat-icon class="icon icon-round-effect"  matRipple matRippleRadius="50" >list</mat-icon>
+            <mat-calendar #calendar [dateClass]="dateClass()" [startAt]="selectedDate"  (click)="onCalendarClick($event)" (selectedChange)="onSelect($event)" >
+            </mat-calendar>
+            <!-- onSelect($event) -->
+          </mat-card>
         </div>
-        <div mat-dialog-content>
-        </div>
-        <mat-card class="demo-inline-calendar-card">
-          <ion-icon name="calendar" class="icon" [routerLink]="['/', 'dashboard']"></ion-icon>
-          <mat-calendar  [dateClass]="dateClass()" [selected]="selectedDate"  (Click)="onPrevious($event)" (selectedChange)="onSelect($event)" >
-          </mat-calendar>
-        </mat-card>
-        <button ion-button block></button>  
       </div>
+  
+      
     </div>
-
-    <div class="attendance-list">
+    <div class="attendance-list" *ngIf="type=='attendance'">
       <ion-grid>
         <ion-row>
           <ion-col class="list-1">
-            <ion-label>Today</ion-label>
+            <div class="h--100 d-flex ion-justify-content-center ion-align-items-end">
+              <ion-label>Today</ion-label>
+            </div>
           </ion-col>
           <ion-col class="list-2">
-            <ion-label>Present</ion-label>
+            <div class="d-grid ion-justify-content-center ion-align-items-center">
+              <ion-label>{{persentCountPL+persentCountP}}</ion-label>
+              <ion-label>Present</ion-label>
+            </div>
           </ion-col>
           <ion-col class="list-3">
-            <ion-label>Absent</ion-label>
+            <div class="d-grid ion-justify-content-center ion-align-items-center">
+              <ion-label>{{absentCount}}</ion-label>
+              <ion-label>Absent</ion-label>
+            </div>
           </ion-col>
           <ion-col class="list-4">
-            <ion-label>Manual</ion-label>
+            <div class="d-grid ion-justify-content-center ion-align-items-center">
+              <ion-label>{{manualCount}}</ion-label>
+              <ion-label>Manual</ion-label>
+            </div>
           </ion-col>
           <ion-col class="list-5">
-            <ion-label>Leave</ion-label>
+            <div class="d-grid ion-justify-content-center ion-align-items-center">
+              <ion-label>{{leaveCount}}</ion-label>
+              <ion-label>Leave</ion-label>
+            </div>
           </ion-col>
           <ion-col class="list-6">
-            <ion-label>Holiday</ion-label>
+            <div class="d-grid ion-justify-content-center ion-align-items-center">
+              <ion-label>{{holidayCount}}</ion-label>
+              <ion-label>Holiday</ion-label>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
   </div>
+ 
 </ion-content>
 <!-- ******* Footer Tab Start ******* -->
-<ion-footer>
+<ion-footer class="attendance">
   <ion-grid>
     <ion-row>
       <ion-col size="4" class="dashboard_btn" (click)="onClick(1)"   [ngClass]="{'active': tab==='dashboard_btn'}" [routerLink]="['/', 'dashboard']">

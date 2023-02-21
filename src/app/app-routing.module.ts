@@ -51,7 +51,7 @@ const routes: Routes = [
     canLoad:[AuthGuard]
   },
   {
-    path: 'attendance',
+    path: 'attendance/:type',
     canLoad:[AuthGuard],
     loadChildren: () => import('./pages/attendance/attendance.module').then( m => m.AttendancePageModule)
   },

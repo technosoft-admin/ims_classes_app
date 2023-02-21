@@ -96,12 +96,12 @@ export class DashboardPage implements OnInit {
   }
  getLibraryINOUT(date)
  {
-  this.libraryinoutSubscribe = this.http.get('/library/get?date='+date).subscribe(
+  this.libraryinoutSubscribe = this.http.get('library/get?date='+date).subscribe(
     (res: any) => {
       console.log('tetsnbbbsh...',res)
       if(res.return_status==1)
       {
-        this.libinoutlist=res.return_data.row
+        this.libinoutlist=res.return_data.rows
       }
     },
 

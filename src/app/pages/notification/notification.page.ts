@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonUtils } from 'src/app/services/common-utils/common-utils';
 import {trigger, state, transition, animate, style, query, animateChild, group} from '@angular/animations'
 import { DefaultValueAccessor } from '@angular/forms';
-
+import { Location } from "@angular/common";
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.page.html',
@@ -90,7 +90,7 @@ export class NotificationPage implements OnInit {
   _onChangesFn?: (any)=>null = undefined
 
   expanded = false;
-
+  clearSearch = false;
   tab: any;
   all: any;
   general: any;
@@ -117,8 +117,7 @@ export class NotificationPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private commonUtils: CommonUtils,
-    private http: HttpClient, private sanitized: DomSanitizer) { }
-
+    private http: HttpClient, private sanitized: DomSanitizer,private location: Location) { }
   ngOnInit() {
     this.onLoader();
     this.searchopen='0'
@@ -142,6 +141,25 @@ export class NotificationPage implements OnInit {
     else
     {
       this.searchopen='0';
+    }
+  }
+  closeSearch()
+  {
+    if (this._value) {
+      this.showSearch = true;
+    }else{
+      this.showSearch = false;
+    }
+  }
+  myBackButton(){
+    this.location.back();
+  }
+  ScrollStart()
+  {
+    if (this._value) {
+      this.showSearch = true;
+    }else{
+      this.showSearch = false;
     }
   }
   onLoader() {
@@ -223,8 +241,12 @@ export class NotificationPage implements OnInit {
     if (tabname == 'all') {
       this.color_set='#ff3030';
       this.list = this.notificationList;
+      this.showSearch = false;
+      this._value = '';
     }
     else {
+      this.showSearch = false;
+      this._value = '';
       this.list = this.notificationList.filter(book => book.notification_category === tabname.toString())
     }
     console.log('filterdata', this.list);
@@ -237,7 +259,14 @@ export class NotificationPage implements OnInit {
     console.log(search)
     this.getNotification('',search)
   }
-
+  openSearch()
+  {
+    this.showSearch = true; 
+  }
+  clearSearchDate()
+  {
+    this._value = '';
+  }
   //Search Start.....
 
   registerOnChange(fn: any) {
@@ -258,9 +287,6 @@ export class NotificationPage implements OnInit {
     this.inputModel.writeValue(obj);
   }
 
-  close() {
-    this._value = '';
-  }
 
   onSearchClicked() {
     if(!this.expanded) {

@@ -1,31 +1,43 @@
-<ion-header>
+<ion-header class="attendance-list">
   <ion-toolbar>
     <div class="header-content">
       <div>
-        <!-- <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'attendance']">arrow_back</mat-icon> -->
-        <mat-icon aria-hidden="false" matRipple  class="arrow-back" aria-label="Example home icon" (click)="myBackButton()">arrow_back</mat-icon>
+        <!-- <mat-icon aria-hidden="false"  class="arrow-back" aria-label="Example home icon" [routerLink]="['/', 'attendance']" (click)="myBackButton()">arrow_back</mat-icon> -->
+        <mat-icon aria-hidden="false" matRipple matRippleRadius="50" class="arrow-back" aria-label="Example home icon" (click)="myBackButton()">arrow_back</mat-icon>
       </div>
       <div><ion-title>{{page}}</ion-title></div>
-      <div>
-        <ion-buttons slot="end" class="list-bar" >
-          <ion-button >
-            <!-- <ion-icon name="search"></ion-icon> -->
-          </ion-button>
-        </ion-buttons>
+      <div class="menu-bar">
+        <!-- <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button> -->
+        <!-- <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu> -->
       </div>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="attendance-list">
  
     
   <ion-row>
     <div class="calendar-content">
         <p>{{data}}</p>
     </div>
-    <div class="calendar-icon">
-      <ion-icon name="calendar" class="icon" [routerLink]="['/', 'attendance']"></ion-icon>
+    <div class="calendar-icon" matRipple>
+      <ion-icon name="calendar"  class="icon" [routerLink]="['/', 'attendance',type]"></ion-icon>
     </div>
   </ion-row>
   <!-- <div *ngIf="!load">  -->
@@ -57,12 +69,12 @@
               </ion-row>
               <ion-row class="mt-10 t-center" *ngFor="let time of attendance_list" >
                 <ion-col size="4" class="first-col" *ngIf="time.date==date.date">
-                  <ion-label *ngIf="time.in_time.search('AM')!==-1">Mor {{time.in_time}}</ion-label>
-                  <ion-label *ngIf="time.in_time.search('PM')!==-1">Noon {{time.in_time}}</ion-label>
+                  <ion-label >{{time.in_day}} {{time.in_time}}</ion-label>
+                  <!-- <ion-label *ngIf="time.in_time.search('PM')!==-1">{{time.in_day}} {{time.in_time}}</ion-label> -->
                 </ion-col>
                 <ion-col size="4" class="seconde-col" *ngIf="time.date==date.date">
-                  <ion-label *ngIf="time.out_time!='' && time.in_time.search('AM')!==-1">Mor {{time.out_time}}</ion-label>
-                  <ion-label *ngIf="time.out_time!='' && time.in_time.search('PM')!==-1">Noon {{time.out_time}}</ion-label>
+                  <ion-label *ngIf="time.out_time!=''">{{time.out_day}} {{time.out_time}}</ion-label>
+                  <!-- <ion-label *ngIf="time.out_time!='' && time.in_time.search('PM')!==-1">MOR {{time.out_time}}</ion-label> -->
                 </ion-col>
                 <ion-col size="4" class="mt-6" *ngIf="time.date==date.date" >
                   <ion-chip class="total-cal"  *ngIf="time.hour!=''">
