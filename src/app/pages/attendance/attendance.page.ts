@@ -180,7 +180,7 @@ export class AttendancePage implements OnInit {
           const startDate = moment(data.asc.date, 'YYYY-MM-DD');
           const endDate = moment(data.desc.date, 'YYYY-MM-DD');
           this.totalDays =endDate.diff(startDate, 'days')+1;
-          this.totalAttendance=this.totalDay+" Days Of "+this.totalDays;
+          this.totalAttendance=this.totalDay+" Of "+this.totalDays;
           let total=this.totalDay*100/this.totalDays
           this.totalAttendanceAverage=total.toFixed(2)+" %";
           
@@ -212,7 +212,7 @@ export class AttendancePage implements OnInit {
           this.attendanceCount(this.dataArray);
           let data=(this.persentCountP+this.persentCountPL)*100/this.dayCount
           this.monthAttendance= data.toFixed(2)+" %";
-             this.showMonth=(this.persentCountPL+this.persentCountP)+" Days Of "+this.dayCount;
+             this.showMonth=(this.persentCountPL+this.persentCountP)+" Of "+this.dayCount;
     
           // this.persentCount=0
           // this.absentCount=0

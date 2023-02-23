@@ -93,15 +93,17 @@
   <div *ngIf="!load">
     <div class="pt-15" *ngFor="let value of list">
       <div class="message-item">
-        <div class="box-seed-color" [style.background]="value?.notificationCat?.background_color" *ngIf="value.is_read != '1'">
+        <div class="box-seed-color" [style.background]="value?.subnotificationcategory?.background_color" *ngIf="value.is_read != '1'">
 
         </div>
           <ion-item class="message-item-color"
           [ngClass]="{'seened': value.is_read == '1'}"  (click)="gotoNextPage(value?.id)" >
           
-          <ion-avatar slot="start" class="message-avatar"  [style.background]="value?.notificationCat?.background_color">
-            <span [innerHtml]="value?.notificationCat?.icon" class="subject-icon"></span>
+          <ion-avatar slot="start" class="message-avatar"  [style.background]="value?.subnotificationcategory?.background_color">
+            <span [innerHtml]="value?.subnotificationcategory?.icon" class="subject-icon " [style.color]="value?.subnotificationcategory?.front_color" *ngIf="value.is_read != '1'"></span>
+            <span [innerHtml]="value?.subnotificationcategory?.icon" class="subject-icon" [style.color]="value?.subnotificationcategory?.background_color"  *ngIf="value.is_read == '1'"></span>
           </ion-avatar>
+          
           <ion-label>
             <div class="message-content">
               <div>

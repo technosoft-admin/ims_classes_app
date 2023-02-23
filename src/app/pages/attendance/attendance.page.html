@@ -114,7 +114,7 @@
       
           <mat-card class="demo-inline-calendar-card" *ngIf="!caload">
             <!-- <ion-icon name="calendar" class="icon" (click)="myBackButton()"></ion-icon> -->
-            <mat-icon class="icon icon-round-effect"  matRipple matRippleRadius="50" >list</mat-icon>
+            <mat-icon class="icon icon-round-effect"  matRipple matRippleRadius="50" (click)="myBackButton()" >list</mat-icon>
             <mat-calendar #calendar [dateClass]="dateClass()" [startAt]="selectedDate"  (click)="onCalendarClick($event)" (selectedChange)="onSelect($event)" >
             </mat-calendar>
             <!-- onSelect($event) -->
