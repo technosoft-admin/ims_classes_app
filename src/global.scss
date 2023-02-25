@@ -61,7 +61,12 @@
     --dynamic-app-image-success:url(assets/images/like.png);
     --dynamic-app-image-splash:url(assets/images/bg-color.png);    
  }
-
+ * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
 h1 {
     color: #000;

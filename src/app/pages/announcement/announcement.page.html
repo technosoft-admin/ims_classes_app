@@ -1,5 +1,5 @@
 <!-- <ion-header (appOutsideClick)="ClickedOut($event)"> -->
-  <ion-header >
+  <ion-header class="noselect">
   <ion-toolbar>
     <div class="header-content">
       <div>
@@ -29,7 +29,7 @@
   </ion-toolbar>
   
 </ion-header>
-<ion-content>
+<ion-content class="noselect">
   <!-- <div class="loder"><ion-spinner name="bubbles" color="tertiary" *ngIf="load"></ion-spinner></div> -->
   <div >
     <div class="content1" *ngIf="eventDataShow">
@@ -125,7 +125,7 @@
   </div>
 </ion-content>
 <!-- ******* Footer Tab Start ******* -->
-<ion-footer>
+<ion-footer class="noselect">
   <ion-grid>
     <ion-row>
       <ion-col size="4" class="dashboard_btn" (click)="onClick(1)"   [ngClass]="{'active': tab==='dashboard_btn'}" [routerLink]="['/', 'dashboard']">

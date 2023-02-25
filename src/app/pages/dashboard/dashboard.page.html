@@ -34,8 +34,8 @@
     
     
     <!-- ******* Heading Text Start ******* -->
-    <div class="text-content">
-      <h1>LALIT TUTORIALS</h1>
+    <div class="text-content ">
+      <h1 >LALIT TUTORIALS</h1>
       <span>An Institute For Excellence In Science</span>
       <p>AKOLA</p>
     </div>
@@ -112,10 +112,10 @@
     <!-- /////////////////////////// End Teacher///////////////// -->
     <!-- ******* Calender Start ******* -->
     <div class="calendar" *ngIf="user_type=='student'">
-      <ion-calendar [(ngModel)]="dateRange"
+      <ion-calendar  [(ngModel)]="dateRange"
               [options]="optionsRange"
               [type]="type"
-              [format]="'YYYY-MM-DD'" (change)="changeWeek($event)">
+              [format]="'YYYY-MM-DD'" class="noselect" (change)="changeWeek($event)">
       </ion-calendar>
     </div>
     <!-- ******* Calender End ******* -->
